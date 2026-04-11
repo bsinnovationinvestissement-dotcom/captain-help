@@ -698,6 +698,9 @@ footer a:hover{color:var(--white);}
     <li><a href="#faq">FAQ</a></li>
   </ul>
   <a href="#whitelist" class="nav-cta">Rejoindre la Waitlist →</a>
+  <button type="button" class="hamburger" id="hamburgerBtn" aria-label="Menu" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- ── HERO ── -->
@@ -1207,7 +1210,7 @@ footer a:hover{color:var(--white);}
               </div>
             </div>
           </div>
-          <div class="f-nav"><button class="btn-next" onclick="nxt(1)">Suivant →</button></div>
+          <div class="f-nav"><button type="button" class="btn-next" onclick="nxt(1)">Suivant →</button></div>
         </div>
 
         <!-- STEP 2 -->
@@ -1223,13 +1226,13 @@ footer a:hover{color:var(--white);}
             </div>
             <div class="f-full">
               <label class="fl">Code postal</label>
-              <input type="text" name="postal" maxlength="5" placeholder="75001" inputmode="numeric">
+              <input type="text" name="postal" maxlength="5" placeholder="75001" inputmode="numeric" pattern="[0-9]{5}" autocomplete="postal-code">
               <p class="f-note">Nous l'utilisons pour estimer le coût réel du remorquage dans votre zone et calibrer votre tarif.</p>
             </div>
           </div>
           <div class="f-nav">
-            <button class="btn-back" onclick="prv(2)">← Retour</button>
-            <button class="btn-next" onclick="nxt(2)">Suivant →</button>
+            <button type="button" class="btn-back" onclick="prv(2)">← Retour</button>
+            <button type="button" class="btn-next" onclick="nxt(2)">Suivant →</button>
           </div>
         </div>
 
@@ -1284,8 +1287,8 @@ footer a:hover{color:var(--white);}
 
           </div>
           <div class="f-nav">
-            <button class="btn-back" onclick="prv(3)">← Retour</button>
-            <button class="btn-next" onclick="nxt(3)">Suivant →</button>
+            <button type="button" class="btn-back" onclick="prv(3)">← Retour</button>
+            <button type="button" class="btn-next" onclick="nxt(3)">Suivant →</button>
           </div>
         </div>
 
@@ -1297,17 +1300,17 @@ footer a:hover{color:var(--white);}
           <div class="f-grid" style="max-width:480px;margin:0 auto;">
             <div class="f-full">
               <label class="fl">Adresse e-mail</label>
-              <input type="email" id="finEmail" placeholder="vous@exemple.fr">
+              <input type="email" id="finEmail" placeholder="vous@exemple.fr" autocomplete="email">
             </div>
             <div class="f-full" style="text-align:center;font-size:.78rem;color:var(--muted);">— ou —</div>
             <div class="f-full">
               <label class="fl">Numéro de téléphone</label>
-              <input type="tel" id="finPhone" placeholder="+33 6 00 00 00 00">
+              <input type="tel" id="finPhone" placeholder="+33 6 00 00 00 00" autocomplete="tel">
             </div>
           </div>
           <div class="f-nav" style="justify-content:center;margin-top:28px;">
-            <button class="btn-back" onclick="prv(4)">← Retour</button>
-            <button class="btn-next" onclick="submitForm()" style="padding:14px 36px;font-size:.92rem;">⚓ Confirmer mon inscription</button>
+            <button type="button" class="btn-back" onclick="prv(4)">← Retour</button>
+            <button id="submitBtn" type="button" class="btn-next" onclick="submitForm()" style="padding:14px 36px;font-size:.92rem;">⚓ Confirmer mon inscription</button>
           </div>
           <p style="text-align:center;font-size:.7rem;color:rgba(110,133,165,.35);margin-top:14px;">Aucun spam. Données protégées. Désinscription en 1 clic.</p>
         </div>
@@ -1372,7 +1375,7 @@ footer a:hover{color:var(--white);}
     <div class="faq-grid">
 
       <div class="acc-item reveal">
-        <button class="acc-btn" onclick="tog(this)">
+        <button type="button" class="acc-btn" onclick="tog(this)">
           <span class="acc-q">Captain Help! couvre-t-il n'importe quel véhicule ?</span>
           <span class="acc-icon">+</span>
         </button>
@@ -1382,7 +1385,7 @@ footer a:hover{color:var(--white);}
       </div>
 
       <div class="acc-item reveal">
-        <button class="acc-btn" onclick="tog(this)">
+        <button type="button" class="acc-btn" onclick="tog(this)">
           <span class="acc-q">Pourquoi 9,90 €/mois alors que l'assurance classique coûte moins ?</span>
           <span class="acc-icon">+</span>
         </button>
@@ -1392,7 +1395,7 @@ footer a:hover{color:var(--white);}
       </div>
 
       <div class="acc-item reveal">
-        <button class="acc-btn" onclick="tog(this)">
+        <button type="button" class="acc-btn" onclick="tog(this)">
           <span class="acc-q">La Waitlist est-elle payante ?</span>
           <span class="acc-icon">+</span>
         </button>
@@ -1402,7 +1405,7 @@ footer a:hover{color:var(--white);}
       </div>
 
       <div class="acc-item reveal">
-        <button class="acc-btn" onclick="tog(this)">
+        <button type="button" class="acc-btn" onclick="tog(this)">
           <span class="acc-q">Qu'est-ce que le boîtier OBD offert ?</span>
           <span class="acc-icon">+</span>
         </button>
@@ -1412,7 +1415,7 @@ footer a:hover{color:var(--white);}
       </div>
 
       <div class="acc-item reveal">
-        <button class="acc-btn" onclick="tog(this)">
+        <button type="button" class="acc-btn" onclick="tog(this)">
           <span class="acc-q">À quoi sert le diagnostic VoiceBot ?</span>
           <span class="acc-icon">+</span>
         </button>
@@ -1422,7 +1425,7 @@ footer a:hover{color:var(--white);}
       </div>
 
       <div class="acc-item reveal">
-        <button class="acc-btn" onclick="tog(this)">
+        <button type="button" class="acc-btn" onclick="tog(this)">
           <span class="acc-q">Que se passe-t-il si je tombe en panne à l'étranger ?</span>
           <span class="acc-icon">+</span>
         </button>
@@ -1432,7 +1435,7 @@ footer a:hover{color:var(--white);}
       </div>
 
       <div class="acc-item reveal">
-        <button class="acc-btn" onclick="tog(this)">
+        <button type="button" class="acc-btn" onclick="tog(this)">
           <span class="acc-q">Comment fonctionne la résiliation de mon ancien contrat ?</span>
           <span class="acc-icon">+</span>
         </button>
@@ -1442,7 +1445,7 @@ footer a:hover{color:var(--white);}
       </div>
 
       <div class="acc-item reveal">
-        <button class="acc-btn" onclick="tog(this)">
+        <button type="button" class="acc-btn" onclick="tog(this)">
           <span class="acc-q">Les "interventions illimitées", c'est vraiment sans limite ?</span>
           <span class="acc-icon">+</span>
         </button>
@@ -1452,7 +1455,7 @@ footer a:hover{color:var(--white);}
       </div>
 
       <div class="acc-item reveal">
-        <button class="acc-btn" onclick="tog(this)">
+        <button type="button" class="acc-btn" onclick="tog(this)">
           <span class="acc-q">Je n'ai pas de voiture. Captain Help! me concerne quand même ?</span>
           <span class="acc-icon">+</span>
         </button>
@@ -1462,7 +1465,7 @@ footer a:hover{color:var(--white);}
       </div>
 
       <div class="acc-item reveal">
-        <button class="acc-btn" onclick="tog(this)">
+        <button type="button" class="acc-btn" onclick="tog(this)">
           <span class="acc-q">J'ai déjà une assistance dans mon assurance auto. Pourquoi changer ?</span>
           <span class="acc-icon">+</span>
         </button>
@@ -1472,7 +1475,7 @@ footer a:hover{color:var(--white);}
       </div>
 
       <div class="acc-item reveal">
-        <button class="acc-btn" onclick="tog(this)">
+        <button type="button" class="acc-btn" onclick="tog(this)">
           <span class="acc-q">Concrètement, que se passe-t-il quand je tombe en panne ?</span>
           <span class="acc-icon">+</span>
         </button>
@@ -1482,7 +1485,7 @@ footer a:hover{color:var(--white);}
       </div>
 
       <div class="acc-item reveal">
-        <button class="acc-btn" onclick="tog(this)">
+        <button type="button" class="acc-btn" onclick="tog(this)">
           <span class="acc-q">Captain Help! est-il un service réglementé ?</span>
           <span class="acc-icon">+</span>
         </button>
@@ -1498,10 +1501,10 @@ footer a:hover{color:var(--white);}
 <!-- FOOTER -->
 <footer>
   <a href="#" class="logo" style="font-size:1.4rem;">Captain<span style="color:var(--orange);">Help!</span></a>
-  <p>© 2025 Captain Help! — Tous droits réservés</p>
+  <p>© 2026 Captain Help! — Tous droits réservés</p>
   <div>
-    <a href="#">Mentions légales</a>
-    <a href="#">Confidentialité</a>
+    <a href="#" onclick="openModal('modal-mentions');return false;">Mentions légales</a>
+    <a href="#" onclick="openModal('modal-confidentialite');return false;">Confidentialité</a>
     <a href="#whitelist">Waitlist</a>
   </div>
 </footer>
@@ -1550,26 +1553,51 @@ function showAssistanceReason(val) {
 async function submitForm(){
   const email = document.getElementById('finEmail').value.trim();
   const phone = document.getElementById('finPhone').value.trim();
-  if(!email && !phone){ alert('Veuillez renseigner votre email ou votre téléphone.'); return; }
+
+  // Validation : au moins un contact requis
+  if(!email && !phone){
+    alert('Veuillez renseigner votre email ou votre numéro de téléphone.');
+    return;
+  }
+  // Validation format email
+  if(email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){
+    alert('Veuillez saisir une adresse e-mail valide (ex : vous@exemple.fr).');
+    document.getElementById('finEmail').focus();
+    return;
+  }
+  // Validation format téléphone (France & international basique)
+  if(phone && !/^(\+?\d[\d\s\-\.]{6,14}\d)$/.test(phone)){
+    alert('Veuillez saisir un numéro de téléphone valide (ex : +33 6 12 34 56 78).');
+    document.getElementById('finPhone').focus();
+    return;
+  }
+  // Validation code postal (5 chiffres si renseigné)
+  const postalEl = document.querySelector('input[name="postal"]');
+  const postal = postalEl ? postalEl.value.trim() : '';
+  if(postal && !/^\d{5}$/.test(postal)){
+    alert('Le code postal doit comporter 5 chiffres (ex : 75001).');
+    postalEl.focus();
+    return;
+  }
 
   const getRadio = name => { const el = document.querySelector(`input[name="${name}"]:checked`); return el ? el.value : '—'; };
   const payload = {
     email,
     telephone: phone,
-    age_conducteur:    getRadio('age_conducteur'),
-    age_vehicule:      getRadio('age'),
-    kilometrage:       getRadio('km'),
-    usage:             getRadio('usage'),
-    code_postal:       (document.querySelector('input[name="postal"]') || {value:'—'}).value,
+    age_conducteur:      getRadio('age_conducteur'),
+    age_vehicule:        getRadio('age'),
+    kilometrage:         getRadio('km'),
+    usage:               getRadio('usage'),
+    code_postal:         postal || '—',
     assistance_actuelle: getRadio('has_assistance'),
-    raison_oui:        getRadio('raison_oui'),
-    raison_non:        getRadio('raison_non'),
-    historique_pannes: getRadio('hist'),
-    commentaire:       (document.querySelector('textarea[name="comment"]') || {value:''}).value,
-    _subject:          'Nouvelle inscription Waitlist Captain Help!'
+    raison_oui:          getRadio('raison_oui'),
+    raison_non:          getRadio('raison_non'),
+    historique_pannes:   getRadio('hist'),
+    commentaire:         (document.querySelector('textarea[name="comment"]') || {value:''}).value,
+    _subject:            'Nouvelle inscription Waitlist Captain Help!'
   };
 
-  const btn = document.querySelector('#fs4 .btn-next');
+  const btn = document.getElementById('submitBtn');
   const origTxt = btn.textContent;
   btn.textContent = 'Envoi en cours…';
   btn.disabled = true;
@@ -1595,6 +1623,39 @@ async function submitForm(){
   }
 }
 
+// ── MODALS ──
+function openModal(id){
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(id){
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow='';
+}
+// Fermer modal en cliquant sur l'overlay
+document.querySelectorAll('.modal-overlay').forEach(m => {
+  m.addEventListener('click', e => { if(e.target===m) closeModal(m.id); });
+});
+// Fermer modal avec Echap
+document.addEventListener('keydown', e => {
+  if(e.key==='Escape') document.querySelectorAll('.modal-overlay.open').forEach(m => closeModal(m.id));
+});
+
+// ── HAMBURGER ──
+function toggleNav(){
+  const links = document.querySelector('.nav-links');
+  const btn   = document.getElementById('hamburgerBtn');
+  links.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+// Fermer nav mobile en cliquant un lien
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.querySelector('.nav-links').classList.remove('open');
+    document.getElementById('hamburgerBtn').classList.remove('open');
+  });
+});
+
 // ── ACCORDION ──
 function tog(btn){
   const item=btn.closest('.acc-item');
@@ -1611,5 +1672,90 @@ function tog(btn){
 }
 
 </script>
+<!-- ── MODALS LÉGAUX ── -->
+<div class="modal-overlay" id="modal-mentions" role="dialog" aria-modal="true" aria-labelledby="modal-mentions-title">
+  <div class="modal-box">
+    <button type="button" class="modal-close" onclick="closeModal('modal-mentions')" aria-label="Fermer">✕</button>
+    <h2 id="modal-mentions-title">Mentions légales</h2>
+    <p><strong>Éditeur :</strong> Captain Help! — Micro-entreprise enregistrée en France.<br>
+    <strong>Responsable de publication :</strong> Sofiane Benhaddou.<br>
+    <strong>Hébergement :</strong> À compléter avant mise en ligne.</p>
+    <p>Ce site est une page de pré-lancement (waitlist). Aucune souscription ni paiement n'est effectué à ce stade. Les informations collectées via le formulaire sont uniquement utilisées pour vous contacter lors du lancement officiel de Captain Help!.</p>
+    <p>Toute reproduction, représentation ou diffusion du contenu de ce site, sans autorisation écrite préalable, est interdite.</p>
+    <p><em>Ces mentions seront complétées et mises à jour avant le lancement commercial du service.</em></p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-confidentialite" role="dialog" aria-modal="true" aria-labelledby="modal-confidentialite-title">
+  <div class="modal-box">
+    <button type="button" class="modal-close" onclick="closeModal('modal-confidentialite')" aria-label="Fermer">✕</button>
+    <h2 id="modal-confidentialite-title">Politique de confidentialité</h2>
+    <p><strong>Données collectées :</strong> Lors de votre inscription à la Waitlist, nous collectons votre adresse e-mail et/ou votre numéro de téléphone, ainsi que des informations optionnelles sur votre profil conducteur.</p>
+    <p><strong>Finalité :</strong> Ces données sont utilisées exclusivement pour vous informer du lancement de Captain Help! et personnaliser notre offre. Elles ne sont ni vendues, ni transmises à des tiers sans votre consentement explicite.</p>
+    <p><strong>Durée de conservation :</strong> Vos données sont conservées jusqu'au lancement du service, puis selon les durées légales en vigueur.</p>
+    <p><strong>Vos droits :</strong> Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, d'effacement et d'opposition. Pour exercer ces droits : <strong>contact@captainhelp.fr</strong></p>
+    <p><strong>Sous-traitant :</strong> Le formulaire est traité via Formspree (formspree.io), soumis à sa propre politique de confidentialité.</p>
+    <p><em>Cette politique sera complétée avant le lancement commercial du service.</em></p>
+  </div>
+</div>
+
+<style>
+.modal-overlay{
+  display:none;position:fixed;inset:0;z-index:1000;
+  background:rgba(10,22,40,.85);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;padding:24px;
+}
+.modal-overlay.open{display:flex;}
+.modal-box{
+  background:var(--navy2);border:1px solid var(--border2);
+  border-radius:16px;padding:40px;max-width:620px;width:100%;
+  max-height:85vh;overflow-y:auto;position:relative;
+  animation:up .3s ease both;
+}
+.modal-box h2{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:2px;margin-bottom:20px;}
+.modal-box p{font-size:.88rem;color:var(--muted2);line-height:1.75;margin-bottom:14px;}
+.modal-box strong{color:var(--cream);}
+.modal-close{
+  position:absolute;top:16px;right:16px;
+  background:rgba(255,255,255,.07);border:1px solid var(--border);
+  border-radius:50%;width:32px;height:32px;
+  color:var(--muted);cursor:pointer;font-size:.85rem;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;
+}
+.modal-close:hover{background:rgba(247,88,26,.2);border-color:var(--orange);color:var(--white);}
+
+/* ── HAMBURGER MENU ── */
+.hamburger{
+  display:none;flex-direction:column;gap:5px;
+  background:none;border:none;cursor:pointer;padding:4px;
+}
+.hamburger span{
+  display:block;width:22px;height:2px;
+  background:var(--muted2);border-radius:2px;
+  transition:all .25s;
+}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+@media(max-width:768px){
+  .hamburger{display:flex;}
+  .nav-links{
+    display:none!important;
+    position:fixed;top:60px;left:0;right:0;
+    background:rgba(10,22,40,.97);backdrop-filter:blur(20px);
+    flex-direction:column!important;gap:0!important;
+    padding:16px 0;border-bottom:1px solid var(--border);
+    z-index:199;
+  }
+  .nav-links.open{display:flex!important;}
+  .nav-links li{width:100%;}
+  .nav-links a{
+    display:block;padding:13px 24px;
+    font-size:.9rem!important;border-bottom:1px solid var(--border);
+  }
+}
+</style>
+
 </body>
 </html>
