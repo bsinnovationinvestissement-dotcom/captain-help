@@ -5,10 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Captain Help! — L'assistance qui couvre le conducteur, pas juste le véhicule. Rejoignez la waitlist. 9,90 € TTC / mois.">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Captain Help! — Panne, accident : déjà une épreuve.">
 <meta property="og:description" content="Et l'assistance ne doit plus être une punition. Couverture dès 0 km, zéro caution, réponse en moins de 10 secondes.">
 <title>Captain Help! — Waitlist</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9FQKN27V1Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9FQKN27V1Y');
+</script>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://www.googletagmanager.com https://www.google-analytics.com https://formspree.io; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; connect-src https://formspree.io https://www.google-analytics.com;">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
@@ -345,9 +355,9 @@ footer a:hover{color:var(--white);}
       <div class="stat-source">Union des Assisteurs, 2025</div>
     </div>
     <div class="stat-item reveal">
-      <span class="stat-num">30 min</span>
-      <div class="stat-label">temps d'attente moyen en Europe</div>
-      <div class="stat-source">Roadside Assistance Market Analysis</div>
+      <span class="stat-num">36 %</span>
+      <div class="stat-label">du marché mondial de l'assistance — l'Europe est 1<sup>er</sup> marché mondial</div>
+      <div class="stat-source">Grand View Research, 2024</div>
     </div>
   </div>
 </div>
@@ -691,7 +701,7 @@ footer a:hover{color:var(--white);}
                 <label class="rc"><input type="radio" name="offre" value="captain_help_ancre"><span class="rc-lbl">⚓ Captain Help! — Ancre</span></label>
                 <label class="rc"><input type="radio" name="offre" value="captain_help_nomade"><span class="rc-lbl">🧳 Captain Help! — Nomade</span></label>
                 <label class="rc"><input type="radio" name="offre" value="captain_free"><span class="rc-lbl">🆓 Captain Free — gratuit</span></label>
-                <label class="rc"><input type="radio" name="offre" value="pro" id="offrePro"><span class="rc-lbl">🏢 Professionnel(le)</span></label>
+
               </div>
             </div>
 
@@ -845,13 +855,7 @@ function nxt(f){
   cur=f+1;
   document.getElementById('fs'+cur).classList.add('active');
   prog(cur);
-  // Pro fields
-  const offreEl=document.querySelector('input[name="offre"]:checked');
-  const isPro=offreEl&&offreEl.value==='pro';
-  const note=document.getElementById('proNoteTop');
-  const extra=document.getElementById('proExtraFields');
-  if(note)note.style.display=isPro?'block':'none';
-  if(extra)extra.style.display=isPro?'block':'none';
+
   document.getElementById('waitlist').scrollIntoView({behavior:'smooth',block:'start'});
 }
 function prv(f){if(f>1){document.getElementById('fs'+f).classList.remove('active');cur=f-1;document.getElementById('fs'+cur).classList.add('active');prog(cur);}}
@@ -869,7 +873,7 @@ async function doSubmit(){
   if(!email&&!phone){alert('Veuillez renseigner votre email ou votre téléphone.');return;}
   if(email&&!vEmail(email)){alert('Adresse e-mail invalide.');return;}
   if(!vPhone(phone)){alert('Numéro de téléphone invalide.');return;}
-  const offreVal=gv('offre');const isPro=(offreVal==='pro');
+  const offreVal=gv('offre');const isPro=false;
   const btn=document.getElementById('submitBtn');
   const orig=btn.textContent;btn.textContent='Envoi…';btn.disabled=true;
   const payload={
