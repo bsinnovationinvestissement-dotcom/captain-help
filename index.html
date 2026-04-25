@@ -9,6 +9,7 @@
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://formspree.io https://www.google-analytics.com https://www.googletagmanager.com; frame-ancestors 'none';">
 <meta name="robots" content="index, follow">
+<link rel="canonical" href="https://captainhelp.eu/">
 <meta name="theme-color" content="#F7581A">
 <meta property="og:title" content="Captain Help! — Rejoignez la waitlist">
 <meta property="og:description" content="Ne perdez plus 3 heures sur votre planning pour une simple panne. Prix fondateur 7,90 €/mois garanti à vie pour les 200 premiers.">
@@ -85,7 +86,7 @@ a { text-decoration:none; color:inherit; }
 nav {
   position:fixed; top:0; left:0; right:0; z-index:100;
   display:flex; align-items:center; justify-content:space-between;
-  padding:0 40px; height:52px;
+  padding:0 40px; height:56px;
   background:rgba(250,250,248,.85);
   backdrop-filter:blur(20px) saturate(1.5);
   border-bottom:1px solid var(--border);
@@ -109,7 +110,7 @@ nav {
 
 /* ── URGENCY BANNER ─────────────────────────────────── */
 .urgency-bar {
-  margin-top:60px;
+  margin-top:56px;
   background:linear-gradient(90deg, var(--orange) 0%, var(--orange2) 100%);
   padding:8px 20px; text-align:center;
   font-size:.8rem; font-weight:600; color:#fff;
@@ -121,11 +122,13 @@ nav {
 .wrap { max-width:900px; margin:0 auto; padding:0 36px; }
 @media(max-width:640px) { .wrap { padding:0 20px; } }
 
-section { padding:32px 0; }
+section { padding:28px 0; }
+@media(min-width:768px) { section { padding:52px 0; } }
 @media(max-width:640px) { section { padding:24px 0; } }
 
 /* ── CAROUSEL (stories) ─────────────────────────────── */
 .stories-section { padding:24px 0 20px; }
+@media(min-width:768px) { .stories-section { padding:44px 0 32px; } }
 .stories-label {
   font-size:.7rem; font-weight:600; letter-spacing:3px;
   text-transform:uppercase; color:var(--muted);
@@ -151,7 +154,7 @@ section { padding:32px 0; }
 }
 
 .story-card {
-  width:320px; flex-shrink:0;
+  width:340px; flex-shrink:0;
   background:var(--surface);
   border:1px solid var(--border);
   border-radius:var(--r);
@@ -177,6 +180,7 @@ section { padding:32px 0; }
 
 /* ── HERO ───────────────────────────────────────────── */
 .hero-section { padding:28px 0 20px; text-align:center; }
+@media(min-width:768px) { .hero-section { padding:56px 0 36px; } }
 .hero-eyebrow {
   display:inline-flex; align-items:center; gap:8px;
   background:rgba(26,158,106,.1); border:1px solid rgba(26,158,106,.25);
@@ -189,7 +193,7 @@ section { padding:32px 0; }
 
 .hero-h1 {
   font-family:'DM Serif Display',serif;
-  font-size:clamp(2rem,5vw,3.4rem);
+  font-size:clamp(2rem,4.5vw,3.8rem);
   line-height:1.18; letter-spacing:-.5px;
   color:var(--text); margin-bottom:8px;
   max-width:720px; margin-left:auto; margin-right:auto;
@@ -207,7 +211,7 @@ section { padding:32px 0; }
   display:inline-flex; align-items:center;
   background:var(--surface); border:1.5px solid var(--border2);
   border-radius:100px; padding:4px; gap:2px;
-  box-shadow:var(--shadow); margin-bottom:24px;
+  box-shadow:var(--shadow); margin-bottom:20px;
 }
 .toggle-btn {
   padding:10px 22px; border:none; border-radius:100px;
@@ -224,7 +228,7 @@ section { padding:32px 0; }
 
 /* ── FORM ───────────────────────────────────────────── */
 .form-wrap {
-  max-width:480px; margin:0 auto;
+  max-width:520px; margin:0 auto;
 }
 .form-card {
   background:var(--surface);
@@ -320,7 +324,7 @@ section { padding:32px 0; }
   animation:fadeUp .4s ease both;
 }
 .success-icon {
-  width:52px; height:52px; border-radius:50%;
+  width:52px; height:56px; border-radius:50%;
   background:rgba(26,158,106,.12); border:1.5px solid rgba(26,158,106,.3);
   display:flex; align-items:center; justify-content:center;
   margin:0 auto 16px; font-size:1.4rem;
@@ -345,6 +349,7 @@ section { padding:32px 0; }
 
 /* ── DEADLINE CARD ───────────────────────────────────── */
 .deadline-section { padding:0 0 20px; }
+@media(min-width:768px) { .deadline-section { padding:0 0 40px; } }
 .deadline-card {
   background:linear-gradient(135deg,rgba(247,88,26,.06) 0%,rgba(26,158,106,.05) 100%);
   border:1px solid rgba(247,88,26,.2);
@@ -354,7 +359,7 @@ section { padding:32px 0; }
 @media(max-width:600px) { .deadline-card { padding:18px 16px; gap:14px; flex-direction:column; text-align:center; } }
 .deadline-price {
   font-family:'DM Serif Display',serif;
-  font-size:2.6rem; color:var(--orange); line-height:1;
+  font-size:2.8rem; color:var(--orange); line-height:1;
   white-space:nowrap;
 }
 .deadline-price span { font-family:'DM Sans',sans-serif; font-size:1rem; color:var(--sub); font-weight:400; }
@@ -377,6 +382,7 @@ section { padding:32px 0; }
 
 /* ── COMPARATIF ─────────────────────────────────────── */
 .bottom-section { padding:32px 0 28px; border-top:1px solid var(--border); }
+@media(min-width:768px) { .bottom-section { padding:60px 0 48px; border-top:1px solid var(--border); } }
 .section-label {
   font-size:.7rem; font-weight:600; letter-spacing:3px;
   text-transform:uppercase; color:var(--muted);
@@ -410,7 +416,7 @@ section { padding:32px 0; }
   box-shadow:var(--shadow);
 }
 .cmp-table th {
-  padding:14px 18px; text-align:left;
+  padding:14px 20px; text-align:left;
   font-size:.68rem; font-weight:700; letter-spacing:2px;
   text-transform:uppercase; color:var(--muted);
   border-bottom:1px solid var(--border2);
@@ -422,7 +428,7 @@ section { padding:32px 0; }
   border-left:2px solid rgba(247,88,26,.25);
 }
 .cmp-table td {
-  padding:13px 18px; font-size:.84rem;
+  padding:13px 20px; font-size:.84rem;
   border-bottom:1px solid var(--border);
   vertical-align:top;
 }
@@ -446,12 +452,17 @@ footer {
   flex-wrap:wrap; gap:12px;
   background:rgba(250,250,248,.8);
 }
-footer p, footer a { font-size:.72rem; color:var(--muted); }
-footer a { transition:color .2s; margin-left:14px; }
-footer a:hover { color:var(--text); }
+footer p { font-size:.72rem; color:var(--muted); }
+footer a {
+  font-size:.72rem; color:var(--sub); font-weight:500;
+  background:var(--bg); border:1px solid var(--border2);
+  border-radius:100px; padding:5px 13px;
+  transition:all .2s; margin-left:8px; display:inline-block;
+}
+footer a:hover { border-color:var(--orange); color:var(--orange); }
 @media(max-width:600px) {
-  footer { padding:20px; flex-direction:column; align-items:flex-start; }
-  footer a { margin-left:0; margin-right:12px; }
+  footer { padding:20px; flex-direction:column; align-items:flex-start; gap:10px; }
+  footer a { margin-left:0; margin-right:6px; }
 }
 
 /* ── MODAL ──────────────────────────────────────────── */
@@ -587,7 +598,7 @@ footer a:hover { color:var(--text); }
   <div class="wrap" style="text-align:center;">
     <div class="hero-eyebrow reveal"><span class="pulse"></span>Waitlist ouverte</div>
     <h1 class="hero-h1 reveal reveal-d1">
-      Votre assistance actuelle vous dépanne simplement.<br>
+      Votre assistance routière vous dépanne seulement.<br>
       <em>Nous remettons votre business sur la route.</em>
     </h1>
     <p class="hero-sub reveal reveal-d2">
