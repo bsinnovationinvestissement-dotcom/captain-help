@@ -3,953 +3,543 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Captain Help! — La meilleure assistance routière. Rejoignez les premiers abonnés. Prix fondateur 7,90 €/mois garanti à vie.">
-<meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://formspree.io https://www.google-analytics.com https://www.googletagmanager.com; frame-ancestors 'none';">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://captainhelp.eu/">
-<meta name="theme-color" content="#F7581A">
-<meta property="og:title" content="Captain Help! — Rejoignez la waitlist">
-<meta property="og:description" content="Ne perdez plus 3 heures sur votre planning pour une simple panne. Prix fondateur 7,90 €/mois garanti à vie pour les 200 premiers.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://captainhelp.eu/">
-<meta property="og:locale" content="fr_FR">
-<meta name="twitter:card" content="summary_large_image">
-<title>Captain Help! — Waitlist</title>
-
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9FQKN27V1Y"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-9FQKN27V1Y');</script>
-
-<!-- Fonts -->
+<title>CaptainHelp! — L'assistance routière repensée</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://formspree.io" crossorigin>
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap">
-
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <style>
-/* ── TOKENS ─────────────────────────────────────────── */
 :root {
-  --bg:      #FAFAF8;
-  --surface: #FFFFFF;
-  --orange:  #F7581A;
-  --orange2: #FF7A45;
-  --green:   #1A9E6A;
-  --green2:  #23C183;
-  --text:    #0F1117;
-  --sub:     #3D4251;
-  --muted:   #9096A8;
-  --border:  rgba(15,17,23,.08);
-  --border2: rgba(15,17,23,.14);
-  --r:       14px;
-  --r-sm:    8px;
-  --shadow:  0 2px 20px rgba(15,17,23,.06);
-  --shadow2: 0 8px 40px rgba(15,17,23,.10);
+  --o:#F7581A; --o2:#E04A0E; --o3:#FFF3EE;
+  --bg2:#F2F2F0;
+  --ink:#111; --ink2:#444; --ink3:#888;
+  --line:#E8E8E8; --gn:#16A34A; --gn2:#F0FDF4;
+  --fh:'Bricolage Grotesque',sans-serif;
+  --fb:'DM Sans',sans-serif;
 }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-/* ── RESET ──────────────────────────────────────────── */
-*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
-html { scroll-behavior:smooth; scroll-padding-top:64px; }
 body {
-  font-family:'DM Sans',sans-serif;
-  background:transparent;
-  color:var(--text);
-  overflow-x:hidden;
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-}
-:focus-visible { outline:2px solid var(--orange); outline-offset:3px; border-radius:4px; }
-a { text-decoration:none; color:inherit; }
-
-/* ── MESH GRADIENT BG ───────────────────────────────── */
-.mesh {
-  position:fixed; inset:0; z-index:-1; pointer-events:none;
-  background:
-    radial-gradient(ellipse 65% 55% at  8% 18%,  rgba(247,88,26,.42)  0%, transparent 58%),
-    radial-gradient(ellipse 55% 50% at 92% 12%,  rgba(26,158,106,.36) 0%, transparent 52%),
-    radial-gradient(ellipse 75% 45% at 50% 98%,  rgba(247,88,26,.28)  0%, transparent 48%),
-    radial-gradient(ellipse 45% 65% at 78% 58%,  rgba(26,158,106,.32) 0%, transparent 48%),
-    radial-gradient(ellipse 40% 35% at 40% 45%,  rgba(247,88,26,.18)  0%, transparent 40%),
-    #FAFAF8;
-}
-.mesh::after {
-  content:'';
-  position:absolute; inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
-  opacity:1;
+  font-family: var(--fb); color: var(--ink); overflow-x: hidden; -webkit-font-smoothing: antialiased;
+  background-color: #FAFAFA;
+  background-image:
+    radial-gradient(ellipse at 0% 0%,    rgba(247,88,26,.28) 0px, transparent 48%),
+    radial-gradient(ellipse at 100% 0%,  rgba(34,197,94,.22) 0px, transparent 44%),
+    radial-gradient(ellipse at 0% 100%,  rgba(34,197,94,.20) 0px, transparent 42%),
+    radial-gradient(ellipse at 100% 100%,rgba(247,88,26,.20) 0px, transparent 42%),
+    radial-gradient(ellipse at 50% 50%,  rgba(255,255,255,.55) 0px, transparent 52%);
 }
 
-/* ── NAV ────────────────────────────────────────────── */
+/* ═══════════════════════════════
+   CHOICE SPLASH SCREEN
+═══════════════════════════════ */
+#splash {
+  position: fixed; inset: 0; z-index: 999;
+  background: #FAFAFA;
+  background-image:
+    radial-gradient(ellipse at 0% 0%,    rgba(247,88,26,.24) 0px, transparent 48%),
+    radial-gradient(ellipse at 100% 0%,  rgba(34,197,94,.20) 0px, transparent 44%),
+    radial-gradient(ellipse at 0% 100%,  rgba(34,197,94,.18) 0px, transparent 42%),
+    radial-gradient(ellipse at 100% 100%,rgba(247,88,26,.18) 0px, transparent 42%),
+    radial-gradient(ellipse at 50% 50%,  rgba(255,255,255,.65) 0px, transparent 52%);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 40px; text-align: center;
+  transition: opacity .4s ease, visibility .4s ease;
+}
+#splash.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+.splash-logo { font-family: var(--fh); font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 48px; }
+.splash-logo span { color: var(--o); }
+
+.splash-title { font-family: var(--fh); font-size: clamp(22px,3.5vw,40px); font-weight: 800; letter-spacing: -1.2px; line-height: 1.1; margin-bottom: 40px; }
+.splash-title em { font-style: italic; color: var(--o); }
+
+.splash-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 680px; width: 100%; }
+
+.choice-card {
+  background: #fff; border: 2px solid var(--line); border-radius: 18px; padding: 40px 36px;
+  cursor: pointer; text-align: left; transition: all .2s; position: relative; overflow: hidden;
+}
+.choice-card:hover { transform: translateY(-3px); }
+.choice-card.pl:hover { border-color: var(--o); box-shadow: 0 8px 32px rgba(247,88,26,.15); }
+.choice-card.vl:hover { border-color: var(--gn); box-shadow: 0 8px 32px rgba(34,197,94,.15); }
+
+
+.choice-card h3 { font-family: var(--fh); font-size: 22px; font-weight: 800; letter-spacing: -.5px; margin-bottom: 8px; margin-top: 4px; }
+.choice-card p { font-size: 13px; color: var(--ink3); line-height: 1.6; margin-bottom: 20px; }
+.choice-card .c-price { font-family: var(--fh); font-size: 26px; font-weight: 800; letter-spacing: -1px; }
+.choice-card.pl .c-price { color: var(--o); }
+.choice-card.vl .c-price { color: var(--gn); }
+.choice-card .c-sub { font-size: 11px; color: var(--ink3); margin-top: 2px; }
+.choice-card .c-cta {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 20px;
+  font-size: 13px; font-weight: 600; padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; transition: all .15s; font-family: var(--fb);
+}
+.choice-card.pl .c-cta { background: var(--o); color: #fff; }
+.choice-card.pl .c-cta:hover { background: var(--o2); }
+.choice-card.vl .c-cta { background: var(--gn); color: #fff; }
+.choice-card.vl .c-cta:hover { background: #128A3A; }
+
+/* Accent bar at top of card */
+.choice-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 18px 18px 0 0; }
+.choice-card.pl::before { background: var(--o); }
+.choice-card.vl::before { background: var(--gn); }
+
+/* ═══════════════════════════════
+   MAIN PAGE (hidden until choice)
+═══════════════════════════════ */
+#main { opacity: 0; transition: opacity .5s ease; pointer-events: none; }
+#main.visible { opacity: 1; pointer-events: all; }
+
+/* NAV */
 nav {
-  position:fixed; top:0; left:0; right:0; z-index:100;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:0 40px; height:56px;
-  background:rgba(250,250,248,.85);
-  backdrop-filter:blur(20px) saturate(1.5);
-  border-bottom:1px solid var(--border);
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px; height: 56px;
+  background: rgba(250,250,250,.90); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line);
 }
-.nav-brand {
-  font-family:'DM Serif Display',serif;
-  font-size:1.2rem; letter-spacing:.5px;
-  color:var(--text);
+.logo { font-family: var(--fh); font-size: 17px; font-weight: 800; color: var(--ink); text-decoration: none; }
+.logo span { color: var(--o); }
+.nav-switch {
+  font-size: 12px; color: var(--ink3); cursor: pointer; border: 1px solid var(--line);
+  border-radius: 100px; padding: 5px 14px; background: transparent; font-family: var(--fb);
+  transition: all .15s;
 }
-.nav-brand span { color:var(--orange); }
-.nav-cta {
-  background:var(--orange); color:#fff;
-  border:none; border-radius:100px;
-  padding:9px 20px; font-family:'DM Sans',sans-serif;
-  font-weight:600; font-size:.82rem; cursor:pointer;
-  transition:all .2s; white-space:nowrap;
-  min-height:38px; display:inline-flex; align-items:center;
-}
-.nav-cta:hover { background:var(--orange2); transform:translateY(-1px); }
-@media(max-width:600px) { nav { padding:0 20px; } }
+.nav-switch:hover { border-color: var(--ink3); color: var(--ink); }
+.nav-cta { background: var(--o); color: #fff; border: none; padding: 9px 20px; border-radius: 8px; font-family: var(--fb); font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; transition: background .15s; }
+.nav-cta:hover { background: var(--o2); }
 
-/* ── URGENCY BANNER ─────────────────────────────────── */
-.urgency-bar {
-  margin-top:56px;
-  background:linear-gradient(90deg, var(--orange) 0%, var(--orange2) 100%);
-  padding:8px 20px; text-align:center;
-  font-size:.8rem; font-weight:600; color:#fff;
-  letter-spacing:.3px;
-}
-.urgency-bar strong { font-weight:700; }
+/* HERO — title first, then testi band, then rest */
+.hero-top { max-width: 700px; margin: 0 auto; padding: 64px 40px 40px; text-align: center; }
+h1 { font-family: var(--fh); font-size: clamp(34px,5.2vw,58px); font-weight: 800; letter-spacing: -1.8px; line-height: 1.08; margin-bottom: 16px; }
+h1 em { font-style: italic; color: var(--o); }
 
-/* ── LAYOUT ─────────────────────────────────────────── */
-.wrap { max-width:900px; margin:0 auto; padding:0 36px; }
-@media(max-width:640px) { .wrap { padding:0 20px; } }
+/* TESTI BAND — between h1 and CTAs */
+.tband { background: rgba(242,242,240,.65); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 16px 0; overflow: hidden; position: relative; }
+.tband::before, .tband::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none; }
+.tband::before { left: 0; background: linear-gradient(to right, rgba(242,242,240,.95), transparent); }
+.tband::after  { right: 0; background: linear-gradient(to left,  rgba(242,242,240,.95), transparent); }
+.ttrack { display: flex; gap: 12px; width: max-content; animation: mar 60s linear infinite; }
+.ttrack:hover { animation-play-state: paused; }
+.ttrack.hidden { display: none; }
+@keyframes mar { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.tcard { background: rgba(255,255,255,.85); border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; width: 270px; flex-shrink: 0; }
+.tcard p { font-size: 12px; color: var(--ink2); line-height: 1.65; font-style: italic; }
+.tcard .tn { font-size: 10px; color: var(--ink3); margin-top: 6px; font-weight: 500; text-transform: uppercase; letter-spacing: .5px; display: flex; align-items: center; gap: 5px; }
+.tcard .tn::before { content: ''; width: 8px; height: 2px; border-radius: 2px; flex-shrink: 0; }
+.tcard.vl .tn::before { background: var(--gn); }
+.tcard.pl .tn::before { background: var(--o); }
+.tcard.vl { border-left: 2px solid rgba(34,197,94,.3); }
+.tcard.pl { border-left: 2px solid rgba(247,88,26,.3); }
 
-section { padding:28px 0; }
-@media(min-width:768px) { section { padding:52px 0; } }
-@media(max-width:640px) { section { padding:24px 0; } }
+/* HERO BOTTOM — CTAs + stats after testi band */
+.hero-bottom { max-width: 700px; margin: 0 auto; padding: 40px 40px 64px; text-align: center; }
+.hsub { font-size: 16px; font-weight: 300; color: var(--ink2); line-height: 1.75; max-width: 500px; margin: 0 auto 28px; }
+.hsub strong { color: var(--ink); font-weight: 500; }
+.hctas { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 36px; }
+.bto { background: var(--o); color: #fff; border: none; padding: 13px 26px; border-radius: 9px; font-family: var(--fb); font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: all .15s; }
+.bto:hover { background: var(--o2); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(247,88,26,.22); }
+.bline { background: rgba(255,255,255,.7); color: var(--ink2); border: 1.5px solid var(--line); padding: 13px 26px; border-radius: 9px; font-family: var(--fb); font-size: 14px; font-weight: 400; cursor: pointer; text-decoration: none; transition: all .15s; }
+.bline:hover { border-color: #aaa; color: var(--ink); }
 
-/* ── CAROUSEL (stories) ─────────────────────────────── */
-.stories-section { padding:24px 0 20px; }
-@media(min-width:768px) { .stories-section { padding:44px 0 32px; } }
-.stories-label {
-  font-size:.7rem; font-weight:600; letter-spacing:3px;
-  text-transform:uppercase; color:var(--muted);
-  margin-bottom:14px; display:flex; align-items:center; gap:10px;
-}
-.stories-label::before { content:''; width:20px; height:1px; background:var(--muted); }
+/* Stats — single row, for chosen offer */
+.hstats { display: flex; border: 1.5px solid var(--line); border-radius: 12px; background: rgba(255,255,255,.75); backdrop-filter: blur(8px); overflow: hidden; max-width: 580px; margin: 0 auto; }
+.hstats.vl { border-color: rgba(34,197,94,.25); }
+.hstats.pl { border-color: rgba(247,88,26,.22); }
+.hstat { flex: 1; padding: 13px 10px; text-align: center; border-right: 1.5px solid var(--line); }
+.hstat:last-child { border-right: none; }
+.sv { font-family: var(--fh); font-size: 17px; font-weight: 800; letter-spacing: -.5px; }
+.hstats.vl .sv { color: var(--gn); }
+.hstats.pl .sv { color: var(--o); }
+.sl { font-size: 10px; color: var(--ink3); margin-top: 2px; line-height: 1.4; }
 
-.carousel-track-wrap {
-  overflow:hidden; position:relative;
-  /* fade edges */
-  -webkit-mask:linear-gradient(90deg,transparent 0%,black 8%,black 92%,transparent 100%);
-  mask:linear-gradient(90deg,transparent 0%,black 8%,black 92%,transparent 100%);
-}
-.carousel-track {
-  display:flex; gap:18px;
-  width:max-content;
-  animation:scroll-stories 42s linear infinite;
-}
-.carousel-track:hover { animation-play-state:paused; }
-@keyframes scroll-stories {
-  0%   { transform:translateX(0); }
-  100% { transform:translateX(-50%); }
-}
+hr { border: none; border-top: 1px solid var(--line); margin: 0; }
 
-.story-card {
-  width:340px; flex-shrink:0;
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:var(--r);
-  padding:24px;
-  box-shadow:var(--shadow);
-  transition:box-shadow .2s, transform .2s;
-  cursor:default;
-}
-.story-card:hover { box-shadow:var(--shadow2); transform:translateY(-2px); }
-.story-quote {
-  font-size:.92rem; color:var(--text);
-  line-height:1.75; margin-bottom:16px;
-  font-style:italic;
-}
-.story-quote::before { content:'\201C'; color:var(--orange); font-size:1.4rem; line-height:0; vertical-align:-.3em; margin-right:3px; }
-.story-source {
-  font-size:.72rem; font-weight:600; color:var(--muted);
-  letter-spacing:.5px; text-transform:uppercase;
-  display:flex; align-items:center; gap:7px;
-}
-.story-dot { width:5px; height:5px; border-radius:50%; background:var(--green); flex-shrink:0; }
-@media(max-width:640px) { .story-card { width:280px; } }
+/* WHO */
+.who { max-width: 900px; margin: 0 auto; padding: 64px 40px; display: grid; grid-template-columns: 1fr 1.3fr; gap: 64px; align-items: start; }
+.lbl { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--o); margin-bottom: 10px; }
+.sec-h { font-family: var(--fh); font-size: clamp(22px,3vw,34px); font-weight: 800; letter-spacing: -1px; line-height: 1.1; }
+.sec-h em { font-style: italic; color: var(--ink3); }
+.who-r .quote { font-size: 17px; font-weight: 700; letter-spacing: -.3px; line-height: 1.45; border-left: 3px solid var(--o); padding-left: 18px; margin-bottom: 20px; color: var(--ink); }
+.who-r p { font-size: 14px; color: var(--ink2); line-height: 1.8; font-weight: 300; }
+.who-r p + p { margin-top: 12px; }
+.who-r p strong { color: var(--ink); font-weight: 500; }
 
-/* ── HERO ───────────────────────────────────────────── */
-.hero-section { padding:28px 0 20px; text-align:center; }
-@media(min-width:768px) { .hero-section { padding:56px 0 36px; } }
-.hero-eyebrow {
-  display:inline-flex; align-items:center; gap:8px;
-  background:rgba(26,158,106,.1); border:1px solid rgba(26,158,106,.25);
-  border-radius:100px; padding:5px 14px;
-  font-size:.72rem; font-weight:600; color:var(--green);
-  letter-spacing:.5px; margin-bottom:16px;
-}
-.pulse { width:6px; height:6px; border-radius:50%; background:var(--green); animation:pulse-dot 2s ease infinite; }
-@keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.5;transform:scale(.8);} }
+/* OFFERS */
+.offers { max-width: 620px; margin: 0 auto; padding: 64px 40px; }
+.offers-head { margin-bottom: 28px; }
+.ocard { background: rgba(255,255,255,.85); backdrop-filter: blur(8px); border: 1.5px solid var(--line); border-radius: 16px; padding: 36px; }
+.ocard.vl { border-color: rgba(34,197,94,.3); box-shadow: 0 2px 16px rgba(34,197,94,.07); }
+.ocard.pl { border-color: rgba(247,88,26,.3); box-shadow: 0 2px 16px rgba(247,88,26,.07); }
+.otag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; margin-bottom: 14px; }
+.otag.vl { background: var(--gn2); color: var(--gn); }
+.otag.pl { background: var(--o3); color: var(--o); }
+.ocard h3 { font-family: var(--fh); font-size: 20px; font-weight: 700; letter-spacing: -.4px; margin-bottom: 4px; }
+.cline { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+.cline.vl { color: var(--gn); }
+.cline.pl { color: var(--o); }
+.odesc { font-size: 13px; color: var(--ink3); margin-bottom: 22px; line-height: 1.6; }
+.oprice-wrap { display: flex; align-items: baseline; gap: 4px; margin-bottom: 20px; }
+.price-n { font-family: var(--fh); font-size: 40px; font-weight: 800; letter-spacing: -2px; color: var(--ink); }
+.price-p { font-size: 12.5px; color: var(--ink3); }
+.ofeats { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 22px; }
+.ofeats li { display: flex; align-items: flex-start; gap: 9px; font-size: 13.5px; color: var(--ink2); line-height: 1.45; }
+.ck { width: 16px; height: 16px; border-radius: 50%; flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center; font-size: 9px; }
+.ck.vl { background: var(--gn2); color: var(--gn); }
+.ck.pl { background: var(--o3); color: var(--o); }
+.odiv { height: 1px; background: var(--line); margin: 18px 0; }
+.olims { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.olims li { display: flex; gap: 8px; font-size: 12px; color: var(--ink3); line-height: 1.4; align-items: flex-start; }
+.ld { width: 3px; height: 3px; border-radius: 50%; background: var(--ink3); flex-shrink: 0; margin-top: 5px; }
+.obtn { width: 100%; margin-top: 20px; padding: 13px; border-radius: 9px; font-family: var(--fb); font-size: 14px; font-weight: 600; cursor: pointer; transition: all .15s; border: none; }
+.obtn.vl { background: var(--gn); color: #fff; }
+.obtn.vl:hover { background: #128A3A; }
+.obtn.pl { background: var(--o); color: #fff; }
+.obtn.pl:hover { background: var(--o2); }
 
-.hero-h1 {
-  font-family:'DM Serif Display',serif;
-  font-size:clamp(2rem,4.5vw,3.8rem);
-  line-height:1.18; letter-spacing:-.5px;
-  color:var(--text); margin-bottom:8px;
-  max-width:720px; margin-left:auto; margin-right:auto;
-}
-.hero-h1 em { font-style:italic; color:var(--orange); }
+/* COMPARE */
+.compare { max-width: 700px; margin: 0 auto; padding: 64px 40px; }
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+thead th { padding: 10px 14px; border-bottom: 2px solid var(--ink); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; text-align: left; color: var(--ink3); }
+thead th.ch { color: var(--o); background: rgba(34,197,94,.03); }
+tbody td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+tbody td:first-child { color: var(--ink); }
+tbody td:nth-child(2) { color: var(--ink3); }
+tbody td:nth-child(3) { color: var(--gn); font-weight: 500; background: rgba(34,197,94,.025); }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover td { background: rgba(0,0,0,.012); }
+tbody tr:hover td:nth-child(3) { background: rgba(34,197,94,.05); }
+.no { color: #DC2626 !important; }
+.warn { color: #B45309 !important; }
 
-.hero-sub {
-  font-size:clamp(.95rem,2vw,1.1rem);
-  color:var(--sub); max-width:520px;
-  margin:0 auto 16px; line-height:1.65;
-}
+/* WAITLIST */
+.cta { background: var(--bg2); color: var(--ink); padding: 80px 40px; text-align: center; border-top: 1px solid var(--line); }
+.cta h2 { font-family: var(--fh); font-size: clamp(26px,4vw,50px); font-weight: 800; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 14px; }
+.cta h2 em { font-style: italic; color: var(--o); }
+.cta p { font-size: 15px; color: var(--ink3); font-weight: 300; max-width: 380px; margin: 0 auto 32px; line-height: 1.75; }
+.wl-form { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; max-width: 460px; margin: 0 auto; }
+.wl-form input { flex: 1; min-width: 220px; padding: 13px 18px; border-radius: 9px; border: 1.5px solid var(--line); background: #fff; color: var(--ink); font-family: var(--fb); font-size: 14px; outline: none; transition: border-color .15s; }
+.wl-form input::placeholder { color: var(--ink3); }
+.wl-form input:focus { border-color: var(--o); }
+.wl-form button { background: var(--o); color: #fff; border: none; padding: 13px 24px; border-radius: 9px; font-family: var(--fb); font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: background .15s; }
+.wl-form button:hover { background: var(--o2); }
+.wl-success { display: none; align-items: center; justify-content: center; gap: 10px; background: var(--gn2); border: 1.5px solid rgba(34,197,94,.3); border-radius: 12px; padding: 16px 24px; max-width: 460px; margin: 0 auto; color: var(--gn); font-size: 14px; font-weight: 500; }
+.wl-note { font-size: 12px; color: var(--ink3); margin-top: 12px; }
 
-/* ── TOGGLE MODE ────────────────────────────────────── */
-.toggle-wrap {
-  display:inline-flex; align-items:center;
-  background:var(--surface); border:1.5px solid var(--border2);
-  border-radius:100px; padding:4px; gap:2px;
-  box-shadow:var(--shadow); margin-bottom:20px;
-}
-.toggle-btn {
-  padding:10px 20px; border:none; border-radius:100px;
-  font-family:'DM Sans',sans-serif; font-size:.85rem;
-  font-weight:500; cursor:pointer; transition:all .25s;
-  background:transparent; color:var(--sub); white-space:nowrap;
-}
-.toggle-btn.active {
-  background:var(--text); color:#fff;
-  box-shadow:0 2px 12px rgba(15,17,23,.15);
-}
-.toggle-btn:hover:not(.active) { color:var(--text); }
-@media(max-width:400px) { .toggle-btn { padding:9px 14px; font-size:.78rem; } }
+footer { padding: 22px 40px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; background: var(--bg2); }
+.flogo { font-family: var(--fh); font-size: 14px; font-weight: 800; color: var(--ink3); }
+.flogo span { color: var(--o); opacity: .6; }
+footer small { font-size: 11px; color: var(--ink3); }
+footer nav a { font-size: 11px; color: var(--ink3); text-decoration: none; margin-left: 14px; }
 
-/* ── FORM ───────────────────────────────────────────── */
-.form-wrap {
-  max-width:520px; margin:0 auto;
-}
-.form-card {
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:var(--r);
-  padding:26px;
-  box-shadow:var(--shadow2);
-}
-@media(max-width:520px) { .form-card { padding:18px 14px; } }
-
-.f-title {
-  font-family:'DM Serif Display',serif;
-  font-size:1.25rem; margin-bottom:6px;
-}
-.f-sub { font-size:.82rem; color:var(--sub); margin-bottom:24px; line-height:1.6; }
-
-/* Steps */
-.f-step { display:none; }
-.f-step.active { display:block; animation:fadeUp .3s ease both; }
-@keyframes fadeUp { from{opacity:0;transform:translateY(12px);} to{opacity:1;transform:translateY(0);} }
-
-/* Radio cards */
-.radio-group { display:flex; flex-direction:column; gap:9px; margin-bottom:24px; }
-.r-card { position:relative; cursor:pointer; }
-.r-card input { position:absolute; opacity:0; width:0; height:0; }
-.r-lbl {
-  display:flex; align-items:center; justify-content:space-between;
-  padding:13px 16px;
-  background:#FAFAF8; border:1.5px solid var(--border);
-  border-radius:var(--r-sm); font-size:.9rem; font-weight:500;
-  color:var(--sub); transition:all .18s; min-height:48px;
-}
-.r-lbl::after { content:''; width:18px; height:18px; border-radius:50%; border:2px solid var(--border2); flex-shrink:0; transition:all .18s; }
-.r-card:hover .r-lbl { border-color:var(--orange); color:var(--text); }
-.r-card input:checked + .r-lbl { border-color:var(--orange); background:rgba(247,88,26,.05); color:var(--text); font-weight:600; }
-.r-card input:checked + .r-lbl::after { background:var(--orange); border-color:var(--orange); box-shadow:inset 0 0 0 3px #fff; }
-.r-hint { font-size:.72rem; color:var(--muted); margin-top:10px; margin-bottom:12px; line-height:1.5; }
-
-/* Email input */
-.email-field {
-  width:100%; padding:14px 16px;
-  background:#FAFAF8; border:1.5px solid var(--border);
-  border-radius:var(--r-sm); font-family:'DM Sans',sans-serif;
-  font-size:1rem; color:var(--text); outline:none;
-  transition:border-color .18s, box-shadow .18s;
-  margin-bottom:16px;
-}
-.email-field::placeholder { color:var(--muted); }
-.email-field:focus { border-color:var(--orange); box-shadow:0 0 0 3px rgba(247,88,26,.1); background:#fff; }
-
-/* Buttons */
-.btn-primary {
-  width:100%; padding:15px;
-  background:var(--orange); color:#fff; border:none;
-  border-radius:var(--r-sm); font-family:'DM Sans',sans-serif;
-  font-weight:600; font-size:.95rem; cursor:pointer;
-  transition:all .2s; box-shadow:0 4px 20px rgba(247,88,26,.3);
-  min-height:50px;
-}
-.btn-primary:hover { background:var(--orange2); transform:translateY(-1px); box-shadow:0 6px 28px rgba(247,88,26,.4); }
-.btn-next {
-  width:100%; padding:14px;
-  background:var(--text); color:#fff; border:none;
-  border-radius:var(--r-sm); font-family:'DM Sans',sans-serif;
-  font-weight:600; font-size:.9rem; cursor:pointer;
-  transition:all .2s; min-height:48px;
-}
-.btn-next:hover { background:#222; transform:translateY(-1px); }
-.btn-back {
-  background:none; border:none; color:var(--muted);
-  font-family:'DM Sans',sans-serif; font-size:.82rem;
-  cursor:pointer; padding:8px 0; margin-top:6px;
-  text-align:center; width:100%; transition:color .2s;
-}
-.btn-back:hover { color:var(--text); }
-
-/* Benefits chips */
-.benefits {
-  display:flex; flex-wrap:wrap; gap:8px;
-  margin-top:16px; justify-content:center;
-}
-.chip {
-  display:inline-flex; align-items:center; gap:5px;
-  background:rgba(26,158,106,.08); border:1px solid rgba(26,158,106,.2);
-  border-radius:100px; padding:5px 12px;
-  font-size:.72rem; font-weight:600; color:var(--green);
-}
-.chip::before { content:'✓'; font-size:.7rem; }
-
-/* Success state */
-.f-success {
-  display:none; text-align:center; padding:16px 0;
-  animation:fadeUp .4s ease both;
-}
-.success-icon {
-  width:52px; height:56px; border-radius:50%;
-  background:rgba(26,158,106,.12); border:1.5px solid rgba(26,158,106,.3);
-  display:flex; align-items:center; justify-content:center;
-  margin:0 auto 16px; font-size:1.4rem;
-}
-.f-success h3 {
-  font-family:'DM Serif Display',serif;
-  font-size:1.4rem; margin-bottom:8px;
-}
-.f-success p { font-size:.88rem; color:var(--sub); line-height:1.7; margin-bottom:12px; }
-.social-links { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
-.social-link {
-  display:inline-flex; align-items:center; gap:7px;
-  background:var(--surface); border:1.5px solid var(--border2);
-  border-radius:100px; padding:9px 18px;
-  font-size:.8rem; font-weight:600; color:var(--text);
-  transition:all .2s;
-}
-.social-link:hover { border-color:var(--orange); color:var(--orange); }
-
-/* Honeypot */
-.hp { position:absolute; left:-9999px; opacity:0; pointer-events:none; }
-
-/* ── DEADLINE CARD ───────────────────────────────────── */
-.deadline-section { padding:0 0 20px; }
-@media(min-width:768px) { .deadline-section { padding:0 0 40px; } }
-.deadline-card {
-  background:linear-gradient(135deg,rgba(247,88,26,.06) 0%,rgba(26,158,106,.05) 100%);
-  border:1px solid rgba(247,88,26,.2);
-  border-radius:var(--r); padding:24px 28px;
-  display:grid;
-  grid-template-columns: auto 1px 1fr auto;
-  align-items:center; gap:24px;
-  max-width:640px; margin:0 auto;
-}
-@media(max-width:700px) {
-  .deadline-card {
-    grid-template-columns:1fr;
-    text-align:center; padding:20px; gap:14px;
-  }
-  .deadline-sep { width:60px; height:1px; margin:0 auto; }
-}
-.deadline-price {
-  font-family:'DM Serif Display',serif;
-  font-size:2.8rem; color:var(--orange); line-height:1;
-  white-space:nowrap;
-}
-.deadline-price span { font-family:'DM Sans',sans-serif; font-size:1rem; color:var(--sub); font-weight:400; }
-.deadline-cross {
-  font-size:.85rem; color:var(--muted);
-  text-decoration:line-through; margin-top:2px;
-}
-.deadline-sep { width:1px; height:56px; background:var(--border2); }
-.deadline-text h4 { font-size:1rem; font-weight:600; margin-bottom:5px; }
-.deadline-text p { font-size:.85rem; color:var(--sub); line-height:1.6; }
-.deadline-badge {
-  margin-left:auto; background:var(--orange); color:#fff;
-  border-radius:var(--r-sm); padding:10px 18px;
-  font-size:.8rem; font-weight:700; white-space:nowrap;
-  text-align:center; line-height:1.5;
-}
-.deadline-badge small { display:block; font-weight:400; opacity:.85; font-size:.72rem; }
-@media(max-width:600px) { .deadline-badge { margin-left:0; width:100%; } }
-
-/* ── COMPARATIF ─────────────────────────────────────── */
-.bottom-section { padding:32px 0 28px; border-top:1px solid var(--border); }
-@media(min-width:768px) { .bottom-section { padding:60px 0 48px; border-top:1px solid var(--border); } }
-.section-label {
-  font-size:.7rem; font-weight:600; letter-spacing:3px;
-  text-transform:uppercase; color:var(--muted);
-  margin-bottom:8px;
-}
-.section-title {
-  font-family:'DM Serif Display',serif;
-  font-size:clamp(1.4rem,3vw,2rem);
-  margin-bottom:20px; line-height:1.2;
-}
-.section-title em { color:var(--orange); font-style:italic; }
-
-.about-block {
-  background:var(--surface); border:1px solid var(--border);
-  border-radius:var(--r); padding:22px;
-  margin-bottom:20px;
-}
-.about-block p {
-  font-size:.9rem; color:var(--sub); line-height:1.8;
-  max-width:660px;
-}
-.about-block p + p { margin-top:12px; }
-.about-block strong { color:var(--text); font-weight:600; }
-
-/* Table */
-.cmp-table {
-  width:100%; border-collapse:separate; border-spacing:0;
-  border-radius:var(--r); overflow:hidden;
-  border:1px solid var(--border2);
-  box-shadow:var(--shadow);
-}
-.cmp-table th {
-  padding:14px 20px; text-align:left;
-  font-size:.68rem; font-weight:700; letter-spacing:2px;
-  text-transform:uppercase; color:var(--muted);
-  border-bottom:1px solid var(--border2);
-  background:var(--bg);
-}
-.cmp-table th.th-ch {
-  background:rgba(247,88,26,.06);
-  color:var(--orange);
-  border-left:2px solid rgba(247,88,26,.25);
-}
-.cmp-table td {
-  padding:13px 20px; font-size:.84rem;
-  border-bottom:1px solid var(--border);
-  vertical-align:top;
-}
-.cmp-table tr:last-child td { border-bottom:none; }
-.cmp-table td:first-child { color:var(--sub); font-weight:500; font-size:.8rem; }
-.cmp-table td.td-classic { color:var(--muted); }
-.cmp-table td.td-ch {
-  background:rgba(247,88,26,.04);
-  border-left:2px solid rgba(247,88,26,.18);
-  color:var(--text); font-weight:600;
-}
-.by { color:var(--green); font-weight:700; }
-.bn { color:#E74C3C; }
-.bw { color:#E67E22; }
-
-/* ── FOOTER ─────────────────────────────────────────── */
-footer {
-  border-top:1px solid var(--border);
-  padding:24px 40px;
-  display:flex; align-items:center; justify-content:space-between;
-  flex-wrap:wrap; gap:12px;
-  background:rgba(250,250,248,.8);
-}
-footer p { font-size:.72rem; color:var(--muted); }
-footer a {
-  font-size:.72rem; color:var(--sub); font-weight:500;
-  background:var(--bg); border:1px solid var(--border2);
-  border-radius:100px; padding:5px 13px;
-  transition:all .2s; margin-left:8px; display:inline-block;
-}
-footer a:hover { border-color:var(--orange); color:var(--orange); }
-@media(max-width:600px) {
-  footer { padding:20px; flex-direction:column; align-items:flex-start; gap:10px; }
-  footer a { margin-left:0; margin-right:6px; }
-}
-
-/* ── MODAL ──────────────────────────────────────────── */
-.modal-overlay {
-  display:none; position:fixed; inset:0; z-index:1000;
-  background:rgba(15,17,23,.4); backdrop-filter:blur(8px);
-  align-items:center; justify-content:center; padding:24px;
-}
-.modal-overlay.open { display:flex; }
-.modal-box {
-  background:var(--surface); border:1px solid var(--border2);
-  border-radius:var(--r); padding:36px; max-width:560px; width:100%;
-  max-height:85vh; overflow-y:auto; position:relative;
-  animation:fadeUp .3s ease both;
-  box-shadow:var(--shadow2);
-}
-.modal-box h2 { font-family:'DM Serif Display',serif; font-size:1.5rem; margin-bottom:14px; }
-.modal-box p { font-size:.85rem; color:var(--sub); line-height:1.75; margin-bottom:10px; }
-.modal-close {
-  position:absolute; top:14px; right:14px;
-  background:var(--bg); border:1px solid var(--border);
-  border-radius:50%; width:30px; height:30px; color:var(--sub);
-  cursor:pointer; font-size:.8rem; display:flex;
-  align-items:center; justify-content:center; transition:all .2s;
-}
-.modal-close:hover { background:var(--orange); color:#fff; border-color:var(--orange); }
-
-/* ── REVEAL ─────────────────────────────────────────── */
-.reveal { opacity:0; transform:translateY(16px); transition:opacity .55s ease, transform .55s ease; }
-.reveal.vis { opacity:1; transform:none; }
-.reveal-d1 { transition-delay:.08s; }
-.reveal-d2 { transition-delay:.16s; }
-.reveal-d3 { transition-delay:.24s; }
-#toggleDesc { color: var(--sub) !important; font-weight:500; }
+.r { opacity: 0; transform: translateY(18px); transition: opacity .45s ease, transform .45s ease; }
+.r.in { opacity: 1; transform: none; }
 </style>
 </head>
 <body>
-<div class="mesh"></div>
 
-<!-- Skip nav -->
-<a href="#main"
-   style="position:absolute;left:-9999px;z-index:9999;background:var(--orange);color:#fff;padding:10px 18px;border-radius:0 0 8px 8px;font-weight:600;font-size:.85rem;"
-   onfocus="this.style.left='50%';this.style.transform='translateX(-50%)';"
-   onblur="this.style.left='-9999px';this.style.transform='';">
-  Aller au contenu principal
-</a>
-
-<noscript><div style="background:var(--orange);color:#fff;text-align:center;padding:10px;font-size:.85rem;font-weight:600;">Captain Help! fonctionne mieux avec JavaScript activé.</div></noscript>
-
-<!-- NAV -->
-<nav role="navigation" aria-label="Navigation principale">
-  <div class="nav-brand">Captain<span>Help!</span></div>
-  <a href="#waitlist" class="nav-cta">Rejoindre la waitlist →</a>
-</nav>
-
-<!-- URGENCY -->
-<div class="urgency-bar">
-  <strong>Offre fondateur :</strong> 7,90 €/mois garanti à vie pour les 200 premiers inscrits — expire le <strong>1er septembre 2026</strong>
+<!-- ═══ CHOICE SPLASH ═══ -->
+<div id="splash">
+  <div class="splash-logo">Captain<span>Help!</span></div>
+  <h2 class="splash-title">Sélectionnez<br><em>votre type de flotte</em></h2>
+  <div class="splash-choices">
+    <div class="choice-card pl" onclick="choose('pl')">
+      <h3>Poids lourds</h3>
+      <p>Camions, tracteurs, porteurs, semi-remorques. Plus de 3,5 tonnes.</p>
+      <div class="c-price">89 €</div>
+      <div class="c-sub">HT / mois / véhicule · prix garanti</div>
+      <button class="c-cta">C'est mon cas →</button>
+    </div>
+    <div class="choice-card vl" onclick="choose('vl')">
+      <h3>Voitures &amp; utilitaires</h3>
+      <p>Berlines, SUV, vans, utilitaires. Flottes de moins de 3,5 tonnes.</p>
+      <div class="c-price">9,90 €</div>
+      <div class="c-sub">TTC / mois / véhicule</div>
+      <button class="c-cta">C'est mon cas →</button>
+    </div>
+  </div>
 </div>
 
-<main id="main">
+<!-- ═══ MAIN PAGE ═══ -->
+<div id="main">
 
-<!-- ── STORIES CAROUSEL ──────────────────────────────── -->
-<section class="stories-section">
-  <div class="wrap">
-    <div class="stories-label reveal">Ils nous ont rejoint</div>
+  <nav>
+    <a href="#" class="logo">Captain<span>Help!</span></a>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <button class="nav-switch" onclick="resetChoice()">Changer de flotte</button>
+      <a href="#waitlist" class="nav-cta">Rejoindre la waitlist</a>
+    </div>
+  </nav>
+
+  <!-- H1 — then testi band immediately -->
+  <div class="hero-top r">
+    <h1>Votre assistance routière<br>vous dépanne seulement.<br><em>Nous remettons votre<br>activité sur la route.</em></h1>
   </div>
-  <div class="carousel-track-wrap">
-    <div class="carousel-track" id="carouselTrack">
-      <!-- Cards set A -->
-      <div class="story-card">
-        <p class="story-quote">Moteur coupé sur l'autoroute à 2h d'un rendez-vous client crucial. Captain Help aurait sauvé mon planning, pas juste dépanné ma voiture.</p>
-        <div class="story-source"><span class="story-dot"></span>Membre de la waitlist</div>
+
+  <!-- TESTI BAND — right under h1 -->
+  <div class="tband">
+    <!-- PL track -->
+    <div id="track-pl" class="ttrack">
+      <div class="tcard pl"><p>« Moteur coupé sur l'autoroute à 2h d'un rendez-vous client crucial. Captain Help aurait sauvé mon planning, pas juste dépanné ma voiture. »</p><div class="tn">Gestionnaire de flotte — PME logistique</div></div>
+      <div class="tcard pl"><p>« 15 minutes d'attente pour entendre que j'aurais un véhicule le lendemain. Ma journée de travail était ruinée. »</p><div class="tn">Directeur d'exploitation — Transport régional</div></div>
+      <div class="tcard pl"><p>« Ma voiture est restée au garage +14 jours, l'assistance ne couvrait que 7 jours. Mon business devait tourner. »</p><div class="tn">Chef d'entreprise — 12 véhicules</div></div>
+      <div class="tcard pl"><p>« Quand un collaborateur tombe en panne, c'est une perte pour moi. Le salaire sort mais les revenus s'arrêtent. »</p><div class="tn">Chef d'entreprise — 8 camions</div></div>
+      <div class="tcard pl"><p>« Entre nos voitures de tournée et nos camions longue distance, on avait deux contrats, deux numéros, deux factures. Intenable. »</p><div class="tn">DAF — Entreprise de transport mixte</div></div>
+      <div class="tcard pl"><p>« Marre d'avoir à lire 11 pages de contrat pour savoir si ma panne est prise en charge ou non. »</p><div class="tn">Directeur d'exploitation — Transport régional</div></div>
+      <!-- dup -->
+      <div class="tcard pl"><p>« Moteur coupé sur l'autoroute à 2h d'un rendez-vous client crucial. Captain Help aurait sauvé mon planning, pas juste dépanné ma voiture. »</p><div class="tn">Gestionnaire de flotte — PME logistique</div></div>
+      <div class="tcard pl"><p>« 15 minutes d'attente pour entendre que j'aurais un véhicule le lendemain. Ma journée de travail était ruinée. »</p><div class="tn">Directeur d'exploitation — Transport régional</div></div>
+      <div class="tcard pl"><p>« Ma voiture est restée au garage +14 jours, l'assistance ne couvrait que 7 jours. Mon business devait tourner. »</p><div class="tn">Chef d'entreprise — 12 véhicules</div></div>
+      <div class="tcard pl"><p>« Quand un collaborateur tombe en panne, c'est une perte pour moi. Le salaire sort mais les revenus s'arrêtent. »</p><div class="tn">Chef d'entreprise — 8 camions</div></div>
+      <div class="tcard pl"><p>« Entre nos voitures de tournée et nos camions longue distance, on avait deux contrats, deux numéros, deux factures. Intenable. »</p><div class="tn">DAF — Entreprise de transport mixte</div></div>
+      <div class="tcard pl"><p>« Marre d'avoir à lire 11 pages de contrat pour savoir si ma panne est prise en charge ou non. »</p><div class="tn">Directeur d'exploitation — Transport régional</div></div>
+    </div>
+    <!-- VL track -->
+    <div id="track-vl" class="ttrack hidden">
+      <div class="tcard vl"><p>« Entre ma voiture perso, celle de fonction et celle de ma compagne, je ne sais jamais qui appeler en cas de panne ni ce qui est couvert ou non. Je veux être assisté de la même manière, peu importe le volant. Donc je rejoins la waitlist. »</p><div class="tn">Membre de la waitlist</div></div>
+      <div class="tcard vl"><p>« Marre d'avoir à lire 11 pages de contrat pour savoir si ma panne est prise en charge ou non. Marre d'être limité à 2 prises en charges par an. Je me suis inscrite pour la clarté : une assistance, 0 prise de tête. »</p><div class="tn">Membre de la waitlist</div></div>
+      <div class="tcard vl"><p>« Quand un collaborateur tombe en panne, c'est une perte pour moi. Le salaire sort mais les revenus s'arrêtent. Ma priorité, c'est de rapidement reprendre la route vers le client, pas d'attendre le taxi et la dépanneuse. »</p><div class="tn">Membre de la waitlist</div></div>
+      <div class="tcard vl"><p>« Commercial entre la France et l'Espagne, je change souvent de voiture. Avec Captain Help!, je sais que c'est moi qui suis assisté de la même façon, peu importe le volant que j'ai entre les mains. »</p><div class="tn">Membre de la waitlist</div></div>
+      <div class="tcard vl"><p>« Moteur coupé sur l'autoroute à 2h d'un rendez-vous client crucial. Captain Help aurait sauvé mon planning, pas juste dépanné ma voiture. »</p><div class="tn">Membre de la waitlist</div></div>
+      <div class="tcard vl"><p>« 15 minutes d'attente pour entendre que j'aurais un véhicule de remplacement que le lendemain. Je rejoins la waitlist pour que mon temps ne dépende plus jamais d'horaires d'ouvertures d'agence de location. »</p><div class="tn">Membre de la waitlist</div></div>
+      <div class="tcard vl"><p>« Ma voiture est restée au garage + de 14 jours et l'assistance couvrait seulement pour 7 jours, mais mon business devait tourner. Je veux m'assurer que je puisse honorer mes clients même au-delà de 7 jours. »</p><div class="tn">Membre de la waitlist</div></div>
+      <!-- dup -->
+      <div class="tcard vl"><p>« Entre ma voiture perso, celle de fonction et celle de ma compagne, je ne sais jamais qui appeler en cas de panne ni ce qui est couvert ou non. Je veux être assisté de la même manière, peu importe le volant. Donc je rejoins la waitlist. »</p><div class="tn">Membre de la waitlist</div></div>
+      <div class="tcard vl"><p>« Marre d'avoir à lire 11 pages de contrat pour savoir si ma panne est prise en charge ou non. Marre d'être limité à 2 prises en charges par an. Je me suis inscrite pour la clarté : une assistance, 0 prise de tête. »</p><div class="tn">Membre de la waitlist</div></div>
+      <div class="tcard vl"><p>« Quand un collaborateur tombe en panne, c'est une perte pour moi. Le salaire sort mais les revenus s'arrêtent. Ma priorité, c'est de rapidement reprendre la route vers le client, pas d'attendre le taxi et la dépanneuse. »</p><div class="tn">Membre de la waitlist</div></div>
+      <div class="tcard vl"><p>« Commercial entre la France et l'Espagne, je change souvent de voiture. Avec Captain Help!, je sais que c'est moi qui suis assisté de la même façon, peu importe le volant que j'ai entre les mains. »</p><div class="tn">Membre de la waitlist</div></div>
+      <div class="tcard vl"><p>« Moteur coupé sur l'autoroute à 2h d'un rendez-vous client crucial. Captain Help aurait sauvé mon planning, pas juste dépanné ma voiture. »</p><div class="tn">Membre de la waitlist</div></div>
+      <div class="tcard vl"><p>« 15 minutes d'attente pour entendre que j'aurais un véhicule de remplacement que le lendemain. Je rejoins la waitlist pour que mon temps ne dépende plus jamais d'horaires d'ouvertures d'agence de location. »</p><div class="tn">Membre de la waitlist</div></div>
+      <div class="tcard vl"><p>« Ma voiture est restée au garage + de 14 jours et l'assistance couvrait seulement pour 7 jours, mais mon business devait tourner. Je veux m'assurer que je puisse honorer mes clients même au-delà de 7 jours. »</p><div class="tn">Membre de la waitlist</div></div>
+    </div>
+  </div>
+
+  <!-- HERO BOTTOM — CTAs + stats -->
+  <div class="hero-bottom r">
+    <p class="hsub">Ne perdez plus 3 heures sur votre planning pour une simple panne. <strong>Un seul contrat</strong> pour toute votre flotte.</p>
+    <div class="hctas">
+      <a href="#waitlist" class="bto">Rejoindre la waitlist →</a>
+      <a href="#comparatif" class="bline">Voir le comparatif</a>
+    </div>
+    <!-- Stats — shown dynamically -->
+    <div id="stats-pl" class="hstats pl" style="display:none;">
+      <div class="hstat"><div class="sv">— 10 s</div><div class="sl">Prise en charge<br>24h/24 7j/7</div></div>
+      <div class="hstat"><div class="sv">Europe</div><div class="sl">40 pays<br>couverts</div></div>
+      <div class="hstat"><div class="sv">+10</div><div class="sl">Garanties incluses<br>vs marché</div></div>
+      <div class="hstat"><div class="sv">Fixe</div><div class="sl">Prix garanti<br>sans révision</div></div>
+      <div class="hstat"><div class="sv">89 €</div><div class="sl">HT / mois<br>/ véhicule</div></div>
+    </div>
+    <div id="stats-vl" class="hstats vl" style="display:none;">
+      <div class="hstat"><div class="sv">— 10 s</div><div class="sl">Prise en charge<br>24h/24 7j/7</div></div>
+      <div class="hstat"><div class="sv">0 km</div><div class="sl">Franchise dès<br>le 1er mètre</div></div>
+      <div class="hstat"><div class="sv">0 €</div><div class="sl">Caution véhicule<br>de remplacement</div></div>
+      <div class="hstat"><div class="sv">10/an</div><div class="sl">Interventions<br>incluses</div></div>
+      <div class="hstat"><div class="sv">9,90 €</div><div class="sl">TTC / mois<br>/ véhicule</div></div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- WHO -->
+  <div class="who r">
+    <div>
+      <div class="lbl">Qui sommes-nous</div>
+      <h2 class="sec-h">Nous ne sommes pas<br>une dépanneuse <em>de plus.</em></h2>
+    </div>
+    <div class="who-r">
+      <div class="quote">Ce secteur n'avait pas besoin d'une amélioration. Il avait besoin d'être reconstruit de zéro.</div>
+      <p>Les autres couvrent <strong>votre voiture</strong>. Nous, on vous couvre <strong>vous</strong>.</p>
+      <p>Peu importe le volant — votre voiture de fonction, une location, celle d'un collègue. Et pour toute votre flotte, qu'elle soit légère ou lourde : <strong>un seul contrat, une seule facture.</strong></p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- OFFER — single card, shown based on choice -->
+  <div class="offers" id="offres">
+    <div class="offers-head r">
+      <div class="lbl">Notre offre</div>
+      <h2 class="sec-h">Simple. Transparent. <em>Sans surprise.</em></h2>
+    </div>
+
+    <div id="offer-pl" class="r" style="display:none;">
+      <div class="ocard pl">
+        <div class="otag pl">Camions &amp; poids lourds</div>
+        <h3>Assistance camions &amp; poids lourds</h3>
+        
+        <p class="odesc">Tracteurs, porteurs, semi-remorques. Petites pièces, AdBlue, crevaison — tous offerts.</p>
+        <div class="oprice-wrap"><span class="price-n">89 €</span><span class="price-p">HT / mois / véhicule · prix garanti</span></div>
+        <ul class="ofeats">
+          <li><div class="ck pl">✓</div>Dépannage 24h/7j — Europe, 40 pays</li>
+          <li><div class="ck pl">✓</div>Véhicule seul ou avec remorque couverts</li>
+          <li><div class="ck pl">✓</div>Remorquage, relevage, grutage inclus</li>
+          <li><div class="ck pl">✓</div>Petites pièces incluses (batterie, fusibles, courroies…)</li>
+          <li><div class="ck pl">✓</div>AdBlue offert — 30 L / sinistre</li>
+          <li><div class="ck pl">✓</div>Réparation crevaison sur place jusqu'à 65 €</li>
+          <li><div class="ck pl">✓</div>4 nuits d'hôtel garanties — 120 € / nuit</li>
+          <li><div class="ck pl">✓</div>Avance de fonds d'urgence à l'étranger</li>
+          <li><div class="ck pl">✓</div>Conseiller dédié nommé dès 10 véhicules</li>
+          <li><div class="ck pl">✓</div>Dashboard flotte + rapport mensuel</li>
+        </ul>
+        <div class="odiv"></div>
+        <ul class="olims">
+          <li><div class="ld"></div>Pièces de remplacement (moteur, boîte de vitesses…) non incluses</li>
+          <li><div class="ld"></div>Frais de réparation garage non couverts</li>
+        </ul>
+        <button class="obtn pl" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Rejoindre la waitlist</button>
       </div>
-      <div class="story-card">
-        <p class="story-quote">15 minutes d'attente pour entendre que j'aurais un véhicule de remplacement que le lendemain. Ma journée de travail était ruinée. Je rejoins la waitlist pour que mon temps ne dépende plus jamais d'horaires d'ouvertures d'agence de location.</p>
-        <div class="story-source"><span class="story-dot"></span>Membre de la waitlist</div>
-      </div>
-      <div class="story-card">
-        <p class="story-quote">Ma voiture est restée au garage + de 14 jours et l'assistance couvrait seulement pour 7 jours, mais mon business lui devait tourner. Je veux m'assurer que je puisse honorer mes clients même au-delà de 7 jours, donc j'ai rejoins la waitlist.</p>
-        <div class="story-source"><span class="story-dot"></span>Membre de la waitlist</div>
-      </div>
-      <div class="story-card">
-        <p class="story-quote">Entre ma voiture perso, celle de fonction et celle de ma compagne, je ne sais jamais qui appeler en cas de panne ni ce qui est couvert ou non. Je veux être assisté de la même manière, peu importe le volant. Donc je rejoins la waitlist.</p>
-        <div class="story-source"><span class="story-dot"></span>Membre de la waitlist</div>
-      </div>
-      <div class="story-card">
-        <p class="story-quote">Marre d'avoir à lire 11 pages de contrat pour savoir si ma panne est prise en charge ou non. Marre d'être limité à 2 prises en charges par an. Je me suis inscrite pour la clarté : « une assistance, 0 prise de tête. »</p>
-        <div class="story-source"><span class="story-dot"></span>Membre de la waitlist</div>
-      </div>
-      <div class="story-card">
-        <p class="story-quote">Quand un collaborateurs tombe en panne, c'est une perte pour moi. Le salaire sort mais les revenus s'arrêtent. Ma priorité, c'est de rapidement reprendre la route vers le client, pas d'attendre le taxi et la dépanneuse.</p>
-        <div class="story-source"><span class="story-dot"></span>Membre de la waitlist</div>
-      </div>
-      <div class="story-card">
-        <p class="story-quote">Commercial entre la France et l'Espagne, je change souvent de voiture. Et je sais jamais ce que couvrent ou non les contrats d'assistance. Avec Captain Help!, je sais que c'est moi qui suis assisté de la même façon, peu importe le volant que j'ai entre les mains.</p>
-        <div class="story-source"><span class="story-dot"></span>Membre de la waitlist</div>
-      </div>
-      <!-- Cards set B (clone pour boucle infinie) -->
-      <div class="story-card" aria-hidden="true">
-        <p class="story-quote">Moteur coupé sur l'autoroute à 2h d'un rendez-vous client crucial. Captain Help aurait sauvé mon planning, pas juste dépanné ma voiture.</p>
-        <div class="story-source"><span class="story-dot"></span>Membre de la waitlist</div>
-      </div>
-      <div class="story-card" aria-hidden="true">
-        <p class="story-quote">15 minutes d'attente pour entendre que j'aurais un véhicule de remplacement que le lendemain. Ma journée de travail était ruinée. Je rejoins la waitlist pour que mon temps ne dépende plus jamais d'horaires d'ouvertures d'agence de location.</p>
-        <div class="story-source"><span class="story-dot"></span>Membre de la waitlist</div>
-      </div>
-      <div class="story-card" aria-hidden="true">
-        <p class="story-quote">Ma voiture est restée au garage + de 14 jours et l'assistance couvrait seulement pour 7 jours, mais mon business lui devait tourner. Je veux m'assurer que je puisse honorer mes clients même au-delà de 7 jours, donc j'ai rejoins la waitlist.</p>
-        <div class="story-source"><span class="story-dot"></span>Membre de la waitlist</div>
-      </div>
-      <div class="story-card" aria-hidden="true">
-        <p class="story-quote">Entre ma voiture perso, celle de fonction et celle de ma compagne, je ne sais jamais qui appeler en cas de panne ni ce qui est couvert ou non. Je veux être assisté de la même manière, peu importe le volant. Donc je rejoins la waitlist.</p>
-        <div class="story-source"><span class="story-dot"></span>Membre de la waitlist</div>
-      </div>
-      <div class="story-card" aria-hidden="true">
-        <p class="story-quote">Marre d'avoir à lire 11 pages de contrat pour savoir si ma panne est prise en charge ou non. Marre d'être limité à 2 prises en charges par an. Je me suis inscrite pour la clarté : « une assistance, 0 prise de tête. »</p>
-        <div class="story-source"><span class="story-dot"></span>Membre de la waitlist</div>
-      </div>
-      <div class="story-card" aria-hidden="true">
-        <p class="story-quote">Quand un collaborateurs tombe en panne, c'est une perte pour moi. Le salaire sort mais les revenus s'arrêtent. Ma priorité, c'est de rapidement reprendre la route vers le client, pas d'attendre le taxi et la dépanneuse.</p>
-        <div class="story-source"><span class="story-dot"></span>Membre de la waitlist</div>
-      </div>
-      <div class="story-card" aria-hidden="true">
-        <p class="story-quote">Commercial entre la France et l'Espagne, je change souvent de voiture. Et je sais jamais ce que couvrent ou non les contrats d'assistance. Avec Captain Help!, je sais que c'est moi qui suis assisté de la même façon, peu importe le volant que j'ai entre les mains.</p>
-        <div class="story-source"><span class="story-dot"></span>Membre de la waitlist</div>
+    </div>
+
+    <div id="offer-vl" class="r" style="display:none;">
+      <div class="ocard vl">
+        <div class="otag vl">Voitures &amp; utilitaires</div>
+        <h3>Assistance voitures &amp; utilitaires</h3>
+        <p class="cline vl">Vous êtes couvert, pas juste votre voiture.</p>
+        <p class="odesc">Quel que soit le véhicule conduit au moment de la panne — flotte, location, collègue, conjoint.</p>
+        <div class="oprice-wrap"><span class="price-n">9,90 €</span><span class="price-p">TTC / mois / véhicule</span></div>
+        <ul class="ofeats">
+          <li><div class="ck vl">✓</div>Couvert sur <strong>tout véhicule conduit</strong></li>
+          <li><div class="ck vl">✓</div>Dépannage 0 km, dès le 1er mètre — Europe 24h/7j</li>
+          <li><div class="ck vl">✓</div>Remorquage sans limite de kilomètres</li>
+          <li><div class="ck vl">✓</div>Véhicule de remplacement — sans caution, dès 18 ans</li>
+          <li><div class="ck vl">✓</div>Perte de permis couverte — tous motifs</li>
+          <li><div class="ck vl">✓</div>1 nuit d'hôtel si immobilisation &gt; 12h</li>
+          <li><div class="ck vl">✓</div>Erreur de carburant &amp; parking souterrain couverts</li>
+          <li><div class="ck vl">✓</div>5 interventions / an incluses</li>
+          <li><div class="ck vl">✓</div>Accompagnement à la transition depuis votre contrat actuel</li>
+        </ul>
+        <div class="odiv"></div>
+        <ul class="olims">
+          <li><div class="ld"></div>Pièces de rechange non incluses</li>
+          <li><div class="ld"></div>Frais de réparation garage non couverts</li>
+        </ul>
+        <button class="obtn vl" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Rejoindre la waitlist</button>
       </div>
     </div>
   </div>
-</section>
 
-<!-- ── HERO ──────────────────────────────────────────── -->
-<section class="hero-section">
-  <div class="wrap" style="text-align:center;">
-    <div class="hero-eyebrow reveal"><span class="pulse"></span>Waitlist ouverte</div>
-    <h1 class="hero-h1 reveal reveal-d1">
-      Votre assistance routière vous dépanne seulement.<br>
-      <em>Nous remettons votre activité sur la route.</em>
-    </h1>
-    <p class="hero-sub reveal reveal-d2">
-      Ne perdez plus 3 heures sur votre planning pour une simple panne.<br>
-      Captain Help! est la meilleure assistance routière.
-    </p>
+  <hr>
 
-    <!-- Toggle mode -->
-    <div class="reveal reveal-d3" style="display:flex;flex-direction:column;align-items:center;">
-      <div class="toggle-wrap" role="group" aria-label="Mode de couverture">
-        <button type="button" class="toggle-btn active" id="btnVehicule" onclick="setMode('vehicule')">Je couvre mon véhicule</button>
-        <button type="button" class="toggle-btn" id="btnMobilite" onclick="setMode('mobilite')">Je couvre ma mobilité</button>
+  <!-- COMPARE -->
+  <div class="compare r" id="comparatif">
+    <div class="lbl">Comparatif</div>
+    <h2 class="sec-h" style="margin-bottom:32px;">Ce que les autres ne disent<br>pas dans leurs CGV. <em>Nous si.</em></h2>
+
+    <div id="comp-vl" style="display:none;">
+      <table>
+        <thead><tr><th>Critère</th><th>Assistance classique</th><th class="ch">CaptainHelp!</th></tr></thead>
+        <tbody>
+          <tr><td>Couverture 0 km</td><td class="warn">Option payante</td><td>✓ Dès le 1er mètre</td></tr>
+          <tr><td>Couverture sur tout véhicule conduit</td><td class="no">Votre véhicule uniquement</td><td>✓ Quel que soit le volant</td></tr>
+          <tr><td>Caution véhicule de remplacement</td><td class="no">300 € CB requis</td><td>✓ Aucune caution</td></tr>
+          <tr><td>Prise en charge de l'appel</td><td class="warn">Temps d'attente variable</td><td>✓ Prise en charge immédiate</td></tr>
+          <tr><td>Âge minimum conducteur</td><td class="warn">19 ans + 1 an de permis</td><td>✓ Dès 18 ans</td></tr>
+          <tr><td>Interventions incluses / an</td><td class="no">2 max, au-delà facturé</td><td>✓ 5 / an</td></tr>
+          <tr><td>Erreur de carburant</td><td class="no">Exclue</td><td>✓ Couverte</td></tr>
+          <tr><td>Parking souterrain</td><td class="no">Exclu</td><td>✓ Couvert</td></tr>
+          <tr><td>Perte de permis</td><td class="no">Non couvert</td><td>✓ Tous motifs</td></tr>
+          <tr><td>Prix</td><td class="no">Révisable chaque année</td><td>✓ Stable, sans révision</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="comp-pl" style="display:none;">
+      <table>
+        <thead><tr><th>Critère</th><th>Assistance classique</th><th class="ch">CaptainHelp!</th></tr></thead>
+        <tbody>
+          <tr><td>Petites pièces (batterie, fusibles…)</td><td class="no">Non incluses</td><td>✓ Incluses</td></tr>
+          <tr><td>AdBlue offert</td><td class="no">Non</td><td>✓ 30 L / sinistre</td></tr>
+          <tr><td>Réparation crevaison sur place</td><td class="no">Non</td><td>✓ Incluse</td></tr>
+          <tr><td>Nuits d'hôtel conducteur</td><td class="warn">Incluses, nombre non précisé</td><td>✓ 4 nuits, contractualisées</td></tr>
+          <tr><td>Repas conducteur bloqué</td><td class="no">Non</td><td>✓ Inclus</td></tr>
+          <tr><td>Avance de fonds à l'étranger</td><td class="no">Non</td><td>✓ Incluse</td></tr>
+          <tr><td>Prise en charge de l'appel</td><td class="warn">Temps d'attente variable</td><td>✓ Prise en charge immédiate</td></tr>
+          <tr><td>Contrat flotte mixte unifié</td><td class="no">Deux contrats séparés</td><td>✓ Un seul contrat</td></tr>
+          <tr><td>Prix</td><td class="no">Révisable chaque année</td><td>✓ Stable, sans révision</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- WAITLIST -->
+  <div class="cta r" id="waitlist">
+    <h2>Soyez prévenu<br>en <em>avant-première.</em></h2>
+    <p>CaptainHelp! arrive bientôt. Inscrivez-vous pour être parmi les premiers à en profiter.</p>
+    <div id="wl-form-wrap">
+      <div class="wl-form">
+        <input type="email" id="wl-email" placeholder="Votre adresse email professionnelle">
+        <button type="button" onclick="submitWL()">Je m'inscris</button>
       </div>
-      <p id="toggleDesc" style="font-size:.8rem;color:var(--muted);max-width:420px;margin:0 auto 18px;line-height:1.6;"></p>
+      <p class="wl-note">Aucun spam. Vous serez notifié à l'ouverture, c'est tout.</p>
+    </div>
+    <div class="wl-success" id="wl-success">
+      <span>✓</span> Inscription confirmée — on vous prévient dès l'ouverture.
     </div>
   </div>
-</section>
 
-<!-- ── DEADLINE ───────────────────────────────────────── -->
-<section class="deadline-section">
-  <div class="wrap">
-    <div class="deadline-card reveal">
-      <div>
-        <div class="deadline-price">7,90 € <span>/ mois</span></div>
-        <div style="font-size:.72rem;font-weight:600;color:var(--green);margin-top:3px;letter-spacing:.3px;">Sans engagement</div>
-        <div class="deadline-cross">Prix standard : 9,90 €/mois</div>
-      </div>
-      <div class="deadline-sep"></div>
-      <div class="deadline-text">
-        <h4>Prix fondateur garanti à vie</h4>
-        <p>Réservé aux 200 premiers inscrits. Votre tarif est bloqué à vie. Aucune surprise, aucune révision.</p>
-      </div>
-      <a href="#waitlist" class="deadline-badge">
-        M'inscrire à la waitlist<br>
-        <small style="font-weight:400;opacity:.85;">Offre expire le 1er sept. 2026</small>
-      </a>
-    </div>
-  </div>
-</section>
+  <footer>
+    <div class="flogo">Captain<span>Help!</span></div>
+    <small>© 2026 CaptainHelp!</small>
+    <nav>
+      <a href="#">Mentions légales</a>
+      <a href="#">Contact</a>
+    </nav>
+  </footer>
 
-<!-- ── FORMULAIRE ────────────────────────────────────── -->
-<section id="waitlist" style="padding:0 0 32px;" aria-labelledby="form-title">
-  <div class="wrap">
-    <div class="form-wrap">
-      <div class="form-card reveal">
-
-        <div id="formContent">
-          <!-- ÉTAPE 1 -->
-          <div class="f-step active" id="fs1">
-            <p class="f-title" id="form-title">Rejoindre la waitlist</p>
-            <p class="f-sub">Une question rapide pour personnaliser votre expérience.</p>
-            <fieldset style="border:none;padding:0;margin:0;">
-              <legend style="font-size:.8rem;font-weight:600;color:var(--sub);margin-bottom:12px;display:block;">
-                Bénéficiez-vous actuellement d'un service d'assistance routière ?
-              </legend>
-              <div class="radio-group">
-                <label class="r-card">
-                  <input type="radio" name="has_assist" value="oui">
-                  <span class="r-lbl">Oui</span>
-                </label>
-                <label class="r-card">
-                  <input type="radio" name="has_assist" value="non">
-                  <span class="r-lbl">Non</span>
-                </label>
-                <label class="r-card">
-                  <input type="radio" name="has_assist" value="nsp">
-                  <span class="r-lbl">Je ne sais pas</span>
-                </label>
-              </div>
-            </fieldset>
-            <div style="margin-top:16px;">
-              <label style="font-size:.7rem;font-weight:600;color:var(--sub);letter-spacing:.5px;text-transform:uppercase;display:block;margin-bottom:8px;">
-                Combien de véhicules dans votre flotte ? <span style="font-weight:400;color:var(--muted);text-transform:none;">(Optionnel)</span>
-              </label>
-              <input type="number" id="fFlotte" min="0" placeholder="ex : 12"
-                style="width:100%;padding:12px 14px;background:#FAFAF8;border:1.5px solid rgba(15,17,23,.08);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:1rem;color:var(--text);outline:none;transition:border-color .18s;"
-                onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='rgba(15,17,23,.08)'">
-            </div>
-            <button type="button" class="btn-next" onclick="nxt()">Continuer →</button>
-          </div>
-
-          <!-- ÉTAPE 2 -->
-          <div class="f-step" id="fs2">
-            <p class="f-title">Votre adresse e-mail</p>
-            <p class="f-sub">C'est tout ce dont nous avons besoin.</p>
-            <!-- Honeypot -->
-            <div class="hp" aria-hidden="true">
-              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
-            </div>
-            <input
-              type="email" id="fEmail" class="email-field"
-              placeholder="vous@exemple.fr"
-              autocomplete="email"
-              aria-label="Adresse e-mail"
-              required>
-            <button type="button" class="btn-primary" id="submitBtn" onclick="doSubmit()">
-              Rejoindre la waitlist
-            </button>
-            <button type="button" class="btn-back" onclick="prv()">← Retour</button>
-            <div class="benefits">
-              <span class="chip">Prix fondateur bloqué à vie</span>
-              <span class="chip">Accès bêta prioritaire</span>
-              <span class="chip">Influence produit</span>
-            </div>
-            <p style="text-align:center;font-size:.67rem;color:var(--muted);margin-top:12px;line-height:1.5;">
-              Aucun spam. Données protégées. Désinscription en 1 clic.
-            </p>
-          </div>
-        </div>
-
-        <!-- SUCCÈS -->
-        <div class="f-success" id="fSuccess">
-          <div class="success-icon">🎉</div>
-          <h3>Bravo !</h3>
-          <p>Vous faites partie des premiers futurs abonnés Captain Help!.<br>Suivez-nous pour ne rien manquer du lancement.</p>
-          <div class="social-links">
-            <a href="https://www.tiktok.com/@captainhelp.eu" class="social-link" target="_blank" rel="noopener noreferrer">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.39a8.16 8.16 0 004.77 1.52V7.45a4.85 4.85 0 01-1-.76z"/></svg>
-              TikTok
-            </a>
-            <a href="https://www.instagram.com/captainhelp.eu" class="social-link" target="_blank" rel="noopener noreferrer">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-              Instagram
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── BAS DE PAGE : QUI + COMPARATIF ───────────────── -->
-<section class="bottom-section">
-  <div class="wrap">
-
-    <div class="section-label reveal">Qui sommes-nous</div>
-    <h2 class="section-title reveal">Nous ne sommes pas<br>une dépanneuse <em>de plus.</em></h2>
-
-    <div class="about-block reveal">
-      <p>
-        <strong>L'équipe Captain Help!</strong> construit la première assistance routière pensée pour votre continuité d'activité — pas seulement pour dépanner votre voiture.
-      </p>
-      <p>
-        Une assistance classique s'arrête à votre véhicule. Captain Help! vous assiste, que vous conduisiez votre voiture, celle d'un collègue, de votre conjoint(e), une location ou un véhicule de fonction. Un seul abonnement, deux modes au choix : couverture véhicule ou couverture conducteur, avec switch instantané selon vos besoins du moment.
-      </p>
-      <p>
-        Nous construisons Captain Help! parce que chaque heure perdue sur le bord de la route est une heure perdue pour votre chiffre d'affaires. Ce secteur n'avait pas besoin d'une amélioration. Il avait besoin d'être <strong>reconstruit de zéro.</strong>
-      </p>
-    </div>
-
-    <div class="section-label reveal" style="margin-top:28px;">Comparatif</div>
-    <h2 class="section-title reveal">Captain Help! vs <em>l'assistance classique</em></h2>
-
-    <div class="reveal">
-    <table class="cmp-table" role="table" aria-label="Comparatif Captain Help! vs assistance classique">
-      <thead>
-        <tr>
-          <th>Critère</th>
-          <th>Assistance classique</th>
-          <th class="th-ch">Captain Help!</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Couverture 0 km</td>
-          <td class="td-classic"><span class="bw">⚠</span> Option payante</td>
-          <td class="td-ch"><span class="by">✓</span> Incluse dès le premier mètre</td>
-        </tr>
-        <tr>
-          <td>Caution véhicule de prêt</td>
-          <td class="td-classic"><span class="bn">✗</span> 300 € CB crédit obligatoire</td>
-          <td class="td-ch"><span class="by">✓</span> Aucune caution</td>
-        </tr>
-        <tr>
-          <td>Prise en charge de l'appel</td>
-          <td class="td-classic"><span class="bw">⚠</span> 5 à +20 min selon les circonstances</td>
-          <td class="td-ch"><span class="by">✓</span> Moins de 10 secondes, 24h/24 7j/7</td>
-        </tr>
-        <tr>
-          <td>Ce qui est couvert</td>
-          <td class="td-classic"><span class="bn">✗</span> Le véhicule enregistré uniquement</td>
-          <td class="td-ch"><span class="by">✓</span> Les conducteurs, les véhicules</td>
-        </tr>
-        <tr>
-          <td>Âge minimum véhicule de prêt</td>
-          <td class="td-classic"><span class="bw">⚠</span> 19 ans + 1 an de permis, sous réserve</td>
-          <td class="td-ch"><span class="by">✓</span> Dès 18 ans</td>
-        </tr>
-        <tr>
-          <td>Interventions / an</td>
-          <td class="td-classic"><span class="bn">✗</span> 2/an max, au-delà facturé</td>
-          <td class="td-ch"><span class="by">✓</span> 10/an par contrat, audit au-delà</td>
-        </tr>
-        <tr>
-          <td>Erreur de carburant</td>
-          <td class="td-classic"><span class="bn">✗</span> Exclue des contrats standards</td>
-          <td class="td-ch"><span class="by">✓</span> Couverte</td>
-        </tr>
-        <tr>
-          <td>Parking souterrain</td>
-          <td class="td-classic"><span class="bn">✗</span> Exclu des contrats standards</td>
-          <td class="td-ch"><span class="by">✓</span> Couvert</td>
-        </tr>
-        <tr>
-          <td>Retrait de permis</td>
-          <td class="td-classic"><span class="bn">✗</span> Non couvert</td>
-          <td class="td-ch"><span class="by">✓</span> Rapatriement conducteur + remorquage</td>
-        </tr>
-        <tr>
-          <td>Résiliation ancien contrat</td>
-          <td class="td-classic"><span class="bw">⚠</span> À votre charge</td>
-          <td class="td-ch"><span class="by">✓</span> Gérée par Captain Help!</td>
-        </tr>
-      </tbody>
-    </table>
-    </div>
-
-  </div>
-</section>
-
-</main>
-
-<!-- FOOTER -->
-<footer>
-  <div>
-    <span style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--text);">Captain<span style="color:var(--orange);">Help!</span></span>
-    <p style="margin-top:3px;">© 2026 Captain Help! — Tous droits réservés</p>
-  </div>
-  <div>
-    <a href="#" onclick="openModal('m-mentions');return false;">Mentions légales</a>
-    <a href="#" onclick="openModal('m-confidentialite');return false;">Confidentialité</a>
-  </div>
-</footer>
-
-<!-- MODALS -->
-<div class="modal-overlay" id="m-mentions" role="dialog" aria-modal="true" aria-labelledby="modal-mentions-title">
-  <div class="modal-box">
-    <button type="button" class="modal-close" onclick="closeModal('m-mentions')" aria-label="Fermer">✕</button>
-    <h2 id="modal-mentions-title">Mentions légales</h2>
-    <p><strong>Responsable de publication :</strong> Sofiane Benhaddou — Captain Help!<br><strong>Hébergement :</strong> GitHub Pages.</p>
-    <p>Ce site est une page de pré-lancement (waitlist). Aucune souscription ni paiement n'est effectué à ce stade. Les informations collectées via le formulaire sont utilisées uniquement pour vous contacter lors du lancement officiel.</p>
-    <p><em>Ces mentions seront complétées avant le lancement commercial du service.</em></p>
-  </div>
-</div>
-<div class="modal-overlay" id="m-confidentialite" role="dialog" aria-modal="true" aria-labelledby="modal-cg-title">
-  <div class="modal-box">
-    <button type="button" class="modal-close" onclick="closeModal('m-confidentialite')" aria-label="Fermer">✕</button>
-    <h2 id="modal-cg-title">Politique de confidentialité</h2>
-    <p><strong>Données collectées :</strong> adresse e-mail uniquement. Utilisée exclusivement pour vous informer du lancement de Captain Help!.</p>
-    <p><strong>Vos droits (RGPD) :</strong> accès, rectification, effacement. Contact : <strong>benhaddou.sofiane.pro@gmail.com</strong></p>
-    <p><strong>Sous-traitant formulaire :</strong> Formspree (formspree.io) — données non revendues.</p>
-  </div>
-</div>
+</div><!-- /main -->
 
 <script>
-// ── TOGGLE MODE ──────────────────────────────────────
-const modeDesc = {
-  vehicule: `Mon véhicule est assisté 24h/24, peu importe qui le conduit : Moi, mes collaborateurs, les stagiaires, etc.`,
-  mobilite: `Je suis couvert(e) de la même façon peu importe le véhicule que je conduis : voiture de fonction, de location, celle de mon/ma conjoint(e).. Ma mobilité ne s'arrête jamais, au travail ou en perso.`
-};
-let currentMode = 'vehicule';
-function setMode(m) {
-  currentMode = m;
-  document.getElementById('btnVehicule').classList.toggle('active', m==='vehicule');
-  document.getElementById('btnMobilite').classList.toggle('active', m==='mobilite');
-  const el=document.getElementById('toggleDesc'); el.textContent = modeDesc[m];
-}
-setMode('vehicule');
+let currentChoice = null;
 
-// ── FORM ─────────────────────────────────────────────
-function nxt() {
-  document.getElementById('fs1').classList.remove('active');
-  document.getElementById('fs2').classList.add('active');
-  document.getElementById('fEmail').focus();
-}
-function prv() {
-  document.getElementById('fs2').classList.remove('active');
-  document.getElementById('fs1').classList.add('active');
-}
+function choose(type) {
+  currentChoice = type;
 
-async function doSubmit() {
-  if (document.querySelector('input[name="_gotcha"]').value) return;
-  const email = document.getElementById('fEmail').value.trim();
-  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
-    document.getElementById('fEmail').focus();
-    document.getElementById('fEmail').style.borderColor = '#E74C3C';
-    return;
-  }
-  document.getElementById('fEmail').style.borderColor = '';
-  const btn = document.getElementById('submitBtn');
-  btn.textContent = 'Envoi en cours…'; btn.disabled = true;
-  const assist = document.querySelector('input[name="has_assist"]:checked');
-  const payload = {
-    email,
-    assistance_actuelle: assist ? assist.value : '—',
-    nb_vehicules_flotte: document.getElementById('fFlotte').value || '—',
-    mode_choisi: currentMode === 'vehicule' ? 'Véhicule' : 'Mobilité',
-    origin_page: 'captainhelp.eu — waitlist publique',
-    _subject: 'Nouvelle inscription Waitlist Captain Help!'
-  };
-  try {
-    const res = await fetch('https://formspree.io/f/xdapwgql', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-    if (res.ok) {
-      document.getElementById('formContent').style.display = 'none';
-      document.getElementById('fSuccess').style.display = 'block';
-    } else {
-      btn.textContent = 'Rejoindre la waitlist'; btn.disabled = false;
-      alert('Une erreur est survenue. Veuillez réessayer.');
-    }
-  } catch {
-    btn.textContent = 'Rejoindre la waitlist'; btn.disabled = false;
-    alert('Connexion impossible. Veuillez réessayer.');
-  }
+  // Hide splash, show main
+  document.getElementById('splash').classList.add('hidden');
+  const main = document.getElementById('main');
+  main.classList.add('visible');
+
+  // Show right testi track
+  document.getElementById('track-pl').classList.toggle('hidden', type !== 'pl');
+  document.getElementById('track-vl').classList.toggle('hidden', type !== 'vl');
+
+  // Show right stats
+  document.getElementById('stats-pl').style.display = type === 'pl' ? 'flex' : 'none';
+  document.getElementById('stats-vl').style.display = type === 'vl' ? 'flex' : 'none';
+
+  // Show right offer
+  document.getElementById('offer-pl').style.display = type === 'pl' ? 'block' : 'none';
+  document.getElementById('offer-vl').style.display = type === 'vl' ? 'block' : 'none';
+  // Show right compare table
+  document.getElementById('comp-pl').style.display = type === 'pl' ? 'block' : 'none';
+  document.getElementById('comp-vl').style.display = type === 'vl' ? 'block' : 'none';
+
+  // Scroll reveal
+  setTimeout(() => {
+    const obs = new IntersectionObserver(e => {
+      e.forEach(el => { if (el.isIntersecting) { el.target.classList.add('in'); obs.unobserve(el.target); } });
+    }, { threshold: .08 });
+    document.querySelectorAll('.r').forEach(el => obs.observe(el));
+  }, 100);
 }
 
-// ── REVEAL ────────────────────────────────────────────
-const ro = new IntersectionObserver(e => {
-  e.forEach(x => { if (x.isIntersecting) x.target.classList.add('vis'); });
-}, { threshold: .12 });
-document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+function resetChoice() {
+  document.getElementById('splash').classList.remove('hidden');
+  document.getElementById('main').classList.remove('visible');
+  document.querySelectorAll('.r').forEach(el => el.classList.remove('in'));
+  window.scrollTo(0, 0);
+}
 
-// ── MODALS ────────────────────────────────────────────
-function openModal(id) { document.getElementById(id).classList.add('open'); document.body.style.overflow = 'hidden'; }
-function closeModal(id) { document.getElementById(id).classList.remove('open'); document.body.style.overflow = ''; }
-document.querySelectorAll('.modal-overlay').forEach(m => {
-  m.addEventListener('click', e => { if (e.target === m) closeModal(m.id); });
-});
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.open').forEach(m => closeModal(m.id));
-});
-
-// ── CAROUSEL PAUSE ON FOCUS ───────────────────────────
-document.getElementById('carouselTrack').addEventListener('focusin', () => {
-  document.getElementById('carouselTrack').style.animationPlayState = 'paused';
-});
-document.getElementById('carouselTrack').addEventListener('focusout', () => {
-  document.getElementById('carouselTrack').style.animationPlayState = 'running';
-});
+function submitWL() {
+  const email = document.getElementById('wl-email').value.trim();
+  if (!email || !email.includes('@')) { document.getElementById('wl-email').focus(); return; }
+  document.getElementById('wl-form-wrap').style.display = 'none';
+  const s = document.getElementById('wl-success');
+  s.style.display = 'flex';
+}
 </script>
 </body>
 </html>
