@@ -108,7 +108,6 @@ nav {
 .logo { font-family: var(--fh); font-size: 17px; font-weight: 800; color: var(--ink); text-decoration: none; }
 .logo span { color: var(--o); }
 #main.vl .logo span { color: var(--gn); }
-#main.vl .logo span { color: var(--gn); }
 .nav-switch {
   font-size: 12px; color: var(--ink3); cursor: pointer; border: 1px solid var(--line);
   border-radius: 100px; padding: 5px 14px; background: transparent; font-family: var(--fb);
@@ -213,7 +212,8 @@ hr { border: none; border-top: 1px solid var(--line); margin: 0; }
 .compare { max-width: 700px; margin: 0 auto; padding: 64px 40px; }
 table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
 thead th { padding: 10px 14px; border-bottom: 2px solid var(--ink); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; text-align: left; color: var(--ink3); }
-thead th.ch { color: var(--o); background: rgba(34,197,94,.03); }
+thead th.ch { color: var(--o); background: rgba(247,88,26,.03); }
+#main.vl thead th.ch { background: rgba(34,197,94,.03); }
 tbody td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: middle; }
 tbody td:first-child { color: var(--ink); }
 tbody td:nth-child(2) { color: var(--ink3); }
@@ -235,11 +235,8 @@ tbody tr:hover td:nth-child(3) { background: rgba(34,197,94,.05); }
 .wl-form input::placeholder { color: var(--ink3); }
 .wl-form input:focus { border-color: var(--o); }
 #main.vl .wl-form input:focus { border-color: var(--gn); }
-#main.vl .wl-form input:focus { border-color: var(--gn); }
 .wl-form button { background: var(--o); color: #fff; border: none; padding: 13px 24px; border-radius: 9px; font-family: var(--fb); font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: background .15s; }
 .wl-form button:hover { background: var(--o2); }
-#main.vl .wl-form button { background: var(--gn); }
-#main.vl .wl-form button:hover { background: #128A3A; }
 #main.vl .wl-form button { background: var(--gn); }
 #main.vl .wl-form button:hover { background: #128A3A; }
 .wl-success { display: none; align-items: center; justify-content: center; gap: 10px; background: var(--gn2); border: 1.5px solid rgba(34,197,94,.3); border-radius: 12px; padding: 16px 24px; max-width: 460px; margin: 0 auto; color: var(--gn); font-size: 14px; font-weight: 500; }
@@ -277,14 +274,14 @@ footer nav a { font-size: 11px; color: var(--ink3); text-decoration: none; margi
   <div class="splash-choices">
     <div class="choice-card pl" onclick="choose('pl')">
       <h3>Poids lourds</h3>
-      <p>Camions, tracteurs, porteurs, semi-remorques. Plus de 3,5 tonnes.</p>
+      <p>Camions, tracteurs, semi-remorques. Tout ce qui dépasse 3,5 tonnes.</p>
       <div class="c-price">89 €</div>
       <div class="c-sub">HT / mois / véhicule · prix garanti</div>
       <button class="c-cta">C'est mon cas →</button>
     </div>
     <div class="choice-card vl" onclick="choose('vl')">
       <h3>Voitures &amp; utilitaires</h3>
-      <p>Berlines, SUV, vans, utilitaires. Flottes de moins de 3,5 tonnes.</p>
+      <p>Voitures de société, SUV, vans et utilitaires. Moins de 3,5 tonnes.</p>
       <div class="c-price">9,90 €</div>
       <div class="c-sub">TTC / mois / véhicule</div>
       <button class="c-cta">C'est mon cas →</button>
@@ -313,14 +310,14 @@ footer nav a { font-size: 11px; color: var(--ink3); text-decoration: none; margi
     <!-- PL track -->
     <div id="track-pl" class="ttrack">
       <div class="tcard pl"><p>« Moteur coupé sur l'autoroute à 2h d'un rendez-vous client crucial. Captain Help aurait sauvé mon planning, pas juste laissé mon camion en bord de route. »</p><div class="tn">Gestionnaire de flotte — PME logistique</div></div>
-      <div class="tcard pl"><p>« 15 minutes d'attente pour entendre que j'aurais un véhicule le lendemain. Ma journée de travail était ruinée. »</p><div class="tn">Directeur d'exploitation — Transport régional</div></div>
+      <div class="tcard pl"><p>« 15 minutes d'attente pour qu'on me dise qu'aucun camion de remplacement n'était disponible. Mon chargement, lui, attendait toujours le client. »</p><div class="tn">Directeur d'exploitation — Transport régional</div></div>
       <div class="tcard pl"><p>« Mon poids lourd est resté au garage 10 jours. L'assistance couvrait 3 jours. Pendant ce temps-là, mon exploitation tournait à moitié. »</p><div class="tn">Chef d'entreprise — 12 poids lourds</div></div>
       <div class="tcard pl"><p>« Quand un collaborateur tombe en panne, c'est une perte pour moi. Le salaire sort mais les revenus s'arrêtent. »</p><div class="tn">Chef d'entreprise — 8 camions</div></div>
       <div class="tcard pl"><p>« Deux contrats différents pour nos poids lourds et nos véhicules légers de service, deux numéros à retenir, deux factures à gérer. Intenable. »</p><div class="tn">DAF — Entreprise de transport mixte</div></div>
       <div class="tcard pl"><p>« Marre d'avoir à lire 11 pages de contrat pour savoir si ma panne est prise en charge ou non. »</p><div class="tn">Directeur d'exploitation — Transport régional</div></div>
       <!-- dup -->
       <div class="tcard pl"><p>« Moteur coupé sur l'autoroute à 2h d'un rendez-vous client crucial. Captain Help aurait sauvé mon planning, pas juste laissé mon camion en bord de route. »</p><div class="tn">Gestionnaire de flotte — PME logistique</div></div>
-      <div class="tcard pl"><p>« 15 minutes d'attente pour entendre que j'aurais un véhicule le lendemain. Ma journée de travail était ruinée. »</p><div class="tn">Directeur d'exploitation — Transport régional</div></div>
+      <div class="tcard pl"><p>« 15 minutes d'attente pour qu'on me dise qu'aucun camion de remplacement n'était disponible. Mon chargement, lui, attendait toujours le client. »</p><div class="tn">Directeur d'exploitation — Transport régional</div></div>
       <div class="tcard pl"><p>« Mon poids lourd est resté au garage 10 jours. L'assistance couvrait 3 jours. Pendant ce temps-là, mon exploitation tournait à moitié. »</p><div class="tn">Chef d'entreprise — 12 poids lourds</div></div>
       <div class="tcard pl"><p>« Quand un collaborateur tombe en panne, c'est une perte pour moi. Le salaire sort mais les revenus s'arrêtent. »</p><div class="tn">Chef d'entreprise — 8 camions</div></div>
       <div class="tcard pl"><p>« Deux contrats différents pour nos poids lourds et nos véhicules légers de service, deux numéros à retenir, deux factures à gérer. Intenable. »</p><div class="tn">DAF — Entreprise de transport mixte</div></div>
@@ -358,7 +355,7 @@ footer nav a { font-size: 11px; color: var(--ink3); text-decoration: none; margi
     <div id="stats-pl" class="hstats pl" style="display:none;">
       <div class="hstat"><div class="sv">— 10 s</div><div class="sl">Prise en charge<br>24h/24 7j/7</div></div>
       <div class="hstat"><div class="sv">Europe</div><div class="sl">40 pays<br>couverts</div></div>
-      <div class="hstat"><div class="sv">+10</div><div class="sl">Garanties incluses<br>vs marché</div></div>
+      <div class="hstat"><div class="sv">4j</div><div class="sl">Gardiennage<br>véhicule inclus</div></div>
       <div class="hstat"><div class="sv">Fixe</div><div class="sl">Prix garanti<br>sans révision</div></div>
       <div class="hstat"><div class="sv">89 €</div><div class="sl">HT / mois<br>/ véhicule</div></div>
     </div>
@@ -376,11 +373,11 @@ footer nav a { font-size: 11px; color: var(--ink3); text-decoration: none; margi
   <div id="pain-pl" style="display:none;">
     <div class="pain r">
       <div class="lbl">Ce que vous vivez aujourd'hui</div>
-      <h2 class="sec-h" style="margin-bottom:28px;">Les vraies raisons pour lesquelles <em>l'assistance actuelle ne suffit pas.</em></h2>
+      <h2 class="sec-h" style="margin-bottom:28px;">Pourquoi l'assistance classique <em>ne suffit plus.</em></h2>
       <div class="pain-grid">
         <div class="pain-card pl-card"><div class="pain-ico">Temps &amp; argent</div><h3>Une panne, c'est jusqu'à 4 000 € de chiffre d'affaires arrêté par jour</h3><p>Le véhicule est immobilisé, le chauffeur aussi. Le salaire sort. Les clients attendent.</p><div class="pain-answer">→ Prise en charge immédiate. Petites pièces incluses pour redémarrer sur place.</div></div>
-        <div class="pain-card pl-card"><div class="pain-ico">Complexité</div><h3>Deux contrats, deux numéros, deux factures pour votre flotte</h3><p>Votre contrat couvre rarement tous vos types de véhicules. Deux prestataires différents, confusion totale au pire moment. Confusion totale au pire moment.</p><div class="pain-answer">→ Un seul contrat pour l'ensemble de votre flotte, une seule facture.</div></div>
-        <div class="pain-card pl-card"><div class="pain-ico">Lisibilité</div><h3>Les exclusions, on les découvre au sinistre</h3><p>Pièces refusées, nuits d'hôtel non précisées, franchises cachées. Aucun contrat du marché ne s'engage clairement.</p><div class="pain-answer">→ Tout est écrit et chiffré avant la signature. Aucune surprise.</div></div>
+        <div class="pain-card pl-card"><div class="pain-ico">Complexité</div><h3>Deux contrats, deux numéros, deux factures pour votre flotte</h3><p>Votre contrat couvre rarement tous vos types de véhicules. Deux prestataires différents. Confusion totale au pire moment.</p><div class="pain-answer">→ Un seul contrat pour l'ensemble de votre flotte, une seule facture.</div></div>
+        <div class="pain-card pl-card"><div class="pain-ico">Lisibilité</div><h3>Les exclusions, on les découvre quand c'est trop tard</h3><p>Pièces refusées, nuits d'hôtel floues, frais cachés. La plupart des contrats ne précisent rien par écrit.</p><div class="pain-answer">→ Tout est écrit et chiffré avant la signature. Aucune surprise.</div></div>
       </div>
     </div>
   </div>
@@ -388,7 +385,7 @@ footer nav a { font-size: 11px; color: var(--ink3); text-decoration: none; margi
   <div id="pain-vl" style="display:none;">
     <div class="pain r">
       <div class="lbl">Ce que vous vivez aujourd'hui</div>
-      <h2 class="sec-h" style="margin-bottom:28px;">Les vraies raisons pour lesquelles <em>l'assistance actuelle ne suffit pas.</em></h2>
+      <h2 class="sec-h" style="margin-bottom:28px;">Pourquoi l'assistance classique <em>ne suffit plus.</em></h2>
       <div class="pain-grid">
         <div class="pain-card vl-card"><div class="pain-ico">Couverture</div><h3>Vous changez de véhicule, vous perdez votre couverture</h3><p>Location, prêt, véhicule d'un collègue — votre contrat couvre une plaque, pas vous. Dès que vous changez de volant, vous n'êtes plus protégé.</p><div class="pain-answer">→ CaptainHelp! vous couvre sur tout véhicule conduit, sans exception.</div></div>
         <div class="pain-card vl-card"><div class="pain-ico">Limites</div><h3>2 prises en charge par an. Après, vous payez</h3><p>Un collaborateur épuise son quota en janvier. En juillet, une panne — vous payez de votre poche ce que vous croyiez couvert.</p><div class="pain-answer">→ 5 interventions incluses par véhicule, réinitialisées chaque année.</div></div>
@@ -425,25 +422,24 @@ footer nav a { font-size: 11px; color: var(--ink3); text-decoration: none; margi
       <div class="ocard pl">
         <div class="otag pl">Camions &amp; poids lourds</div>
         <h3>Assistance camions &amp; poids lourds</h3>
-        
-        <p class="odesc">Tracteurs, porteurs, semi-remorques. Petites pièces, AdBlue, crevaison — tous offerts.</p>
+        <p class="odesc">Camions, tracteurs, semi-remorques. Petites pièces, AdBlue, crevaison — tout inclus dans le prix.</p>
         <div class="oprice-wrap"><span class="price-n">89 €</span><span class="price-p">HT / mois / véhicule · prix garanti</span></div>
         <ul class="ofeats">
-          <li><div class="ck pl">✓</div>Dépannage 24h/7j — Europe, 40 pays</li>
-          <li><div class="ck pl">✓</div>Véhicule seul ou avec remorque couverts</li>
-          <li><div class="ck pl">✓</div>Remorquage, relevage, grutage inclus</li>
+          <li><div class="ck pl">✓</div>Dépannage 24h/7j partout en Europe</li>
+          <li><div class="ck pl">✓</div>Camion seul ou avec sa remorque — couvert dans les deux cas</li>
+          <li><div class="ck pl">✓</div>Remorquage, relevage et dépannage en fossé inclus</li>
           <li><div class="ck pl">✓</div>Petites pièces incluses (batterie, fusibles, courroies…)</li>
-          <li><div class="ck pl">✓</div>AdBlue offert — 30 L / sinistre</li>
-          <li><div class="ck pl">✓</div>Réparation crevaison sur place jusqu'à 65 €</li>
-          <li><div class="ck pl">✓</div>4 nuits d'hôtel — 120 € / nuit, contractualisées</li>
+          <li><div class="ck pl">✓</div>AdBlue offert — 30 litres par intervention</li>
+          <li><div class="ck pl">✓</div>Réparation crevaison sur place incluse</li>
+          <li><div class="ck pl">✓</div>4 nuits d'hôtel prévues — 120 € la nuit, écrit dans votre contrat</li>
           <li><div class="ck pl">✓</div>Avance de fonds d'urgence à l'étranger</li>
           <li><div class="ck pl">✓</div>Conseiller dédié nommé dès 10 véhicules</li>
           <li><div class="ck pl">✓</div>Dashboard flotte + rapport mensuel</li>
         </ul>
         <div class="odiv"></div>
         <ul class="olims">
-          <li><div class="ld"></div>Pièces de remplacement (moteur, boîte de vitesses…) non incluses</li>
-          <li><div class="ld"></div>Frais de réparation garage non couverts</li>
+          <li><div class="ld"></div>Réparations au garage (moteur, boîte de vitesses…) à votre charge</li>
+          <li><div class="ld"></div>Pièces de remplacement (hors petites pièces) non incluses</li>
         </ul>
         <button class="obtn pl" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Rejoindre la waitlist</button>
       </div>
@@ -465,7 +461,7 @@ footer nav a { font-size: 11px; color: var(--ink3); text-decoration: none; margi
           <li><div class="ck vl">✓</div>1 nuit d'hôtel si immobilisation &gt; 12h</li>
           <li><div class="ck vl">✓</div>Erreur de carburant &amp; parking souterrain couverts</li>
           <li><div class="ck vl">✓</div>5 interventions / an incluses</li>
-          <li><div class="ck vl">✓</div>Accompagnement à la transition depuis votre contrat actuel</li>
+          <li><div class="ck vl">✓</div>Résiliation de votre ancien contrat — on s'en occupe</li>
         </ul>
         <div class="odiv"></div>
         <ul class="olims">
@@ -491,13 +487,13 @@ footer nav a { font-size: 11px; color: var(--ink3); text-decoration: none; margi
           <tr><td>Couverture 0 km</td><td class="warn">Option payante</td><td>✓ Dès le 1er mètre</td></tr>
           <tr><td>Couverture sur tout véhicule conduit</td><td class="no">Votre véhicule uniquement</td><td>✓ Quel que soit le volant</td></tr>
           <tr><td>Caution véhicule de remplacement</td><td class="no">300 € CB requis</td><td>✓ Aucune caution</td></tr>
-          <tr><td>Prise en charge de l'appel</td><td class="warn">Temps d'attente variable</td><td>✓ Prise en charge immédiate</td></tr>
+          <tr><td>Délai de réponse</td><td class="warn">5 à 20 min selon les circonstances</td><td>✓ Réponse immédiate</td></tr>
           <tr><td>Âge minimum conducteur</td><td class="warn">19 ans + 1 an de permis</td><td>✓ Dès 18 ans</td></tr>
-          <tr><td>Interventions incluses / an</td><td class="no">2 max, au-delà facturé</td><td>✓ 5 / an</td></tr>
+          <tr><td>Interventions par an</td><td class="no">2 max — au-delà, vous payez</td><td>✓ 5 incluses</td></tr>
           <tr><td>Erreur de carburant</td><td class="no">Exclue</td><td>✓ Couverte</td></tr>
           <tr><td>Parking souterrain</td><td class="no">Exclu</td><td>✓ Couvert</td></tr>
           <tr><td>Perte de permis</td><td class="no">Non couvert</td><td>✓ Tous motifs</td></tr>
-          <tr><td>Prix</td><td class="no">Révisable chaque année</td><td>✓ Stable, sans révision</td></tr>
+          <tr><td>Tarif</td><td class="no">Révisable chaque année</td><td>✓ Stable, sans révision</td></tr>
         </tbody>
       </table>
     </div>
@@ -512,9 +508,9 @@ footer nav a { font-size: 11px; color: var(--ink3); text-decoration: none; margi
           <tr><td>Nuits d'hôtel conducteur</td><td class="warn">Incluses, nombre non précisé</td><td>✓ 4 nuits, contractualisées</td></tr>
           <tr><td>Repas conducteur bloqué</td><td class="no">Non</td><td>✓ Inclus</td></tr>
           <tr><td>Avance de fonds à l'étranger</td><td class="no">Non</td><td>✓ Incluse</td></tr>
-          <tr><td>Prise en charge de l'appel</td><td class="warn">Temps d'attente variable</td><td>✓ Prise en charge immédiate</td></tr>
+          <tr><td>Délai de réponse</td><td class="warn">5 à 20 min selon les circonstances</td><td>✓ Réponse immédiate</td></tr>
           <tr><td>Contrat flotte mixte unifié</td><td class="no">Deux contrats séparés</td><td>✓ Un seul contrat</td></tr>
-          <tr><td>Prix</td><td class="no">Révisable chaque année</td><td>✓ Stable, sans révision</td></tr>
+          <tr><td>Tarif</td><td class="no">Révisable chaque année</td><td>✓ Stable, sans révision</td></tr>
         </tbody>
       </table>
     </div>
@@ -525,10 +521,10 @@ footer nav a { font-size: 11px; color: var(--ink3); text-decoration: none; margi
   <!-- WAITLIST -->
   <div class="cta r" id="waitlist">
     <h2 id="cta-h2">Soyez prévenu<br>en <em>avant-première.</em></h2>
-    <p>CaptainHelp! arrive bientôt. Inscrivez-vous pour être parmi les premiers à en profiter.</p>
+    <p>CaptainHelp! arrive bientôt. Inscrivez-vous maintenant pour être parmi les premiers.</p>
     <div id="wl-form-wrap">
       <div class="wl-form">
-        <input type="email" id="wl-email" placeholder="Votre adresse email professionnelle">
+        <input type="email" id="wl-email" placeholder="Votre email professionnel">
         <button type="button" onclick="submitWL()">Je m'inscris</button>
       </div>
       <p class="wl-note">Aucun spam. Vous serez notifié à l'ouverture, c'est tout.</p>
@@ -599,7 +595,7 @@ function choose(type) {
     },
     vl: {
       title: `CaptainHelp! — Assistance flottes voitures & utilitaires`,
-      h1: `Votre assistance couvre votre voiture.<br><em>Nous, on vous couvre vous.</em>`,
+      h1: `Votre assistance couvre votre voiture.<br><em>Nous couvrons le conducteur,<br>pas la plaque.</em>`,
       sub: `Peu importe le volant entre vos mains — voiture de fonction, location, celle d'un collègue. <strong>Un seul contrat</strong> pour toute votre flotte légère.`,
       quote: `Ce secteur n'avait pas besoin d'une amélioration. Il avait besoin d'être reconstruit de zéro.`,
       who: `<p>Les autres couvrent <strong>une plaque d'immatriculation</strong>. Nous couvrons <strong>le conducteur</strong>.</p><p>Quel que soit le véhicule conduit — flotte, location, prêt, personnel. Et pour toute votre flotte légère : <strong>un seul contrat, une seule facture.</strong></p>`,
