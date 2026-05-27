@@ -3,921 +3,609 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CaptainHelp! — L'assistance routière qui te couvre, toi. Pas juste ta voiture. 9,90€ TTC/mois.">
 <title>CaptainHelp! — L'assistance routière repensée</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <style>
 :root {
   --o:#F7581A; --o2:#E04A0E; --o3:#FFF3EE;
-  --bg2:#F2F2F0;
+  --bg:#FAFAFA; --bg2:#F2F2F0;
   --ink:#111; --ink2:#444; --ink3:#888;
   --line:#E8E8E8; --gn:#16A34A; --gn2:#F0FDF4;
   --fh:'Bricolage Grotesque',sans-serif;
   --fb:'DM Sans',sans-serif;
 }
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: var(--fb); color: var(--ink); overflow-x: hidden; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-  background-color: #FAFAFA;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--fb);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  background-color:#FAFAFA;
   background-image:
-    radial-gradient(ellipse at 0% 0%,    rgba(247,88,26,.36) 0px, transparent 50%),
-    radial-gradient(ellipse at 100% 0%,  rgba(34,197,94,.28) 0px, transparent 46%),
-    radial-gradient(ellipse at 0% 100%,  rgba(34,197,94,.26) 0px, transparent 44%),
-    radial-gradient(ellipse at 100% 100%,rgba(247,88,26,.26) 0px, transparent 44%),
-    radial-gradient(ellipse at 50% 50%,  rgba(255,255,255,.50) 0px, transparent 50%);
+    radial-gradient(ellipse at 0% 0%,    rgba(247,88,26,.32) 0px,transparent 50%),
+    radial-gradient(ellipse at 100% 0%,  rgba(34,197,94,.24) 0px,transparent 46%),
+    radial-gradient(ellipse at 0% 100%,  rgba(34,197,94,.22) 0px,transparent 44%),
+    radial-gradient(ellipse at 100% 100%,rgba(247,88,26,.22) 0px,transparent 44%),
+    radial-gradient(ellipse at 50% 50%,  rgba(255,255,255,.55) 0px,transparent 50%);
 }
-
-/* ═══════════════════════════════
-   CHOICE SPLASH SCREEN
-═══════════════════════════════ */
-#splash {
-  position: fixed; inset: 0; z-index: 999;
-  background: #FAFAFA;
-  background-image:
-    radial-gradient(ellipse at 0% 0%,    rgba(247,88,26,.32) 0px, transparent 50%),
-    radial-gradient(ellipse at 100% 0%,  rgba(34,197,94,.26) 0px, transparent 46%),
-    radial-gradient(ellipse at 0% 100%,  rgba(34,197,94,.24) 0px, transparent 44%),
-    radial-gradient(ellipse at 100% 100%,rgba(247,88,26,.24) 0px, transparent 44%),
-    radial-gradient(ellipse at 50% 50%,  rgba(255,255,255,.58) 0px, transparent 50%);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  padding: 40px; text-align: center;
-  transition: opacity .4s ease, visibility .4s ease;
-}
-#splash.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-
-.splash-logo { font-family: var(--fh); font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 48px; }
-.splash-logo span { color: var(--o); }
-
-.splash-title { font-family: var(--fh); font-size: clamp(22px,3.5vw,40px); font-weight: 800; letter-spacing: -1.2px; line-height: 1.1; margin-bottom: 40px; }
-.splash-title em { font-style: italic; color: var(--o); }
-
-.splash-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 680px; width: 100%; }
-@media (max-width: 560px) {
-  .splash-choices { grid-template-columns: 1fr; max-width: 360px; }
-  .splash-title { font-size: 26px; }
-  #splash { padding: 32px 24px; }
-  .choice-card { padding: 28px 24px; }
-}
-
-.choice-card {
-  background: #fff; border: 2px solid var(--line); border-radius: 18px; padding: 40px 36px;
-  cursor: pointer; text-align: left; transition: all .2s; position: relative; overflow: hidden;
-}
-.choice-card:hover { transform: translateY(-3px); }
-.choice-card.pl:hover { border-color: var(--o); box-shadow: 0 8px 32px rgba(247,88,26,.15); }
-.choice-card.vl:hover { border-color: var(--gn); box-shadow: 0 8px 32px rgba(34,197,94,.15); }
-
-
-.choice-card h3 { font-family: var(--fh); font-size: 22px; font-weight: 800; letter-spacing: -.5px; margin-bottom: 8px; margin-top: 4px; }
-.choice-card p { font-size: 13px; color: var(--ink3); line-height: 1.6; margin-bottom: 20px; }
-.choice-card .c-price { font-family: var(--fh); font-size: 26px; font-weight: 800; letter-spacing: -1px; }
-.choice-card.pl .c-price { color: var(--o); }
-.choice-card.vl .c-price { color: var(--gn); }
-.choice-card .c-sub { font-size: 11px; color: var(--ink3); margin-top: 2px; }
-.choice-card .c-cta {
-  display: inline-flex; align-items: center; gap: 6px; margin-top: 20px;
-  font-size: 13px; font-weight: 600; padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; transition: all .15s; font-family: var(--fb);
-}
-.choice-card.pl .c-cta { background: var(--o); color: #fff; }
-.choice-card.pl .c-cta:hover { background: var(--o2); }
-.choice-card.vl .c-cta { background: var(--gn); color: #fff; }
-.choice-card.vl .c-cta:hover { background: #128A3A; }
-
-/* Accent bar at top of card */
-.choice-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 18px 18px 0 0; }
-.choice-card.pl::before { background: var(--o); }
-.choice-card.vl::before { background: var(--gn); }
-
-/* ═══════════════════════════════
-   MAIN PAGE (hidden until choice)
-═══════════════════════════════ */
-#main { opacity: 0; transition: opacity .5s ease; pointer-events: none; }
-#main.visible { opacity: 1; pointer-events: all; }
 
 /* NAV */
-nav {
-  position: sticky; top: 0; z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 40px; height: 56px;
-  background: rgba(250,250,250,.90); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--line);
+nav{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;height:56px;
+  background:rgba(250,250,250,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--line);
 }
-.logo { font-family: var(--fh); font-size: 17px; font-weight: 800; color: var(--ink); text-decoration: none; }
-.logo span { color: var(--o); }
-#main.vl .logo span { color: var(--gn); }
-.nav-switch {
-  font-size: 12px; color: var(--ink3); cursor: pointer; border: 1px solid var(--line);
-  border-radius: 100px; padding: 5px 14px; background: transparent; font-family: var(--fb);
-  transition: all .15s;
+.logo{font-family:var(--fh);font-size:17px;font-weight:800;color:var(--ink);text-decoration:none}
+.logo span{color:var(--o)}
+.nav-cta{
+  background:var(--o);color:#fff;border:none;
+  padding:9px 20px;border-radius:8px;font-family:var(--fb);font-size:13px;font-weight:600;
+  cursor:pointer;text-decoration:none;transition:background .15s;white-space:nowrap;
 }
-.nav-switch:hover { border-color: var(--ink3); color: var(--ink); }
-.nav-cta { background: var(--o); color: #fff; border: none; padding: 9px 20px; border-radius: 8px; font-family: var(--fb); font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; transition: background .15s; }
-.nav-cta:hover { background: var(--o2); }
+.nav-cta:hover{background:var(--o2)}
 
-/* HERO — title first, then testi band, then rest */
-.hero-top { max-width: 700px; margin: 0 auto; padding: 64px 40px 40px; text-align: center; }
-h1 { font-family: var(--fh); font-size: clamp(34px,5.2vw,58px); font-weight: 800; letter-spacing: -1.8px; line-height: 1.08; margin-bottom: 16px; }
-h1 em { font-style: italic; color: var(--o); }
-#main.vl h1 em { color: var(--gn); }
+/* TESTI BAND */
+.tband{background:rgba(242,242,240,.65);border-bottom:1px solid var(--line);padding:16px 0;overflow:hidden;position:relative}
+.tband::before,.tband::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
+.tband::before{left:0;background:linear-gradient(to right,rgba(242,242,240,.95),transparent)}
+.tband::after{right:0;background:linear-gradient(to left,rgba(242,242,240,.95),transparent)}
+.ttrack{display:flex;gap:12px;width:max-content;animation:mar 55s linear infinite}
+.ttrack:hover{animation-play-state:paused}
+@keyframes mar{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tcard{
+  background:rgba(255,255,255,.85);border:1px solid var(--line);
+  border-left:2px solid rgba(247,88,26,.3);border-radius:10px;
+  padding:12px 16px;width:270px;flex-shrink:0;
+}
+.tcard p{font-size:12px;color:var(--ink2);line-height:1.65;font-style:italic}
+.tcard .tn{font-size:10px;color:var(--ink3);margin-top:6px;font-weight:500;text-transform:uppercase;letter-spacing:.5px}
 
-/* TESTI BAND — between h1 and CTAs */
-.tband { background: rgba(242,242,240,.65); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 16px 0; overflow: hidden; position: relative; }
-.tband::before, .tband::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none; }
-.tband::before { left: 0; background: linear-gradient(to right, rgba(242,242,240,.95), transparent); }
-.tband::after  { right: 0; background: linear-gradient(to left,  rgba(242,242,240,.95), transparent); }
-.ttrack { display: flex; gap: 12px; width: max-content; animation: mar 60s linear infinite; }
-.ttrack:hover { animation-play-state: paused; }
-.ttrack.hidden { display: none; }
-@keyframes mar { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.tcard { background: rgba(255,255,255,.85); border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; width: 270px; flex-shrink: 0; }
-.tcard p { font-size: 12px; color: var(--ink2); line-height: 1.65; font-style: italic; }
-.tcard .tn { font-size: 10px; color: var(--ink3); margin-top: 6px; font-weight: 500; text-transform: uppercase; letter-spacing: .5px; display: flex; align-items: center; gap: 5px; }
-.tcard .tn::before { content: ''; width: 8px; height: 2px; border-radius: 2px; flex-shrink: 0; }
-.tcard.vl .tn::before { background: var(--gn); }
-.tcard.pl .tn::before { background: var(--o); }
-.tcard.vl { border-left: 2px solid rgba(34,197,94,.3); }
-.tcard.pl { border-left: 2px solid rgba(247,88,26,.3); }
+/* HERO */
+.hero-top{max-width:680px;margin:0 auto;padding:64px 40px 36px;text-align:center}
+h1{font-family:var(--fh);font-size:clamp(32px,5vw,56px);font-weight:800;letter-spacing:-1.8px;line-height:1.08;margin-bottom:0}
+h1 em{font-style:italic;color:var(--o)}
+.hero-bottom{max-width:680px;margin:0 auto;padding:36px 40px 64px;text-align:center}
+.hsub{font-size:16px;font-weight:300;color:var(--ink2);line-height:1.75;max-width:460px;margin:0 auto 28px}
+.hsub strong{color:var(--ink);font-weight:500}
+.hctas{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+.bto{
+  background:var(--o);color:#fff;border:none;
+  padding:13px 26px;border-radius:9px;font-family:var(--fb);font-size:14px;font-weight:600;
+  cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all .15s;
+}
+.bto:hover{background:var(--o2);transform:translateY(-1px);box-shadow:0 6px 18px rgba(247,88,26,.22)}
+.bline{
+  background:rgba(255,255,255,.7);color:var(--ink2);border:1.5px solid var(--line);
+  padding:13px 26px;border-radius:9px;font-family:var(--fb);font-size:14px;font-weight:400;
+  cursor:pointer;text-decoration:none;transition:all .15s;
+}
+.bline:hover{border-color:#aaa;color:var(--ink)}
+.hstats{
+  display:flex;gap:0;border:1.5px solid rgba(247,88,26,.2);border-radius:12px;
+  background:rgba(255,255,255,.75);backdrop-filter:blur(8px);overflow:hidden;
+  max-width:580px;margin:0 auto;
+}
+.hstat{flex:1;padding:14px 8px;text-align:center;border-right:1.5px solid var(--line)}
+.hstat:last-child{border-right:none}
+.sv{font-family:var(--fh);font-size:16px;font-weight:800;letter-spacing:-.5px;color:var(--o)}
+.sl{font-size:10px;color:var(--ink3);margin-top:2px;line-height:1.4}
 
-/* HERO BOTTOM — CTAs + stats after testi band */
-.hero-bottom { max-width: 700px; margin: 0 auto; padding: 40px 40px 64px; text-align: center; }
-.hsub { font-size: 16px; font-weight: 300; color: var(--ink2); line-height: 1.75; max-width: 500px; margin: 0 auto 28px; }
-.hsub strong { color: var(--ink); font-weight: 500; }
-.hctas { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 36px; }
-.bto { background: var(--o); color: #fff; border: none; padding: 13px 26px; border-radius: 9px; font-family: var(--fb); font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: all .15s; }
-.bto:hover { background: var(--o2); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(247,88,26,.22); }
-.bline { background: rgba(255,255,255,.7); color: var(--ink2); border: 1.5px solid var(--line); padding: 13px 26px; border-radius: 9px; font-family: var(--fb); font-size: 14px; font-weight: 400; cursor: pointer; text-decoration: none; transition: all .15s; }
-.bline:hover { border-color: #aaa; color: var(--ink); }
-
-/* Stats — single row, for chosen offer */
-.hstats { display: flex; border: 1.5px solid var(--line); border-radius: 12px; background: rgba(255,255,255,.75); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); overflow: hidden; max-width: 580px; margin: 0 auto; }
-.hstats.vl { border-color: rgba(34,197,94,.25); }
-.hstats.pl { border-color: rgba(247,88,26,.22); }
-.hstat { flex: 1; padding: 13px 10px; text-align: center; border-right: 1.5px solid var(--line); }
-.hstat:last-child { border-right: none; }
-.sv { font-family: var(--fh); font-size: 17px; font-weight: 800; letter-spacing: -.5px; }
-.hstats.vl .sv { color: var(--gn); }
-.hstats.pl .sv { color: var(--o); }
-.sl { font-size: 10px; color: var(--ink3); margin-top: 2px; line-height: 1.4; }
-
-hr { border: none; border-top: 1px solid var(--line); margin: 0; }
+hr{border:none;border-top:1px solid var(--line);margin:0}
 
 /* WHO */
-.who { max-width: 900px; margin: 0 auto; padding: 64px 40px; display: grid; grid-template-columns: 1fr 1.3fr; gap: 64px; align-items: start; }
-.lbl { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--o); margin-bottom: 10px; }
-#main.vl .lbl { color: var(--gn); }
-.sec-h { font-family: var(--fh); font-size: clamp(22px,3vw,34px); font-weight: 800; letter-spacing: -1px; line-height: 1.1; }
-.sec-h em { font-style: italic; color: var(--ink3); }
-.who-r .quote { font-size: 17px; font-weight: 700; letter-spacing: -.3px; line-height: 1.45; border-left: 3px solid var(--o); padding-left: 18px; margin-bottom: 20px; color: var(--ink); }
-#main.vl .who-r .quote { border-left-color: var(--gn); }
-.who-r p { font-size: 14px; color: var(--ink2); line-height: 1.8; font-weight: 300; }
-.who-r p + p { margin-top: 12px; }
-.who-r p strong { color: var(--ink); font-weight: 500; }
+.who{max-width:880px;margin:0 auto;padding:64px 40px;display:grid;grid-template-columns:1fr 1.3fr;gap:64px;align-items:start}
+.lbl{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--o);margin-bottom:10px}
+.sec-h{font-family:var(--fh);font-size:clamp(22px,3vw,34px);font-weight:800;letter-spacing:-1px;line-height:1.1}
+.sec-h em{font-style:italic;color:var(--ink3)}
+.who-r .quote{
+  font-size:16px;font-weight:700;letter-spacing:-.2px;line-height:1.5;
+  border-left:3px solid var(--o);padding-left:18px;margin-bottom:20px;color:var(--ink);
+}
+.who-r p{font-size:14px;color:var(--ink2);line-height:1.8;font-weight:300}
+.who-r p+p{margin-top:12px}
+.who-r p strong{color:var(--ink);font-weight:500}
 
-/* OFFERS */
-.offers { max-width: 620px; margin: 0 auto; padding: 64px 40px; }
-.offers-head { margin-bottom: 28px; }
-.ocard { background: rgba(255,255,255,.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1.5px solid var(--line); border-radius: 16px; padding: 36px; }
-.ocard.vl { border-color: rgba(34,197,94,.3); box-shadow: 0 2px 16px rgba(34,197,94,.07); }
-.ocard.pl { border-color: rgba(247,88,26,.3); box-shadow: 0 2px 16px rgba(247,88,26,.07); }
-.otag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; margin-bottom: 14px; }
-.otag.vl { background: var(--gn2); color: var(--gn); }
-.otag.pl { background: var(--o3); color: var(--o); }
-.ocard h3 { font-family: var(--fh); font-size: 20px; font-weight: 700; letter-spacing: -.4px; margin-bottom: 4px; }
-.cline { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
-.cline.vl { color: var(--gn); }
-.cline.pl { color: var(--o); }
-.odesc { font-size: 13px; color: var(--ink3); margin-bottom: 22px; line-height: 1.6; }
-.oprice-wrap { display: flex; align-items: baseline; gap: 4px; margin-bottom: 20px; }
-.price-n { font-family: var(--fh); font-size: 40px; font-weight: 800; letter-spacing: -2px; color: var(--ink); }
-.price-p { font-size: 12.5px; color: var(--ink3); }
-.ofeats { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 22px; }
-.ofeats li { display: flex; align-items: flex-start; gap: 9px; font-size: 13.5px; color: var(--ink2); line-height: 1.45; }
-.ck { width: 16px; height: 16px; border-radius: 50%; flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center; font-size: 9px; }
-.ck.vl { background: var(--gn2); color: var(--gn); }
-.ck.pl { background: var(--o3); color: var(--o); }
-.odiv { height: 1px; background: var(--line); margin: 18px 0; }
-.olims { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-.olims li { display: flex; gap: 8px; font-size: 12px; color: var(--ink3); line-height: 1.4; align-items: flex-start; }
-.ld { width: 3px; height: 3px; border-radius: 50%; background: var(--ink3); flex-shrink: 0; margin-top: 5px; }
-.obtn { width: 100%; margin-top: 20px; padding: 13px; border-radius: 9px; font-family: var(--fb); font-size: 14px; font-weight: 600; cursor: pointer; transition: all .15s; border: none; }
-.obtn.vl { background: var(--gn); color: #fff; }
-.obtn.vl:hover { background: #128A3A; }
-.obtn.pl { background: var(--o); color: #fff; }
-.obtn.pl:hover { background: var(--o2); }
+/* DIGITAL STRIP */
+.digital{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:40px}
+.digital-inner{max-width:880px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.dcard{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:24px 20px}
+.dcard .dico{font-size:22px;margin-bottom:12px;display:block}
+.dcard h4{font-family:var(--fh);font-size:14.5px;font-weight:700;letter-spacing:-.2px;margin-bottom:6px}
+.dcard p{font-size:12.5px;color:var(--ink3);line-height:1.65}
+
+/* OFFER */
+.offer-section{max-width:540px;margin:0 auto;padding:64px 40px}
+.ocard{
+  background:rgba(255,255,255,.85);backdrop-filter:blur(8px);
+  border:1.5px solid rgba(247,88,26,.28);border-radius:16px;padding:36px;
+  box-shadow:0 2px 16px rgba(247,88,26,.07);
+}
+.otag{
+  display:inline-block;font-size:10px;font-weight:700;letter-spacing:1.2px;
+  text-transform:uppercase;padding:3px 10px;border-radius:100px;
+  margin-bottom:14px;background:var(--o3);color:var(--o);
+}
+.ocard h3{font-family:var(--fh);font-size:20px;font-weight:700;letter-spacing:-.4px;margin-bottom:4px}
+.cline{font-size:14px;font-weight:600;color:var(--o);margin-bottom:10px;line-height:1.4}
+.odesc{font-size:13px;color:var(--ink3);margin-bottom:22px;line-height:1.6}
+.oprice-wrap{display:flex;align-items:baseline;gap:4px;margin-bottom:6px}
+.price-n{font-family:var(--fh);font-size:40px;font-weight:800;letter-spacing:-2px;color:var(--ink)}
+.price-p{font-size:12.5px;color:var(--ink3)}
+.price-engage{
+  font-size:12px;color:var(--ink3);margin-bottom:20px;
+  background:var(--bg2);border-radius:8px;padding:8px 12px;line-height:1.6;
+}
+.price-engage strong{color:var(--ink);font-weight:600}
+.ofeats{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:22px}
+.ofeats li{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;color:var(--ink2);line-height:1.45}
+.ck{
+  width:16px;height:16px;border-radius:50%;flex-shrink:0;margin-top:1px;
+  background:var(--gn2);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--gn);
+}
+.odiv{height:1px;background:var(--line);margin:18px 0}
+.olims{list-style:none;display:flex;flex-direction:column;gap:6px}
+.olims li{display:flex;gap:8px;font-size:12px;color:var(--ink3);line-height:1.4;align-items:flex-start}
+.ld{width:3px;height:3px;border-radius:50%;background:var(--ink3);flex-shrink:0;margin-top:5px}
+.excl-note{font-size:11px;color:var(--ink3);margin-top:12px;line-height:1.6}
+.obtn{
+  width:100%;margin-top:20px;padding:13px;border-radius:9px;font-family:var(--fb);
+  font-size:14px;font-weight:600;cursor:pointer;transition:all .15s;
+  border:none;background:var(--o);color:#fff;
+}
+.obtn:hover{background:var(--o2)}
 
 /* COMPARE */
-.compare { max-width: 700px; margin: 0 auto; padding: 64px 40px; }
-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
-thead th { padding: 10px 14px; border-bottom: 2px solid var(--ink); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; text-align: left; color: var(--ink3); }
-thead th.ch { color: var(--o); background: rgba(247,88,26,.03); }
-#main.vl thead th.ch { background: rgba(34,197,94,.03); }
-tbody td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: middle; }
-tbody td:first-child { color: var(--ink); }
-tbody td:nth-child(2) { color: var(--ink3); }
-tbody td:nth-child(3) { color: var(--gn); font-weight: 500; background: rgba(34,197,94,.025); }
-tbody tr:last-child td { border-bottom: none; }
-tbody tr:hover td { background: rgba(0,0,0,.012); }
-tbody tr:hover td:nth-child(3) { background: rgba(34,197,94,.05); }
-.no { color: #DC2626 !important; }
-.warn { color: #B45309 !important; }
+.compare{max-width:660px;margin:0 auto;padding:64px 40px}
+.compare .sec-h{margin-bottom:32px}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+thead th{
+  padding:10px 14px;border-bottom:2px solid var(--ink);
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+  text-align:left;color:var(--ink3);
+}
+thead th.ch{color:var(--o);background:rgba(34,197,94,.03)}
+tbody td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
+tbody td:first-child{color:var(--ink)}
+tbody td:nth-child(2){color:var(--ink3)}
+tbody td:nth-child(3){color:var(--gn);font-weight:500;background:rgba(34,197,94,.025)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:rgba(0,0,0,.012)}
+tbody tr:hover td:nth-child(3){background:rgba(34,197,94,.05)}
+.no{color:#DC2626!important}
+.warn{color:#B45309!important}
 
 /* WAITLIST */
-.cta { background: var(--bg2); color: var(--ink); padding: 80px 40px; text-align: center; border-top: 1px solid var(--line); }
-.cta h2 { font-family: var(--fh); font-size: clamp(26px,4vw,50px); font-weight: 800; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 14px; }
-.cta h2 em { font-style: italic; color: var(--o); }
-#main.vl .cta h2 em { color: var(--gn); }
-.cta p { font-size: 15px; color: var(--ink3); font-weight: 300; max-width: 380px; margin: 0 auto 32px; line-height: 1.75; }
-.wl-form { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; max-width: 460px; margin: 0 auto; }
-.wl-form input { flex: 1; min-width: 220px; padding: 13px 18px; border-radius: 9px; border: 1.5px solid var(--line); background: #fff; color: var(--ink); font-family: var(--fb); font-size: 14px; outline: none; transition: border-color .15s; }
-.wl-form input::placeholder { color: var(--ink3); }
-.wl-form input:focus { border-color: var(--o); }
-#main.vl .wl-form input:focus { border-color: var(--gn); }
-.wl-form button { background: var(--o); color: #fff; border: none; padding: 13px 24px; border-radius: 9px; font-family: var(--fb); font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: background .15s; }
-.wl-form button:hover { background: var(--o2); }
-#main.vl .wl-form button { background: var(--gn); }
-#main.vl .wl-form button:hover { background: #128A3A; }
-.wl-success { display: none; align-items: center; justify-content: center; gap: 10px; background: var(--gn2); border: 1.5px solid rgba(34,197,94,.3); border-radius: 12px; padding: 16px 24px; max-width: 460px; margin: 0 auto; color: var(--gn); font-size: 14px; font-weight: 500; }
-.wl-note { font-size: 12px; color: var(--ink3); margin-top: 12px; }
+.cta{background:var(--bg2);color:var(--ink);padding:80px 40px;text-align:center;border-top:1px solid var(--line)}
+.cta h2{font-family:var(--fh);font-size:clamp(26px,4vw,50px);font-weight:800;letter-spacing:-1.5px;line-height:1.1;margin-bottom:14px}
+.cta h2 em{font-style:italic;color:var(--o)}
+.cta p{font-size:15px;color:var(--ink3);font-weight:300;max-width:380px;margin:0 auto 32px;line-height:1.75}
+.wl-form{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;max-width:460px;margin:0 auto}
+.wl-form input{
+  flex:1;min-width:200px;padding:13px 18px;border-radius:9px;
+  border:1.5px solid var(--line);background:#fff;color:var(--ink);
+  font-family:var(--fb);font-size:14px;outline:none;transition:border-color .15s;
+}
+.wl-form input::placeholder{color:var(--ink3)}
+.wl-form input:focus{border-color:var(--o)}
+.wl-form button{
+  background:var(--o);color:#fff;border:none;padding:13px 24px;border-radius:9px;
+  font-family:var(--fb);font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .15s;
+}
+.wl-form button:hover{background:var(--o2)}
+.wl-note{font-size:12px;color:var(--ink3);margin-top:12px}
+.wl-success{
+  display:none;align-items:center;justify-content:center;gap:10px;
+  background:var(--gn2);border:1.5px solid rgba(34,197,94,.3);border-radius:12px;
+  padding:16px 24px;max-width:460px;margin:0 auto;color:var(--gn);font-size:14px;font-weight:500;
+}
 
-footer { padding: 22px 40px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; background: var(--bg2); }
-.flogo { font-family: var(--fh); font-size: 14px; font-weight: 800; color: var(--ink3); }
-.flogo span { color: var(--o); opacity: .6; }
-footer small { font-size: 11px; color: var(--ink3); }
-footer nav a { font-size: 11px; color: var(--ink3); text-decoration: none; margin-left: 14px; }
+footer{
+  padding:22px 40px;border-top:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  background:var(--bg2);
+}
+.flogo{font-family:var(--fh);font-size:14px;font-weight:800;color:var(--ink3)}
+.flogo span{color:var(--o);opacity:.6}
+footer small{font-size:11px;color:var(--ink3)}
+footer nav a{font-size:11px;color:var(--ink3);text-decoration:none;margin-left:14px;cursor:pointer}
 
-.r { opacity: 0; transform: translateY(18px); transition: opacity .45s ease, transform .45s ease; }
-.r.in { opacity: 1; transform: none; }
+.r{opacity:0;transform:translateY(18px);transition:opacity .45s ease,transform .45s ease}
+.r.in{opacity:1;transform:none}
 
-/* PAIN CARDS */
-.pain { max-width: 900px; margin: 0 auto; padding: 64px 40px; }
-.pain-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 32px; }
-.pain-card { background: rgba(255,255,255,.8); border: 1.5px solid var(--line); border-radius: 14px; padding: 28px 24px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
-.pain-card.pl-card { border-top: 3px solid var(--o); }
-.pain-card.vl-card { border-top: 3px solid var(--gn); }
-.pain-ico { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; }
-.pain-card.pl-card .pain-ico { color: var(--o); }
-.pain-card.vl-card .pain-ico { color: var(--gn); }
-.pain-card h3 { font-family: var(--fh); font-size: 15px; font-weight: 700; letter-spacing: -.3px; line-height: 1.3; margin-bottom: 10px; }
-.pain-card p { font-size: 13px; color: var(--ink3); line-height: 1.7; margin-bottom: 14px; }
-.pain-answer { font-size: 12.5px; font-weight: 500; color: var(--ink2); border-top: 1px solid var(--line); padding-top: 12px; line-height: 1.5; }
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{padding:0 20px}
+  .hero-top{padding:40px 20px 24px}
+  .hero-bottom{padding:24px 20px 48px}
+  h1{font-size:clamp(28px,8vw,44px);letter-spacing:-1.2px}
+  .hstats{flex-wrap:wrap;border-radius:10px}
+  .hstat{min-width:calc(50% - 1px);border-bottom:1.5px solid var(--line)}
+  .hstat:nth-child(3){border-bottom:none}
+  .hstat:nth-child(4){border-bottom:none}
+  .hstat:last-child{border-bottom:none;border-right:none;width:100%;min-width:100%}
+  .who{grid-template-columns:1fr;gap:32px;padding:48px 20px}
+  .digital{padding:32px 20px}
+  .digital-inner{grid-template-columns:1fr;gap:12px}
+  .offer-section{padding:48px 20px}
+  .compare{padding:48px 20px}
+  .compare table{font-size:12px}
+  tbody td{padding:8px 10px}
+  thead th{padding:8px 10px}
+  .cta{padding:60px 20px}
+  .wl-form{flex-direction:column}
+  .wl-form input,.wl-form button{width:100%}
+  footer{padding:20px;flex-direction:column;text-align:center;gap:8px}
+  footer nav a{margin:0 8px}
+  .tband::before,.tband::after{width:40px}
+  .hctas{flex-direction:column;align-items:center}
+  .bto,.bline{width:100%;max-width:320px;justify-content:center}
+}
+@media(max-width:400px){
+  .hstat{min-width:100%;border-right:none}
+  .sv{font-size:18px}
+}
 
-/* ── CGV OVERLAY ── */
-#cgv {
-  display: none;
-  position: fixed; inset: 0; z-index: 500;
-  background: #fff; color: #111;
-  overflow-y: auto; -webkit-overflow-scrolling: touch;
+/* CGV */
+#cgv{display:none;position:fixed;inset:0;z-index:500;background:#fff;color:#111;overflow-y:auto;-webkit-overflow-scrolling:touch}
+#cgv.open{display:block}
+.cgv-nav{position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid #E8E8E8;padding:0 40px;height:56px;display:flex;align-items:center;justify-content:space-between;z-index:10}
+.cgv-nav .logo{font-family:var(--fh);font-size:17px;font-weight:800;color:#111;text-decoration:none}
+.cgv-nav .logo span{color:var(--o)}
+.cgv-close{background:transparent;border:1.5px solid #E8E8E8;color:#888;padding:7px 18px;border-radius:8px;font-family:var(--fb);font-size:13px;cursor:pointer;transition:all .15s}
+.cgv-close:hover{border-color:#aaa;color:#111}
+.cgv-wrap{max-width:820px;margin:0 auto;padding:56px 40px 80px}
+.cgv-cover{text-align:center;margin-bottom:52px}
+.cgv-cover h1{font-family:var(--fh);font-size:42px;font-weight:800;letter-spacing:-1.5px;color:var(--o);margin-bottom:6px}
+.cgv-cover p{font-size:15px;color:#888;font-style:italic}
+.cgv-meta{background:#FFF3EE;border-radius:12px;padding:20px 24px;margin-bottom:48px;font-size:13px;line-height:1.8;color:#444}
+.cgv-meta strong{color:#111}
+.cgv-wrap h2{font-family:var(--fh);font-size:20px;font-weight:800;letter-spacing:-.4px;color:#111;margin:48px 0 12px;padding-bottom:8px;border-bottom:3px solid var(--o)}
+.cgv-wrap h3{font-family:var(--fh);font-size:15px;font-weight:700;color:#111;margin:24px 0 8px}
+.cgv-wrap p{font-size:14px;color:#333;line-height:1.85;margin-bottom:12px;text-align:justify}
+.cgv-wrap ul{margin:8px 0 16px 20px}
+.cgv-wrap ul li{font-size:14px;color:#333;line-height:1.75;margin-bottom:4px}
+.cgv-wrap .note{font-size:13px;color:#888;font-style:italic}
+.cgv-footer-box{background:#FFF3EE;border-radius:12px;padding:20px 24px;margin-top:56px;font-size:13px;line-height:1.8;color:#555}
+.cgv-toc{background:#F5F5F5;border-radius:12px;padding:20px 24px;margin-bottom:40px}
+.cgv-toc p{font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#888;margin-bottom:10px!important}
+.cgv-toc a{display:block;font-size:13px;color:var(--o);text-decoration:none;padding:3px 0}
+.cgv-toc a:hover{text-decoration:underline}
+@media(max-width:768px){
+  .cgv-nav{padding:0 20px}
+  .cgv-wrap{padding:40px 20px 60px}
+  .cgv-cover h1{font-size:32px}
 }
-#cgv.open { display: block; }
-.cgv-nav {
-  position: sticky; top: 0; background: rgba(255,255,255,.95);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid #E8E8E8; padding: 0 40px; height: 56px;
-  display: flex; align-items: center; justify-content: space-between; z-index: 10;
-}
-.cgv-nav .logo { font-family: var(--fh); font-size: 17px; font-weight: 800; color: #111; text-decoration: none; }
-.cgv-nav .logo span { color: var(--o); }
-.cgv-close {
-  background: transparent; border: 1.5px solid #E8E8E8; color: #888;
-  padding: 7px 18px; border-radius: 8px; font-family: var(--fb); font-size: 13px;
-  cursor: pointer; transition: all .15s;
-}
-.cgv-close:hover { border-color: #aaa; color: #111; }
-.cgv-wrap { max-width: 820px; margin: 0 auto; padding: 56px 40px 80px; }
-.cgv-cover { text-align: center; margin-bottom: 52px; }
-.cgv-cover h1 { font-family: var(--fh); font-size: 42px; font-weight: 800; letter-spacing: -1.5px; color: var(--o); margin-bottom: 6px; }
-.cgv-cover p { font-size: 15px; color: #888; font-style: italic; }
-.cgv-meta {
-  background: #FFF3EE; border-radius: 12px; padding: 20px 24px;
-  margin-bottom: 48px; font-size: 13px; line-height: 1.8; color: #444;
-}
-.cgv-meta strong { color: #111; }
-.cgv-wrap h2 {
-  font-family: var(--fh); font-size: 20px; font-weight: 800; letter-spacing: -.4px;
-  color: #111; margin: 48px 0 12px; padding-bottom: 8px;
-  border-bottom: 3px solid var(--o);
-}
-.cgv-wrap h3 {
-  font-family: var(--fh); font-size: 15px; font-weight: 700; color: #111;
-  margin: 24px 0 8px;
-}
-.cgv-wrap p { font-size: 14px; color: #333; line-height: 1.85; margin-bottom: 12px; text-align: justify; }
-.cgv-wrap ul { margin: 8px 0 16px 20px; }
-.cgv-wrap ul li { font-size: 14px; color: #333; line-height: 1.75; margin-bottom: 4px; }
-.cgv-wrap .note { font-size: 13px; color: #888; font-style: italic; }
-.cgv-footer-box {
-  background: #FFF3EE; border-radius: 12px; padding: 20px 24px;
-  margin-top: 56px; font-size: 13px; line-height: 1.8; color: #555;
-}
-.cgv-toc {
-  background: #F5F5F5; border-radius: 12px; padding: 20px 24px;
-  margin-bottom: 40px;
-}
-.cgv-toc p { font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 10px !important; }
-.cgv-toc a { display: block; font-size: 13px; color: var(--o); text-decoration: none; padding: 3px 0; }
-.cgv-toc a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
 
-<!-- ═══ CHOICE SPLASH ═══ -->
-<div id="splash">
-  <div class="splash-logo">Captain<span>Help!</span></div>
-  <h2 class="splash-title">Sélectionnez<br><em>votre type de flotte</em></h2>
-  <div class="splash-choices">
-    <div class="choice-card pl" onclick="choose('pl')">
-      <h3>Poids lourds</h3>
-      <p>Camions, tracteurs, semi-remorques. Tout ce qui dépasse 3,5 tonnes.</p>
-      <div class="c-price">89 €</div>
-      <div class="c-sub">HT / mois / véhicule · prix garanti</div>
-      <button class="c-cta">C'est mon cas →</button>
+<nav>
+  <a href="#" class="logo">Captain<span>Help!</span></a>
+  <a href="#waitlist" class="nav-cta">Rejoindre la waitlist</a>
+</nav>
+
+<!-- TESTI BAND -->
+<div class="tband">
+  <div class="ttrack">
+    <div class="tcard"><p>« Panne un dimanche matin à 50 km de chez moi. Mon assistance m'a dit que j'avais déjà utilisé mes 2 interventions annuelles. J'ai attendu 3h un taxi que j'ai payé moi-même. »</p><div class="tn">Membre de la waitlist</div></div>
+    <div class="tcard"><p>« J'utilisais la voiture d'un ami pour aller à un entretien. Panne sur le périph. Mon assistance : ce n'est pas votre véhicule. J'ai raté l'entretien. »</p><div class="tn">Membre de la waitlist</div></div>
+    <div class="tcard"><p>« Batterie à plat dans le parking de mon immeuble, sous-sol. On intervient pas en sous-sol. Ok. »</p><div class="tn">Membre de la waitlist</div></div>
+    <div class="tcard"><p>« Parti 6 semaines au Maroc. J'ai continué à payer mon assistance en France pendant ce temps. Pour rien. »</p><div class="tn">Membre de la waitlist</div></div>
+    <div class="tcard"><p>« Excès de vitesse, retrait de permis 6 mois. J'ai continué à payer mon assurance assistance pendant tout ce temps. Aucun moyen de suspendre le contrat. »</p><div class="tn">Membre de la waitlist</div></div>
+    <div class="tcard"><p>« Ma voiture est restée 12 jours au garage. Véhicule de prêt couvert 7 jours. Les 5 autres j'ai pris des Uber. 180 euros de ma poche. »</p><div class="tn">Membre de la waitlist</div></div>
+    <div class="tcard"><p>« J'utilise souvent la voiture de ma femme le week-end. Si je tombe en panne avec, couvert comment ? Jamais trouvé de réponse claire dans mon contrat. »</p><div class="tn">Membre de la waitlist</div></div>
+    <!-- dup -->
+    <div class="tcard"><p>« Panne un dimanche matin à 50 km de chez moi. Mon assistance m'a dit que j'avais déjà utilisé mes 2 interventions annuelles. J'ai attendu 3h un taxi que j'ai payé moi-même. »</p><div class="tn">Membre de la waitlist</div></div>
+    <div class="tcard"><p>« J'utilisais la voiture d'un ami pour aller à un entretien. Panne sur le périph. Mon assistance : ce n'est pas votre véhicule. J'ai raté l'entretien. »</p><div class="tn">Membre de la waitlist</div></div>
+    <div class="tcard"><p>« Batterie à plat dans le parking de mon immeuble, sous-sol. On intervient pas en sous-sol. Ok. »</p><div class="tn">Membre de la waitlist</div></div>
+    <div class="tcard"><p>« Parti 6 semaines au Maroc. J'ai continué à payer mon assistance en France pendant ce temps. Pour rien. »</p><div class="tn">Membre de la waitlist</div></div>
+    <div class="tcard"><p>« Excès de vitesse, retrait de permis 6 mois. J'ai continué à payer mon assurance assistance pendant tout ce temps. Aucun moyen de suspendre le contrat. »</p><div class="tn">Membre de la waitlist</div></div>
+    <div class="tcard"><p>« Ma voiture est restée 12 jours au garage. Véhicule de prêt couvert 7 jours. Les 5 autres j'ai pris des Uber. 180 euros de ma poche. »</p><div class="tn">Membre de la waitlist</div></div>
+    <div class="tcard"><p>« J'utilise souvent la voiture de ma femme le week-end. Si je tombe en panne avec, couvert comment ? Jamais trouvé de réponse claire dans mon contrat. »</p><div class="tn">Membre de la waitlist</div></div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero-top r">
+  <h1>Votre assistance couvre votre voiture.<br><em>Nous couvrons vos déplacements,<br>peu importe le véhicule.</em></h1>
+</div>
+
+<div class="hero-bottom r">
+  <p class="hsub">Peu importe le volant, l'endroit, l'heure. <strong>On est là.</strong></p>
+  <div class="hctas">
+    <a href="#waitlist" class="bto">Rejoindre la waitlist →</a>
+    <a href="#comparatif" class="bline">Voir le comparatif</a>
+  </div>
+  <div class="hstats">
+    <div class="hstat"><div class="sv">0 km</div><div class="sl">Même devant<br>chez vous</div></div>
+    <div class="hstat"><div class="sv">0 €</div><div class="sl">Caution véhicule<br>de remplacement</div></div>
+    <div class="hstat"><div class="sv">3/an</div><div class="sl">Interventions<br>incluses</div></div>
+    <div class="hstat"><div class="sv">Pause</div><div class="sl">3 mois / an<br>en cas de déplacement</div></div>
+    <div class="hstat"><div class="sv">9,90 €</div><div class="sl">TTC/mois<br>12 mois d'engagement</div></div>
+  </div>
+</div>
+
+<hr>
+
+<!-- WHO -->
+<div class="who r">
+  <div>
+    <div class="lbl">Qui sommes-nous</div>
+    <h2 class="sec-h">Nous ne sommes pas<br>une dépanneuse <em>de plus.</em></h2>
+  </div>
+  <div class="who-r">
+    <div class="quote">Ce secteur n'avait pas besoin d'une amélioration. Il avait besoin d'être reconstruit de zéro.</div>
+    <p>Les autres couvrent <strong>votre voiture</strong>. On vous couvre <strong>vous</strong>.</p>
+    <p>Peu importe si vous êtes au volant de la vôtre, de celle d'un ami, d'une location en vacances. Vous partez en déplacement, vous perdez votre permis, vous n'en avez pas besoin un moment — vous mettez sur pause. Jusqu'à 3 mois par an. L'abonnement vous attend à votre retour.</p>
+  </div>
+</div>
+
+<hr>
+
+<!-- DIGITAL STRIP -->
+<div class="digital r">
+  <div class="digital-inner">
+    <div class="dcard">
+      <span class="dico">📱</span>
+      <h4>100% depuis l'app</h4>
+      <p>Déclenchez l'assistance, suivez l'arrivée du technicien en temps réel, gérez votre abonnement. Tout depuis votre téléphone.</p>
     </div>
-    <div class="choice-card vl" onclick="choose('vl')">
-      <h3>Voitures &amp; utilitaires</h3>
-      <p>Voitures de société, SUV, vans et utilitaires. Moins de 3,5 tonnes.</p>
-      <div class="c-price">9,90 €</div>
-      <div class="c-sub">HT / mois / véhicule</div>
-      <button class="c-cta">C'est mon cas →</button>
+    <div class="dcard">
+      <span class="dico">⏸️</span>
+      <h4>Pause quand vous voulez</h4>
+      <p>Vous partez en déplacement, vous perdez votre permis, vous n'en avez pas besoin un moment. Jusqu'à 3 mois de pause par an. Vous reprenez quand vous voulez.</p>
+    </div>
+    <div class="dcard">
+      <span class="dico">🌍</span>
+      <h4>Europe entière couverte</h4>
+      <p>Toute l'Europe, 24h/24, 7j/7. Et bientôt, une option couverture mondiale pour ceux qui bougent vraiment.</p>
     </div>
   </div>
 </div>
 
-<!-- ═══ MAIN PAGE ═══ -->
-<div id="main">
+<hr>
 
+<!-- OFFER -->
+<div class="offer-section r" id="offre">
+  <div class="lbl">Notre offre</div>
+  <h2 class="sec-h" style="margin-bottom:28px;">Simple. Transparent. <em>Sans surprise.</em></h2>
+  <div class="ocard">
+    <div class="otag">Assistance conducteur</div>
+    <h3>CaptainHelp!</h3>
+    <p class="cline">Vous êtes couvert, pas juste votre voiture.</p>
+    <p class="odesc">Votre voiture, celle d'un ami, une location. Si vous êtes au volant, on est là.</p>
+    <div class="oprice-wrap">
+      <span class="price-n">9,90 €</span>
+      <span class="price-p">TTC / mois</span>
+    </div>
+    <div class="price-engage">
+      <strong>12 mois d'engagement.</strong> Jusqu'à 3 mois de pause par an en cas de déplacement ou de besoin. L'abonnement vous attend. Pas de pénalité.
+    </div>
+    <ul class="ofeats">
+      <li><div class="ck">✓</div>Couvert sur <strong>tout véhicule conduit</strong>, le vôtre ou celui d'un autre</li>
+      <li><div class="ck">✓</div>Dépannage même devant chez vous — 0 km, 24h/24 7j/7</li>
+      <li><div class="ck">✓</div>Remorquage sans limite de distance</li>
+      <li><div class="ck">✓</div>Véhicule de remplacement, sans caution, dès 18 ans</li>
+      <li><div class="ck">✓</div>Perte de permis couverte, tous motifs</li>
+      <li><div class="ck">✓</div>1 nuit d'hôtel si immobilisation supérieure à 3h</li>
+      <li><div class="ck">✓</div>Événements climatiques couverts : tempête, grêle, inondation</li>
+      <li><div class="ck">✓</div>Erreur de carburant couverte</li>
+      <li><div class="ck">✓</div>Parking souterrain couvert</li>
+      <li><div class="ck">✓</div>Matériel professionnel dans le véhicule couvert</li>
+      <li><div class="ck">✓</div>3 interventions / an incluses, appels illimités. Au-delà des 3, forfait à la prestation.</li>
+      <li><div class="ck">✓</div>App mobile avec suivi en temps réel</li>
+    </ul>
+    <div class="odiv"></div>
+    <ul class="olims">
+      <li><div class="ld"></div>Pièces de rechange non incluses</li>
+      <li><div class="ld"></div>Frais de réparation garage non couverts</li>
+    </ul>
+    <p class="excl-note">Hors véhicules spéciaux : autocars, ambulances, taxis, VTC.</p>
+    <button class="obtn" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Rejoindre la waitlist</button>
+  </div>
+</div>
+
+<hr>
+
+<!-- COMPARE -->
+<div class="compare r" id="comparatif">
+  <div class="lbl">Comparatif</div>
+  <h2 class="sec-h" style="margin-bottom:32px;">Ce que les autres ne disent<br>pas dans leurs CGV. <em>Nous si.</em></h2>
+  <div style="overflow-x:auto;">
+    <table>
+      <thead>
+        <tr><th>Critère</th><th>Assistance classique</th><th class="ch">CaptainHelp!</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Couverture 0 km</td><td class="warn">Option payante</td><td>✓ Même devant chez vous</td></tr>
+        <tr><td>Couverture sur tout véhicule conduit</td><td class="no">Votre véhicule uniquement</td><td>✓ Quel que soit le volant</td></tr>
+        <tr><td>Caution véhicule de remplacement</td><td class="no">300 € CB requis</td><td>✓ Aucune caution</td></tr>
+        <tr><td>Prise en charge de l'appel</td><td class="warn">Temps d'attente variable</td><td>✓ Prise en charge immédiate</td></tr>
+        <tr><td>Âge minimum conducteur</td><td class="warn">19 ans + 1 an de permis</td><td>✓ Dès 18 ans</td></tr>
+        <tr><td>Interventions incluses / an</td><td class="no">2 max, au-delà facturé</td><td>✓ 3 / an, appels illimités</td></tr>
+        <tr><td>Erreur de carburant</td><td class="no">Exclue</td><td>✓ Couverte</td></tr>
+        <tr><td>Parking souterrain</td><td class="no">Exclu</td><td>✓ Couvert</td></tr>
+        <tr><td>Événements climatiques</td><td class="no">Exclus ou en option</td><td>✓ Couverts</td></tr>
+        <tr><td>Perte de permis</td><td class="no">Non couvert</td><td>✓ Tous motifs</td></tr>
+        <tr><td>Pause d'abonnement</td><td class="no">Impossible</td><td>✓ Jusqu'à 3 mois / an</td></tr>
+        <tr><td>Prix</td><td class="no">Révisable chaque année</td><td>✓ Stable pendant l'engagement</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr>
+
+<!-- WAITLIST -->
+<div class="cta r" id="waitlist">
+  <h2>Soyez prévenu<br>en <em>avant-première.</em></h2>
+  <p>CaptainHelp! arrive bientôt. Inscrivez-vous pour être parmi les premiers à en profiter.</p>
+  <div id="wl-wrap">
+    <div class="wl-form">
+      <input type="email" id="wl-email" placeholder="Votre adresse email">
+      <button type="button" onclick="submitWL()">Je m'inscris</button>
+    </div>
+    <p class="wl-note">Désinscription possible à tout moment.</p>
+  </div>
+  <div class="wl-success" id="wl-success">
+    <span>✓</span> Inscription confirmée. Vous serez notifié dès l'ouverture.
+  </div>
+</div>
+
+<footer>
+  <div class="flogo">Captain<span>Help!</span></div>
+  <small>© 2026 CaptainHelp! — Sofiane Benhaddou</small>
   <nav>
-    <a href="#" class="logo">Captain<span>Help!</span></a>
-    <div style="display:flex;align-items:center;gap:12px;">
-      <button class="nav-switch" onclick="resetChoice()">Changer de flotte</button>
-      <a href="#waitlist" class="nav-cta">Rejoindre la waitlist</a>
-    </div>
+    <a onclick="openCGV();return false;">CGV</a>
+    <a href="mailto:contact@captainhelp.eu">Contact</a>
   </nav>
+</footer>
 
-  <!-- H1 — then testi band immediately -->
-  <div class="hero-top r">
-    <h1 id="hero-h1">Votre assistance routière<br>vous dépanne seulement.<br><em>Nous remettons votre<br>activité sur la route.</em></h1>
-  </div>
-
-  <!-- TESTI BAND — right under h1 -->
-  <div class="tband">
-    <!-- PL track -->
-    <div id="track-pl" class="ttrack">
-      <div class="tcard pl"><p>« Mon chauffeur bloqué un jeudi soir sur l'A6, à 2h d'une livraison urgente. 2h d'attente pour avoir quelqu'un. La livraison est pas partie. Le client, on l'a plus jamais eu. »</p><div class="tn">Patron transport — Normandie</div></div>
-      <div class="tcard pl"><p>« Ce qui me tue c'est qu'on a deux contrats pour la même flotte. Un pour les camions, un pour les fourgons. Deux numéros, deux factures. Le jour où y'a un problème t'as plus qu'à espérer appeler le bon. »</p><div class="tn">Directeur d'exploitation — 34 véhicules</div></div>
-      <div class="tcard pl"><p>« Un de mes chauffeurs panne un dimanche à 6h du mat en Espagne. L'assistance lui répond qu'ils peuvent rien avant lundi matin. Il a dormi dans sa cabine. Ça m'a mis hors de moi. »</p><div class="tn">Gérant — Transport régional</div></div>
-      <div class="tcard pl"><p>« La pièce était soi-disant pas couverte. Écrit nulle part dans le contrat que j'avais sous les yeux. J'ai découvert ça le jour où j'en avais besoin. 680€ de ma poche. »</p><div class="tn">Chef d'entreprise — 8 camions</div></div>
-      <div class="tcard pl"><p>« Franchement les contrats d'assistance pour les PL c'est illisible. J'ai signé sans tout lire, j'assume. Mais y'aurait été sympa qu'on m'explique ce qui était dedans. »</p><div class="tn">DAF — PME transport</div></div>
-      <div class="tcard pl"><p>« Un camion à l'arrêt c'est pas que la réparation. C'est le chauffeur payé à rien faire, la livraison perdue, le client qu'il faut rappeler pour s'excuser. Ça s'accumule vite. »</p><div class="tn">Patron — Flotte mixte 15 véhicules</div></div>
-      <div class="tcard pl"><p>« Mon chauffeur bloqué un jeudi soir sur l'A6, à 2h d'une livraison urgente. 2h d'attente pour avoir quelqu'un. La livraison est pas partie. Le client, on l'a plus jamais eu. »</p><div class="tn">Patron transport — Normandie</div></div>
-      <div class="tcard pl"><p>« Ce qui me tue c'est qu'on a deux contrats pour la même flotte. Un pour les camions, un pour les fourgons. Deux numéros, deux factures. Le jour où y'a un problème t'as plus qu'à espérer appeler le bon. »</p><div class="tn">Directeur d'exploitation — 34 véhicules</div></div>
-      <div class="tcard pl"><p>« Un de mes chauffeurs panne un dimanche à 6h du mat en Espagne. L'assistance lui répond qu'ils peuvent rien avant lundi matin. Il a dormi dans sa cabine. Ça m'a mis hors de moi. »</p><div class="tn">Gérant — Transport régional</div></div>
-      <div class="tcard pl"><p>« La pièce était soi-disant pas couverte. Écrit nulle part dans le contrat que j'avais sous les yeux. J'ai découvert ça le jour où j'en avais besoin. 680€ de ma poche. »</p><div class="tn">Chef d'entreprise — 8 camions</div></div>
-      <div class="tcard pl"><p>« Franchement les contrats d'assistance pour les PL c'est illisible. J'ai signé sans tout lire, j'assume. Mais y'aurait été sympa qu'on m'explique ce qui était dedans. »</p><div class="tn">DAF — PME transport</div></div>
-      <div class="tcard pl"><p>« Un camion à l'arrêt c'est pas que la réparation. C'est le chauffeur payé à rien faire, la livraison perdue, le client qu'il faut rappeler pour s'excuser. Ça s'accumule vite. »</p><div class="tn">Patron — Flotte mixte 15 véhicules</div></div>
-    </div>
-    <!-- VL track -->
-    <div id="track-vl" class="ttrack hidden">
-      <div class="tcard vl"><p>« J'ai 3 voitures de société et un commercial qui prend aussi la sienne des fois. Le jour où il tombe en panne avec la sienne c'est couvert comment ? Personne peut me répondre clairement. »</p><div class="tn">Membre de la waitlist</div></div>
-      <div class="tcard vl"><p>« 2 interventions par an et après c'est payant. Mon gars il a eu 3 crevaisons en 8 mois. La troisième j'ai réglé 340€ de ma poche. Y'avait écrit « utilisation normale » quelque part dans les conditions. »</p><div class="tn">Membre de la waitlist</div></div>
-      <div class="tcard vl"><p>« Mon commercial a utilisé la voiture d'un collègue pour aller chez un client, la sienne était au garage. Panne sur le périph. L'assistance a refusé d'intervenir, le contrat était au nom de l'autre. Il a attendu presque 2h. »</p><div class="tn">Membre de la waitlist</div></div>
-      <div class="tcard vl"><p>« Mon commercial tombe en panne à 23h sur l'autoroute. 1h45 avant qu'on lui réponde. Le client du lendemain matin, il a eu un concurrent à la place. »</p><div class="tn">Membre de la waitlist</div></div>
-      <div class="tcard vl"><p>« Batterie à plat dans le parking de mon bureau. L'assistance m'a dit qu'ils intervenaient pas en sous-sol. C'était le parking de mon propre immeuble. »</p><div class="tn">Membre de la waitlist</div></div>
-      <div class="tcard vl"><p>« Ils m'ont bloqué 300€ sur ma carte pour le véhicule de prêt. J'étais en déplacement à Lyon, j'avais pas prévu ça. 3 jours avec presque rien sur la carte. »</p><div class="tn">Membre de la waitlist</div></div>
-      <div class="tcard vl"><p>« La voiture est restée 11 jours au garage, le contrat couvrait 7 jours de remplacement. Les 4 derniers j'ai improvisé. C'est moi le problème ou c'est eux ? »</p><div class="tn">Membre de la waitlist</div></div>
-      <div class="tcard vl"><p>« J'ai 3 voitures de société et un commercial qui prend aussi la sienne des fois. Le jour où il tombe en panne avec la sienne c'est couvert comment ? Personne peut me répondre clairement. »</p><div class="tn">Membre de la waitlist</div></div>
-      <div class="tcard vl"><p>« 2 interventions par an et après c'est payant. Mon gars il a eu 3 crevaisons en 8 mois. La troisième j'ai réglé 340€ de ma poche. Y'avait écrit « utilisation normale » quelque part dans les conditions. »</p><div class="tn">Membre de la waitlist</div></div>
-      <div class="tcard vl"><p>« Mon commercial a utilisé la voiture d'un collègue pour aller chez un client, la sienne était au garage. Panne sur le périph. L'assistance a refusé d'intervenir, le contrat était au nom de l'autre. Il a attendu presque 2h. »</p><div class="tn">Membre de la waitlist</div></div>
-      <div class="tcard vl"><p>« Mon commercial tombe en panne à 23h sur l'autoroute. 1h45 avant qu'on lui réponde. Le client du lendemain matin, il a eu un concurrent à la place. »</p><div class="tn">Membre de la waitlist</div></div>
-      <div class="tcard vl"><p>« Batterie à plat dans le parking de mon bureau. L'assistance m'a dit qu'ils intervenaient pas en sous-sol. C'était le parking de mon propre immeuble. »</p><div class="tn">Membre de la waitlist</div></div>
-      <div class="tcard vl"><p>« Ils m'ont bloqué 300€ sur ma carte pour le véhicule de prêt. J'étais en déplacement à Lyon, j'avais pas prévu ça. 3 jours avec presque rien sur la carte. »</p><div class="tn">Membre de la waitlist</div></div>
-      <div class="tcard vl"><p>« La voiture est restée 11 jours au garage, le contrat couvrait 7 jours de remplacement. Les 4 derniers j'ai improvisé. C'est moi le problème ou c'est eux ? »</p><div class="tn">Membre de la waitlist</div></div>
-    </div>
-  </div>
-
-
-  <!-- HERO BOTTOM — CTAs + stats -->
-  <div class="hero-bottom r">
-    <p class="hsub" id="hero-sub">Ne perdez plus 3 heures sur votre planning pour une simple panne. <strong>Un seul contrat</strong> pour toute votre flotte.</p>
-    <div class="hctas">
-      <a href="#waitlist" class="bto">Rejoindre la waitlist →</a>
-      <a href="#comparatif" class="bline">Voir le comparatif</a>
-    </div>
-    <!-- Stats — shown dynamically -->
-    <div id="stats-pl" class="hstats pl" style="display:none;">
-      <div class="hstat"><div class="sv">— 10 s</div><div class="sl">Prise en charge<br>24h/24 7j/7</div></div>
-      <div class="hstat"><div class="sv">Europe</div><div class="sl">40 pays<br>couverts</div></div>
-      <div class="hstat"><div class="sv">4j</div><div class="sl">Gardiennage<br>véhicule inclus</div></div>
-      <div class="hstat"><div class="sv">Fixe</div><div class="sl">Prix garanti<br>sans révision</div></div>
-      <div class="hstat"><div class="sv">89 €</div><div class="sl">HT / mois<br>/ véhicule</div></div>
-    </div>
-    <div id="stats-vl" class="hstats vl" style="display:none;">
-      <div class="hstat"><div class="sv">— 10 s</div><div class="sl">Prise en charge<br>24h/24 7j/7</div></div>
-      <div class="hstat"><div class="sv">0 km</div><div class="sl">Franchise dès<br>le 1er mètre</div></div>
-      <div class="hstat"><div class="sv">0 €</div><div class="sl">Caution véhicule<br>de remplacement</div></div>
-      <div class="hstat"><div class="sv">5/an</div><div class="sl">Interventions<br>incluses</div></div>
-      <div class="hstat"><div class="sv">9,90 €</div><div class="sl">HT / mois<br>/ véhicule</div></div>
-    </div>
-  </div>
-
-  <hr>
-
-  <div id="pain-pl" style="display:none;">
-    <div class="pain r">
-      <div class="lbl">Ce que vous vivez aujourd'hui</div>
-      <h2 class="sec-h" style="margin-bottom:28px;">Pourquoi l'assistance classique <em>ne suffit plus.</em></h2>
-      <div class="pain-grid">
-        <div class="pain-card pl-card"><div class="pain-ico">Temps &amp; argent</div><h3>Une panne, c'est jusqu'à 4 000 € de chiffre d'affaires arrêté par jour</h3><p>Le véhicule est immobilisé, le chauffeur aussi. Le salaire sort. Les clients attendent.</p><div class="pain-answer">→ Prise en charge immédiate. Petites pièces incluses pour redémarrer sur place.</div></div>
-        <div class="pain-card pl-card"><div class="pain-ico">Complexité</div><h3>Deux contrats, deux numéros, deux factures pour votre flotte</h3><p>Votre contrat couvre rarement tous vos types de véhicules. Deux prestataires différents. Confusion totale au pire moment.</p><div class="pain-answer">→ Un seul contrat pour l'ensemble de votre flotte, une seule facture.</div></div>
-        <div class="pain-card pl-card"><div class="pain-ico">Lisibilité</div><h3>Les exclusions, on les découvre quand c'est trop tard</h3><p>Pièces refusées, nuits d'hôtel floues, frais cachés. La plupart des contrats ne précisent rien par écrit.</p><div class="pain-answer">→ Tout est écrit et chiffré avant la signature. Aucune surprise.</div></div>
-      </div>
-    </div>
-  </div>
-
-  <div id="pain-vl" style="display:none;">
-    <div class="pain r">
-      <div class="lbl">Ce que vous vivez aujourd'hui</div>
-      <h2 class="sec-h" style="margin-bottom:28px;">Pourquoi l'assistance classique <em>ne suffit plus.</em></h2>
-      <div class="pain-grid">
-        <div class="pain-card vl-card"><div class="pain-ico">Couverture</div><h3>Vous changez de véhicule, vous perdez votre couverture</h3><p>Location, prêt, véhicule d'un collègue — votre contrat couvre une plaque, pas vous. Dès que vous changez de volant, vous n'êtes plus protégé.</p><div class="pain-answer">→ CaptainHelp! vous couvre sur tout véhicule conduit, sans exception.</div></div>
-        <div class="pain-card vl-card"><div class="pain-ico">Limites</div><h3>2 prises en charge par an. Après, vous payez</h3><p>Un collaborateur épuise son quota en janvier. En juillet, une panne — vous payez de votre poche ce que vous croyiez couvert.</p><div class="pain-answer">→ 5 interventions incluses par véhicule, réinitialisées chaque année.</div></div>
-        <div class="pain-card vl-card"><div class="pain-ico">Friction</div><h3>300 € de caution pour un véhicule de remplacement</h3><p>En panne à 200 km de chez vous, on vous demande 300 € disponibles sur CB avant d'agir. Un obstacle absurde.</p><div class="pain-answer">→ Véhicule de remplacement sans caution, dès 18 ans.</div></div>
-      </div>
-    </div>
-  </div>
-
-  <hr>
-
-  <!-- WHO -->
-  <div class="who r">
-    <div>
-      <div class="lbl">Qui sommes-nous</div>
-      <h2 class="sec-h">Nous ne sommes pas<br>une dépanneuse <em>de plus.</em></h2>
-    </div>
-    <div class="who-r">
-      <div class="quote" id="who-quote">Ce secteur n'avait pas besoin d'une amélioration. Il avait besoin d'être reconstruit de zéro.</div>
-      <div id="who-body"><p>Les autres couvrent <strong>votre voiture</strong>. Nous, on vous couvre <strong>vous</strong>.</p>
-      <p>Peu importe le volant — votre voiture de fonction, une location, celle d'un collègue. Et pour toute votre flotte, qu'elle soit légère ou lourde : <strong>un seul contrat, une seule facture.</strong></p></div>
-    </div>
-  </div>
-
-  <hr>
-
-  <!-- OFFER — single card, shown based on choice -->
-  <div class="offers" id="offres">
-    <div class="offers-head r">
-      <div class="lbl">Notre offre</div>
-      <h2 class="sec-h">Simple. Transparent. <em>Sans surprise.</em></h2>
-    </div>
-
-    <div id="offer-pl" class="r" style="display:none;">
-      <div class="ocard pl">
-        <div class="otag pl">Camions &amp; poids lourds</div>
-        <h3>Assistance camions &amp; poids lourds</h3>
-        <p class="odesc">Camions, tracteurs, semi-remorques. Petites pièces, AdBlue, crevaison — tout inclus dans le prix.</p>
-        <div class="oprice-wrap"><span class="price-n">89 €</span><span class="price-p">HT / mois / véhicule · prix garanti</span></div>
-        <ul class="ofeats">
-          <li><div class="ck pl">✓</div>Dépannage 24h/7j partout en Europe</li>
-          <li><div class="ck pl">✓</div>Camion seul ou avec sa remorque — couvert dans les deux cas</li>
-          <li><div class="ck pl">✓</div>Remorquage, relevage et dépannage en fossé inclus</li>
-          <li><div class="ck pl">✓</div>Petites pièces incluses (batterie, fusibles, courroies…)</li>
-          <li><div class="ck pl">✓</div>AdBlue offert — 30 litres par intervention</li>
-          <li><div class="ck pl">✓</div>Réparation crevaison sur place incluse</li>
-          <li><div class="ck pl">✓</div>4 nuits d'hôtel prévues — 120 € la nuit, écrit dans votre contrat</li>
-          <li><div class="ck pl">✓</div>Avance de fonds d'urgence à l'étranger</li>
-          <li><div class="ck pl">✓</div>Audit de sinistralité à partir du 10e sinistre annuel</li>
-          <li><div class="ck pl">✓</div>Dashboard flotte + rapport mensuel</li>
-        </ul>
-        <div class="odiv"></div>
-        <ul class="olims">
-          <li><div class="ld"></div>Réparations au garage (moteur, boîte de vitesses…) à votre charge</li>
-          <li><div class="ld"></div>Pièces de remplacement (hors petites pièces) non incluses</li>
-        </ul>
-        <button class="obtn pl" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Rejoindre la waitlist</button>
-      </div>
-    </div>
-
-    <div id="offer-vl" class="r" style="display:none;">
-      <div class="ocard vl">
-        <div class="otag vl">Voitures &amp; utilitaires</div>
-        <h3>Assistance voitures &amp; utilitaires</h3>
-        <p class="cline vl">Vous êtes couvert, pas juste votre voiture.</p>
-        <p class="odesc">Quel que soit le véhicule conduit au moment de la panne — flotte, location, collègue, conjoint.</p>
-        <div class="oprice-wrap"><span class="price-n">9,90 €</span><span class="price-p">HT / mois / véhicule<br><span style="font-size:11px;color:var(--ink3);font-weight:400;">Pause possible selon vos besoins</span></span></div>
-        <ul class="ofeats">
-          <li><div class="ck vl">✓</div>Couvert sur <strong>tout véhicule conduit</strong></li>
-          <li><div class="ck vl">✓</div>Dépannage 0 km, dès le 1er mètre — Europe 24h/7j</li>
-          <li><div class="ck vl">✓</div>Remorquage sans limite de kilomètres</li>
-          <li><div class="ck vl">✓</div>Véhicule de remplacement — sans caution, dès 18 ans</li>
-          <li><div class="ck vl">✓</div>Perte de permis couverte — tous motifs</li>
-          <li><div class="ck vl">✓</div>1 nuit d'hôtel si immobilisation &gt; 12h</li>
-          <li><div class="ck vl">✓</div>Erreur de carburant &amp; parking souterrain couverts</li>
-          <li><div class="ck vl">✓</div>5 interventions / an incluses</li>
-          <li><div class="ck vl">✓</div>Événements climatiques couverts — tempête, grêle, inondation</li>
-          <li><div class="ck vl">✓</div>Matériel professionnel dans le véhicule couvert</li>
-          <li><div class="ck vl">✓</div>Résiliation de votre ancien contrat — on s'en occupe</li>
-        </ul>
-        <p style="font-size:11px;color:var(--ink3);margin-top:14px;line-height:1.6;">* Offre réservée aux flottes de véhicules de tourisme et utilitaires légers. Hors véhicules spéciaux : autocars, ambulances, taxis, VTC.</p>
-        <div class="odiv"></div>
-        <ul class="olims">
-          <li><div class="ld"></div>Pièces de rechange non incluses</li>
-          <li><div class="ld"></div>Frais de réparation garage non couverts</li>
-        </ul>
-        <button class="obtn vl" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Rejoindre la waitlist</button>
-      </div>
-    </div>
-  </div>
-
-  <hr>
-
-  <!-- COMPARE -->
-  <div class="compare r" id="comparatif">
-    <div class="lbl">Comparatif</div>
-    <h2 class="sec-h" style="margin-bottom:32px;">Ce que les autres ne disent<br>pas dans leurs CGV. <em>Nous si.</em></h2>
-
-    <div id="comp-vl" style="display:none;">
-      <table>
-        <thead><tr><th>Critère</th><th>Assistance classique</th><th class="ch">CaptainHelp!</th></tr></thead>
-        <tbody>
-          <tr><td>Couverture 0 km</td><td class="warn">Option payante</td><td>✓ Dès le 1er mètre</td></tr>
-          <tr><td>Couverture sur tout véhicule conduit</td><td class="no">Votre véhicule uniquement</td><td>✓ Quel que soit le volant</td></tr>
-          <tr><td>Caution véhicule de remplacement</td><td class="no">300 € CB requis</td><td>✓ Aucune caution</td></tr>
-          <tr><td>Délai de réponse</td><td class="warn">5 à 20 min selon les circonstances</td><td>✓ Réponse immédiate</td></tr>
-          <tr><td>Âge minimum conducteur</td><td class="warn">19 ans + 1 an de permis</td><td>✓ Dès 18 ans</td></tr>
-          <tr><td>Interventions par an</td><td class="no">2 max — au-delà, vous payez</td><td>✓ 5 incluses</td></tr>
-          <tr><td>Erreur de carburant</td><td class="no">Exclue</td><td>✓ Couverte</td></tr>
-          <tr><td>Parking souterrain</td><td class="no">Exclu</td><td>✓ Couvert</td></tr>
-          <tr><td>Perte de permis</td><td class="no">Non couvert</td><td>✓ Tous motifs</td></tr>
-          <tr><td>Tarif</td><td class="no">Révisable chaque année</td><td>✓ Stable, sans révision</td></tr>
-          <tr><td>Événements climatiques</td><td class="no">Exclus ou en option payante</td><td>✓ Couverts</td></tr>
-          <tr><td>Matériel professionnel dans le véhicule</td><td class="no">Non couvert</td><td>✓ Couvert</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div id="comp-pl" style="display:none;">
-      <table>
-        <thead><tr><th>Critère</th><th>Assistance classique</th><th class="ch">CaptainHelp!</th></tr></thead>
-        <tbody>
-          <tr><td>Petites pièces (batterie, fusibles…)</td><td class="no">Non incluses</td><td>✓ Incluses</td></tr>
-          <tr><td>AdBlue offert</td><td class="no">Non</td><td>✓ 30 L / sinistre</td></tr>
-          <tr><td>Réparation crevaison sur place</td><td class="no">Non</td><td>✓ Incluse</td></tr>
-          <tr><td>Nuits d'hôtel conducteur</td><td class="warn">Incluses, nombre non précisé</td><td>✓ 4 nuits, contractualisées</td></tr>
-          <tr><td>Repas conducteur bloqué</td><td class="no">Non</td><td>✓ Inclus</td></tr>
-          <tr><td>Avance de fonds à l'étranger</td><td class="no">Non</td><td>✓ Incluse</td></tr>
-          <tr><td>Délai de réponse</td><td class="warn">5 à 20 min selon les circonstances</td><td>✓ Réponse immédiate</td></tr>
-          <tr><td>Contrat flotte mixte unifié</td><td class="no">Deux contrats séparés</td><td>✓ Un seul contrat</td></tr>
-          <tr><td>Tarif</td><td class="no">Révisable chaque année</td><td>✓ Stable, sans révision</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <hr>
-
-  <!-- WAITLIST -->
-  <div class="cta r" id="waitlist">
-    <h2 id="cta-h2">Soyez prévenu<br>en <em>avant-première.</em></h2>
-    <p>CaptainHelp! arrive bientôt. Inscrivez-vous maintenant pour être parmi les premiers.</p>
-    <div id="wl-form-wrap">
-      <div class="wl-form">
-        <input type="email" id="wl-email" placeholder="Votre email professionnel">
-        <button type="button" onclick="submitWL()">Je m'inscris</button>
-      </div>
-      <p class="wl-note">Vous serez notifié à l'ouverture. Désinscription possible à tout moment.</p>
-    </div>
-    <div class="wl-success" id="wl-success">
-      <span>✓</span> Inscription confirmée — on vous prévient dès l'ouverture.
-    </div>
-  </div>
-
-  <footer>
-    <div class="flogo">Captain<span>Help!</span></div>
-    <small>© 2026 CaptainHelp!</small>
-    <nav>
-      <a href="#" onclick="openCGV();return false;">CGV</a>
-      <a href="mailto:contact@captainhelp.eu">Contact</a>
-    </nav>
-  </footer>
-
-</div><!-- /main -->
-
-<script>
-let currentChoice = null;
-
-function choose(type) {
-  currentChoice = type;
-
-  // Hide splash, show main
-  document.getElementById('splash').classList.add('hidden');
-  const main = document.getElementById('main');
-  main.classList.add('visible');
-  main.classList.toggle('vl', type === 'vl');
-  main.classList.toggle('pl', type === 'pl');
-
-  // Show right testi track
-  document.getElementById('track-pl').classList.toggle('hidden', type !== 'pl');
-  document.getElementById('track-vl').classList.toggle('hidden', type !== 'vl');
-
-  // Show right stats
-  document.getElementById('stats-pl').style.display = type === 'pl' ? 'flex' : 'none';
-  document.getElementById('stats-vl').style.display = type === 'vl' ? 'flex' : 'none';
-
-  // Show right offer
-  document.getElementById('offer-pl').style.display = type === 'pl' ? 'block' : 'none';
-  document.getElementById('offer-vl').style.display = type === 'vl' ? 'block' : 'none';
-
-  // Update accent color across UI
-  const accent = type === 'pl' ? 'var(--o)' : 'var(--gn)';
-  const hover = type === 'pl' ? 'var(--o2)' : '#128A3A';
-
-  const navCta = document.querySelector('.nav-cta');
-  navCta.style.background = accent;
-  navCta.onmouseenter = () => navCta.style.background = hover;
-  navCta.onmouseleave = () => navCta.style.background = accent;
-
-  const bto = document.querySelector('.bto');
-  bto.style.background = accent;
-  bto.onmouseenter = () => { bto.style.background = hover; bto.style.boxShadow = type === 'vl' ? '0 6px 18px rgba(34,197,94,.25)' : '0 6px 18px rgba(247,88,26,.22)'; };
-  bto.onmouseleave = () => { bto.style.background = accent; bto.style.boxShadow = ''; };
-
-  const content = {
-    pl: {
-      title: `CaptainHelp! — Assistance flottes poids lourds`,
-      h1: `Chaque heure d'immobilisation coûte.<br><em>Nous remettons vos véhicules<br>sur la route.</em>`,
-      sub: `Une panne sur un poids lourd, c'est jusqu'à <strong>4 000 € de chiffre d'affaires arrêté</strong> par jour. Un seul contrat pour toute votre exploitation.`,
-      quote: `Ce secteur n'avait pas besoin d'une amélioration. Il avait besoin d'être reconstruit de zéro.`,
-      who: `<p>Les autres couvrent <strong>le véhicule immobilisé</strong>. Nous couvrons <strong>votre exploitation</strong>.</p><p>Petites pièces incluses, AdBlue offert, 4 nuits d'hôtel contractualisées, avance de fonds à l'étranger. Et pour l'ensemble de votre flotte — des véhicules légers de service jusqu'aux poids lourds de vos chauffeurs : <strong>un seul contrat, une seule facture.</strong></p>`,
-      cta: `Protégez votre exploitation.<br><em>En avant-première.</em>`
-    },
-    vl: {
-      title: `CaptainHelp! — Assistance flottes voitures & utilitaires`,
-      h1: `Votre assistance couvre votre voiture.<br><em>Nous couvrons le conducteur,<br>pas la plaque.</em>`,
-      sub: `Peu importe le volant entre vos mains — voiture de fonction, location, celle d'un collègue. <strong>Un seul contrat</strong> pour toute votre flotte légère.`,
-      quote: `Ce secteur n'avait pas besoin d'une amélioration. Il avait besoin d'être reconstruit de zéro.`,
-      who: `<p>Les autres couvrent <strong>une plaque d'immatriculation</strong>. Nous couvrons <strong>le conducteur</strong>.</p><p>Quel que soit le véhicule conduit — flotte, location, prêt, personnel. Et pour toute votre flotte légère : <strong>un seul contrat, une seule facture.</strong></p>`,
-      cta: `Restez mobile,<br><em>quoi qu'il arrive.</em>`
-    }
-  };
-
-  const d = content[type];
-  document.title = d.title;
-  document.getElementById('hero-h1').innerHTML = d.h1;
-  document.getElementById('hero-sub').innerHTML = d.sub;
-  document.getElementById('who-quote').innerHTML = d.quote;
-  document.getElementById('who-body').innerHTML = d.who;
-  document.getElementById('cta-h2').innerHTML = d.cta;
-
-  // Pain cards
-  document.getElementById('pain-pl').style.display = type === 'pl' ? 'block' : 'none';
-  document.getElementById('pain-vl').style.display = type === 'vl' ? 'block' : 'none';
-
-  // Show right compare table
-  document.getElementById('comp-pl').style.display = type === 'pl' ? 'block' : 'none';
-  document.getElementById('comp-vl').style.display = type === 'vl' ? 'block' : 'none';
-
-  // Scroll reveal
-  setTimeout(() => {
-    const obs = new IntersectionObserver(e => {
-      e.forEach(el => { if (el.isIntersecting) { el.target.classList.add('in'); obs.unobserve(el.target); } });
-    }, { threshold: .08 });
-    document.querySelectorAll('.r').forEach(el => obs.observe(el));
-  }, 100);
-}
-
-function resetChoice() {
-  document.getElementById('splash').classList.remove('hidden');
-  document.getElementById('main').classList.remove('visible');
-  document.querySelectorAll('.r').forEach(el => el.classList.remove('in'));
-  document.querySelector('.nav-cta').style.background = '';
-  document.querySelector('.nav-cta').onmouseenter = null;
-  document.querySelector('.nav-cta').onmouseleave = null;
-  document.querySelector('.bto').style.background = '';
-  document.querySelector('.bto').onmouseenter = null;
-  document.querySelector('.bto').onmouseleave = null;
-  document.getElementById('main').classList.remove('vl','pl');
-  window.scrollTo(0, 0);
-}
-
-function submitWL() {
-  const email = document.getElementById('wl-email').value.trim();
-  if (!email || !email.includes('@')) { document.getElementById('wl-email').focus(); return; }
-  document.getElementById('wl-form-wrap').style.display = 'none';
-  const s = document.getElementById('wl-success');
-  s.style.display = 'flex';
-}
-</script>
-
-<!-- ── CGV OVERLAY ── -->
+<!-- CGV OVERLAY -->
 <div id="cgv">
   <nav class="cgv-nav">
     <a href="#" class="logo" onclick="closeCGV();return false;">Captain<span>Help!</span></a>
     <button class="cgv-close" onclick="closeCGV()">← Retour au site</button>
   </nav>
   <div class="cgv-wrap">
-
     <div class="cgv-cover">
       <h1>CaptainHelp!</h1>
       <p>Conditions Générales de Vente — Version 1.0</p>
     </div>
-
     <div class="cgv-meta">
-      <strong>Propriétaire :</strong> Sofiane Benhaddou (personne physique — société en cours de création)<br>
+      <strong>Propriétaire :</strong> Sofiane Benhaddou (personne physique, société en cours de création)<br>
       <strong>Nom commercial :</strong> CaptainHelp! &nbsp;·&nbsp; <strong>Domaine :</strong> captainhelp.eu<br>
       <strong>Hébergement :</strong> OVH SAS (serveurs) · GitHub (code source)<br>
       <strong>Contact :</strong> contact@captainhelp.eu<br><br>
-      Document de travail v1.0 — Ces CGV entreront en vigueur à la date d'ouverture commerciale du service.
+      Document de travail v1.0. Ces CGV entreront en vigueur à la date d'ouverture commerciale du service.
     </div>
-
     <div class="cgv-toc">
       <p>Sommaire</p>
-      <a href="#cgv-a1">Art. 1 — Objet et champ d'application</a>
+      <a href="#cgv-a1">Art. 1 — Objet</a>
       <a href="#cgv-a2">Art. 2 — Définitions</a>
       <a href="#cgv-a3">Art. 3 — Souscription et éligibilité</a>
-      <a href="#cgv-a4">Art. 4 — Description des prestations</a>
+      <a href="#cgv-a4">Art. 4 — Prestations incluses</a>
       <a href="#cgv-a5">Art. 5 — Tarifs et paiement</a>
       <a href="#cgv-a6">Art. 6 — Durée, pause et résiliation</a>
-      <a href="#cgv-a7">Art. 7 — Audit de sinistralité</a>
+      <a href="#cgv-a7">Art. 7 — Interventions et forfait au-delà</a>
       <a href="#cgv-a8">Art. 8 — Déclenchement de l'assistance</a>
       <a href="#cgv-a9">Art. 9 — Obligations du Souscripteur</a>
-      <a href="#cgv-a10">Art. 10 — Responsabilité de CaptainHelp!</a>
-      <a href="#cgv-a11">Art. 11 — Hébergement et continuité</a>
-      <a href="#cgv-a12">Art. 12 — Protection des données (RGPD)</a>
+      <a href="#cgv-a10">Art. 10 — Responsabilité</a>
+      <a href="#cgv-a11">Art. 11 — Hébergement</a>
+      <a href="#cgv-a12">Art. 12 — Données personnelles (RGPD)</a>
       <a href="#cgv-a13">Art. 13 — Propriété intellectuelle</a>
-      <a href="#cgv-a14">Art. 14 — Réclamations et médiation</a>
+      <a href="#cgv-a14">Art. 14 — Réclamations</a>
       <a href="#cgv-a15">Art. 15 — Modification des CGV</a>
-      <a href="#cgv-a16">Art. 16 — Cession du contrat</a>
-      <a href="#cgv-a17">Art. 17 — Droit applicable</a>
-      <a href="#cgv-a18">Art. 18 — Dispositions finales</a>
+      <a href="#cgv-a16">Art. 16 — Droit applicable</a>
+      <a href="#cgv-a17">Art. 17 — Dispositions finales</a>
     </div>
 
     <h2 id="cgv-a1">Article 1 — Objet et champ d'application</h2>
-    <p>Les présentes Conditions Générales de Vente (ci-après « CGV ») régissent l'ensemble des relations contractuelles entre Sofiane Benhaddou, agissant sous le nom commercial CaptainHelp! (ci-après « CaptainHelp! »), dont la structure juridique est en cours de constitution, et toute personne morale souscrivant à un service d'assistance routière via captainhelp.eu (ci-après le « Souscripteur »).</p>
-    <p>Elles prévalent sur tout document contractuel contraire, sauf accord écrit signé entre les parties. Toute souscription vaut acceptation pleine et entière des présentes CGV.</p>
-    <p>CaptainHelp! propose deux offres :</p>
-    <ul>
-      <li>Offre Voitures &amp; Utilitaires — flottes de véhicules de tourisme et utilitaires légers (PTAC ≤ 3,5 t) ;</li>
-      <li>Offre Poids Lourds +3,5t — flottes de véhicules industriels et utilitaires lourds (PTAC > 3,5 t).</li>
-    </ul>
+    <p>Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre Sofiane Benhaddou, agissant sous le nom commercial CaptainHelp!, dont la structure juridique est en cours de constitution, et toute personne souscrivant au service via captainhelp.eu (le Souscripteur). Toute souscription vaut acceptation pleine des présentes CGV.</p>
 
     <h2 id="cgv-a2">Article 2 — Définitions</h2>
-    <p><strong>Souscripteur :</strong> Personne morale ayant souscrit à une offre CaptainHelp!.</p>
-    <p><strong>Bénéficiaire :</strong> Conducteur désigné par le Souscripteur et déclaré au contrat.</p>
-    <p><strong>Véhicule couvert :</strong> Véhicule immatriculé déclaré ou conducteur désigné selon le mode de couverture choisi.</p>
-    <p><strong>Sinistre :</strong> Tout événement entraînant l'immobilisation d'un véhicule couvert et nécessitant une intervention.</p>
-    <p><strong>Intervention :</strong> Toute prestation d'assistance réalisée en réponse à un sinistre déclaré.</p>
-    <p><strong>Réseau de prestataires :</strong> Professionnels de l'assistance mobilisés par CaptainHelp! ou son partenaire d'assistance.</p>
-    <p><strong>Dashboard :</strong> Espace de gestion en ligne mis à disposition du Souscripteur.</p>
-    <p><strong>Pause d'abonnement :</strong> Suspension temporaire de la facturation et des garanties à la demande du Souscripteur (offre VL uniquement).</p>
-    <p><strong>Audit de sinistralité :</strong> Analyse de l'historique des sinistres menée au-delà des seuils contractuels.</p>
+    <p><strong>Souscripteur :</strong> Toute personne ayant souscrit à l'offre CaptainHelp!.</p>
+    <p><strong>Sinistre :</strong> Tout événement entraînant l'immobilisation d'un véhicule nécessitant une intervention.</p>
+    <p><strong>Intervention :</strong> Prestation physique réalisée par un prestataire suite à un sinistre. Les appels téléphoniques ou via l'application ne constituent pas des interventions.</p>
+    <p><strong>Pause d'abonnement :</strong> Suspension temporaire de la facturation et des garanties à la demande du Souscripteur, sans résiliation du contrat.</p>
 
-    <h2 id="cgv-a3">Article 3 — Souscription, éligibilité et entrée en vigueur</h2>
-    <h3>3.1 Éligibilité</h3>
-    <p>Le service CaptainHelp! est exclusivement réservé aux personnes morales agissant dans le cadre de leur activité professionnelle. Toute souscription par un particulier en dehors d'un cadre professionnel est exclue.</p>
-    <h3>3.2 Véhicules et usages exclus</h3>
-    <p>Sont exclus des deux offres, quels que soient leur immatriculation et leur poids :</p>
-    <ul>
-      <li>Autocars et véhicules de transport collectif de personnes ;</li>
-      <li>Ambulances, véhicules sanitaires et de secours ;</li>
-      <li>Taxis, VTC et tout véhicule de transport rémunéré de personnes ;</li>
-      <li>Engins de chantier, agricoles ou non immatriculés pour la circulation sur voie publique ;</li>
-      <li>Véhicules utilisés sur circuit fermé ou en compétition ;</li>
-      <li>Véhicules de plus de 20 ans à la date de souscription, sauf accord écrit préalable.</li>
-    </ul>
-    <h3>3.3 Processus de souscription</h3>
-    <p>La souscription requiert : raison sociale, SIREN et siège social ; coordonnées du responsable flotte et du référent facturation ; liste des véhicules couverts (immatriculation, marque, modèle, année) ; mandat SEPA signé ; liste des conducteurs désignés si applicable.</p>
-    <h3>3.4 Entrée en vigueur</h3>
-    <p>Le contrat prend effet à la date figurant sur le bon de souscription signé, sous réserve de validation du dossier et d'encaissement du premier prélèvement. Un email de confirmation et les accès Dashboard sont transmis dans les 48 heures ouvrées.</p>
+    <h2 id="cgv-a3">Article 3 — Souscription et éligibilité</h2>
+    <p>Le service CaptainHelp! est ouvert à toute personne physique majeure. Sont exclus : autocars, ambulances, taxis, VTC, engins non immatriculés pour la voie publique, véhicules de compétition et véhicules de plus de 20 ans (sauf accord préalable). La souscription prend effet dans les 48 heures suivant validation et encaissement du premier règlement.</p>
 
-    <h2 id="cgv-a4">Article 4 — Description des prestations</h2>
-    <h3>4.1 Offre Voitures &amp; Utilitaires — 9,90 € HT / véhicule / mois</h3>
+    <h2 id="cgv-a4">Article 4 — Prestations incluses</h2>
+    <p>L'offre CaptainHelp! à 9,90 € TTC/mois comprend :</p>
     <ul>
-      <li>Dépannage sur place 24h/24 7j/7, sans franchise kilométrique, dès le premier mètre ;</li>
+      <li>Dépannage sur place 24h/24 7j/7, sans franchise kilométrique, même devant chez vous ;</li>
       <li>Remorquage vers le garage le plus proche, sans limite de distance ;</li>
+      <li>Couverture du conducteur sur tout véhicule conduit ;</li>
       <li>Véhicule de remplacement sans caution, dès 18 ans, sous réserve de disponibilité ;</li>
-      <li>Couverture du conducteur sur tout véhicule conduit (flotte, prêt, personnel) ;</li>
-      <li>Retour au bureau ou au domicile du conducteur ;</li>
-      <li>1 nuit d'hôtel si immobilisation supérieure à 12 heures ;</li>
+      <li>Retour au domicile du conducteur ;</li>
+      <li>1 nuit d'hôtel si immobilisation supérieure à 3 heures ;</li>
       <li>Événements climatiques couverts : tempête, grêle, inondation ;</li>
-      <li>Matériel professionnel présent dans le véhicule au moment du sinistre couvert ;</li>
-      <li>Erreur de carburant couverte ;</li>
-      <li>Parking souterrain couvert ;</li>
-      <li>Perte et retrait de permis couverts, tous motifs confondus ;</li>
-      <li>5 interventions incluses par véhicule par année civile glissante ;</li>
-      <li>Application mobile conducteur avec suivi de l'intervention en temps réel ;</li>
-      <li>Dashboard de gestion de flotte en ligne.</li>
+      <li>Matériel professionnel dans le véhicule couvert ;</li>
+      <li>Erreur de carburant et parking souterrain couverts ;</li>
+      <li>Perte et retrait de permis couverts, tous motifs ;</li>
+      <li>3 interventions physiques incluses par an (voir article 7) ;</li>
+      <li>Couverture Europe entière ;</li>
+      <li>Application mobile avec suivi en temps réel.</li>
     </ul>
-    <p class="note">Au-delà de 5 interventions par véhicule par an, CaptainHelp! procède à un audit de sinistralité et peut proposer une révision tarifaire, un plafonnement ou une résiliation ciblée.</p>
-    <h3>4.2 Offre Poids Lourds +3,5t — 89 € HT / véhicule / mois</h3>
-    <ul>
-      <li>Dépannage sur place 24h/24 7j/7 en Europe (40 pays couverts) ;</li>
-      <li>Remorquage, relevage et grutage vers le garage le plus proche ;</li>
-      <li>Tracteur seul et véhicule attelé couverts ;</li>
-      <li>Petites pièces incluses : batterie, fusibles, courroies accessoires ;</li>
-      <li>AdBlue offert jusqu'à 30 litres par sinistre ;</li>
-      <li>Réparation de crevaison sur place (bouchon ou patch) ;</li>
-      <li>4 nuits d'hôtel pour le conducteur, contractualisées à l'ouverture du service ;</li>
-      <li>Transfert taxi hôtel–garage ;</li>
-      <li>Rapatriement du conducteur jusqu'à 500 € ;</li>
-      <li>Avance de fonds d'urgence à l'étranger ;</li>
-      <li>Repas conducteur en cas d'immobilisation prolongée (2 repas maximum par sinistre) ;</li>
-      <li>Assistance médicale téléphonique 24h/24 7j/7 ;</li>
-      <li>Rapatriement sanitaire en cas d'hospitalisation ;</li>
-      <li>Interprète téléphonique disponible 24h/24 7j/7 ;</li>
-      <li>Conseil juridique d'urgence téléphonique (1 heure par sinistre) ;</li>
-      <li>Gardiennage du véhicule immobilisé ;</li>
-      <li>Dashboard flotte et rapport mensuel d'activité ;</li>
-      <li>Audit de sinistralité à partir du 10e sinistre annuel par flotte.</li>
-    </ul>
-    <h3>4.3 Prestations non incluses</h3>
-    <ul>
-      <li>Frais de réparation en atelier (pièces majeures et main d'œuvre hors petites pièces PL) ;</li>
-      <li>Moteur, boîte de vitesses, pneus complets et toute pièce d'usure majeure ;</li>
-      <li>Frais médicaux du conducteur ;</li>
-      <li>Prise en charge de la marchandise transportée ;</li>
-      <li>Pénalités de retard ou pertes d'exploitation ;</li>
-      <li>Toute dépense engagée sans accord préalable de CaptainHelp!, hors urgence médicale justifiée.</li>
-    </ul>
+    <p>Ne sont pas inclus : frais de réparation en atelier, pièces de remplacement majeures (moteur, boîte de vitesses), frais médicaux, marchandise transportée, pertes d'exploitation, dépenses engagées sans accord préalable hors urgence médicale.</p>
 
     <h2 id="cgv-a5">Article 5 — Tarifs et paiement</h2>
-    <h3>5.1 Tarifs</h3>
-    <ul>
-      <li>Offre VL : 9,90 € HT / véhicule / mois (11,88 € TTC, TVA 20 %) ;</li>
-      <li>Offre PL : 89,00 € HT / véhicule / mois (106,80 € TTC, TVA 20 %).</li>
-    </ul>
-    <p>Ces tarifs sont garantis stables pendant toute la durée du contrat en cours, sous réserve de l'article 5.3.</p>
-    <h3>5.2 Paiement</h3>
-    <p>Prélèvement automatique SEPA le 1er de chaque mois pour tous les véhicules actifs. Facture disponible dans le Dashboard dans les 5 jours ouvrés. Tout défaut de paiement non régularisé sous 15 jours autorise CaptainHelp! à suspendre les prestations, sans préjudice des pénalités de retard au taux légal majoré de 5 points.</p>
-    <h3>5.3 Révision tarifaire</h3>
-    <p>Toute révision est notifiée par email 60 jours avant son entrée en vigueur. Le Souscripteur peut résilier sans frais dans ce délai.</p>
-    <h3>5.4 Pause d'abonnement</h3>
-    <p>Pendant une pause (offre VL uniquement), aucun prélèvement n'est effectué pour les véhicules mis en pause. Reprise effective sous 48 heures ouvrées sur demande.</p>
+    <p>Tarif : 9,90 € TTC/mois (8,25 € HT, TVA 20 %). Règlement par prélèvement automatique SEPA le 1er de chaque mois. Facture disponible dans l'espace client sous 5 jours ouvrés. Pendant une pause d'abonnement, aucun prélèvement n'est effectué. Toute révision tarifaire est notifiée 60 jours avant son entrée en vigueur, avec droit de résiliation sans frais.</p>
 
     <h2 id="cgv-a6">Article 6 — Durée, pause et résiliation</h2>
-    <h3>6.1 Offre VL — abonnement flexible</h3>
-    <p>Sans durée minimale d'engagement. Résiliable à tout moment avec un préavis de 30 jours. Pause possible jusqu'à 3 mois consécutifs par période de 12 mois glissants.</p>
-    <h3>6.2 Offre PL — engagement contractuel</h3>
-    <p>Durée minimale définie dans le bon de souscription, avec reconduction tacite annuelle. Résiliation par lettre recommandée avec AR, 60 jours avant l'échéance. Résiliation anticipée : indemnité de 2 mois de souscription par véhicule résilié.</p>
-    <h3>6.3 Résiliation par CaptainHelp!</h3>
-    <p>De plein droit en cas de : défaut de paiement sous 30 jours, fausse déclaration, fraude avérée, utilisation pour un véhicule exclu, comportement dangereux lors d'une intervention.</p>
-    <h3>6.4 Effets de la résiliation</h3>
-    <p>Cessation immédiate des garanties. Les sinistres en cours à la date de résiliation restent pris en charge. Facture de régularisation émise dans les 15 jours suivant la date d'effet.</p>
+    <p>L'abonnement est souscrit pour une durée initiale de 12 mois. À l'issue de cette période, il se reconduit mois par mois, résiliable avec un préavis de 30 jours par email à contact@captainhelp.eu.</p>
+    <p><strong>Pause d'abonnement :</strong> possible à tout moment, pour une durée maximale de 3 mois consécutifs par période de 12 mois. La pause suspend la facturation et les garanties, pour une durée maximale de 3 mois consécutifs par an, notamment en cas de déplacement prolongé hors Europe, de perte de permis ou d'absence de besoin temporaire. La durée du contrat est reportée du nombre de mois pausés. Reprise effective sous 48 heures ouvrées sur simple demande.</p>
+    <p>CaptainHelp! peut résilier de plein droit en cas de défaut de paiement non régularisé sous 30 jours, fausse déclaration, fraude avérée ou usage pour un véhicule exclu.</p>
 
-    <h2 id="cgv-a7">Article 7 — Audit de sinistralité</h2>
-    <p>CaptainHelp! procède à un audit de sinistralité : au-delà de 5 interventions / véhicule / an (offre VL) ou à partir du 10e sinistre annuel par flotte (offre PL). L'audit donne lieu à un rapport transmis au Souscripteur, pouvant aboutir à un maintien du contrat, une révision tarifaire, un plafonnement ou une résiliation motivée. Le Souscripteur dispose de 30 jours pour contester par écrit.</p>
+    <h2 id="cgv-a7">Article 7 — Interventions et forfait au-delà</h2>
+    <p>3 interventions physiques sont incluses par année civile glissante. Les appels téléphoniques ou via l'application sont illimités et ne comptent pas comme interventions. Au-delà de 3 interventions par an, chaque intervention supplémentaire est facturée au forfait selon le tarif communiqué lors de la souscription et mis à jour sur captainhelp.eu.</p>
 
     <h2 id="cgv-a8">Article 8 — Déclenchement de l'assistance</h2>
-    <p>Toute demande d'assistance doit être initiée via l'application mobile CaptainHelp! ou par appel au numéro dédié. Aucune prestation engagée sans contact préalable ne peut faire l'objet d'un remboursement, sauf urgence médicale justifiée. Le conducteur communique : identité, immatriculation, nature du sinistre, localisation précise.</p>
+    <p>Toute demande doit être initiée via l'application mobile ou par appel au numéro dédié. Le Souscripteur communique son identité, la nature du sinistre et sa localisation. Aucune dépense engagée sans contact préalable ne peut être remboursée, sauf urgence médicale justifiée.</p>
 
     <h2 id="cgv-a9">Article 9 — Obligations du Souscripteur</h2>
-    <ul>
-      <li>Fournir des informations exactes et à jour à la souscription et en cours de contrat ;</li>
-      <li>Déclarer tout changement affectant un véhicule couvert dans les 30 jours ;</li>
-      <li>Assurer un entretien régulier des véhicules couverts ;</li>
-      <li>Informer les conducteurs des modalités du service ;</li>
-      <li>Ne pas tolérer un usage frauduleux ou abusif ;</li>
-      <li>Ne pas céder les droits du contrat sans accord écrit préalable.</li>
-    </ul>
+    <p>Fournir des informations exactes, entretenir régulièrement son véhicule, ne pas faire un usage frauduleux ou abusif du service, ne pas céder les droits du contrat sans accord préalable écrit.</p>
 
-    <h2 id="cgv-a10">Article 10 — Responsabilité de CaptainHelp!</h2>
-    <p>Responsabilité limitée à l'organisation et à la prise en charge financière des interventions définies à l'article 4. Aucune responsabilité pour dommages indirects ou pertes d'exploitation. Plafond : montant des cotisations des 6 derniers mois précédant le sinistre litigieux. Force majeure exonératoire (art. 1218 C. civ.).</p>
+    <h2 id="cgv-a10">Article 10 — Responsabilité</h2>
+    <p>La responsabilité de CaptainHelp! est limitée à l'organisation et la prise en charge des interventions définies à l'article 4. Aucune responsabilité pour dommages indirects ou pertes d'exploitation. Plafond : cotisations des 6 derniers mois. Force majeure exonératoire (art. 1218 C. civ.).</p>
 
-    <h2 id="cgv-a11">Article 11 — Hébergement et continuité</h2>
-    <p>Site et Dashboard hébergés par OVH SAS (serveurs) et GitHub (code source). En cas d'indisponibilité prolongée du Dashboard (> 72h), CaptainHelp! communique un bilan sous 5 jours ouvrés. La continuité du service téléphonique est assurée en toute circonstance.</p>
+    <h2 id="cgv-a11">Article 11 — Hébergement</h2>
+    <p>Site et outils hébergés par OVH SAS (serveurs) et GitHub (code source). La continuité du service téléphonique est assurée en toute circonstance.</p>
 
-    <h2 id="cgv-a12">Article 12 — Protection des données (RGPD)</h2>
-    <p><strong>Responsable :</strong> Sofiane Benhaddou — contact@captainhelp.eu.</p>
-    <p><strong>Données :</strong> noms, coordonnées des Bénéficiaires, localisation lors des interventions, historique des sinistres. Fondement : exécution du contrat (art. 6.1.b RGPD).</p>
-    <p><strong>Conservation :</strong> durée du contrat + 3 ans. Données de localisation : 12 mois par intervention.</p>
-    <p><strong>Droits :</strong> accès, rectification, effacement, portabilité, opposition — à exercer à contact@captainhelp.eu. Réclamation possible auprès de la CNIL (www.cnil.fr).</p>
-    <p>Aucune cession de données à des tiers à des fins commerciales.</p>
+    <h2 id="cgv-a12">Article 12 — Données personnelles (RGPD)</h2>
+    <p><strong>Responsable :</strong> Sofiane Benhaddou — contact@captainhelp.eu. Données traitées : identité, coordonnées, localisation lors des interventions, historique des sinistres. Fondement : exécution du contrat (art. 6.1.b RGPD). Conservation : durée du contrat + 3 ans. Droits (accès, rectification, effacement, portabilité, opposition) : contact@captainhelp.eu. Réclamation CNIL : www.cnil.fr.</p>
 
     <h2 id="cgv-a13">Article 13 — Propriété intellectuelle</h2>
-    <p>L'application, le Dashboard, l'identité visuelle et tous les contenus produits dans le cadre du service sont la propriété de Sofiane Benhaddou ou de ses partenaires. Droit d'usage non exclusif et non cessible pendant la durée du contrat. Toute reproduction ou exploitation sans accord écrit est interdite.</p>
+    <p>L'application, le site et tous les contenus sont la propriété de Sofiane Benhaddou ou de ses partenaires. Droit d'usage non exclusif et non cessible pendant la durée de l'abonnement.</p>
 
-    <h2 id="cgv-a14">Article 14 — Réclamations et médiation</h2>
-    <p>Réclamation à adresser à contact@captainhelp.eu dans les 30 jours suivant le sinistre. Accusé de réception sous 5 jours ouvrés, réponse de fond sous 30 jours ouvrés. En cas de désaccord persistant, recours possible à un médiateur professionnel agréé avant toute action judiciaire.</p>
+    <h2 id="cgv-a14">Article 14 — Réclamations</h2>
+    <p>Réclamation à adresser à contact@captainhelp.eu dans les 30 jours suivant le sinistre. Réponse sous 30 jours ouvrés. En cas de désaccord persistant, recours possible à un médiateur professionnel agréé avant toute action judiciaire.</p>
 
     <h2 id="cgv-a15">Article 15 — Modification des CGV</h2>
-    <p>Modifications notifiées par email avec un préavis de 30 jours. Sans opposition écrite dans ce délai, les nouvelles CGV sont acceptées. En cas d'opposition, résiliation possible sans frais.</p>
+    <p>Modifications notifiées par email avec un préavis de 30 jours. Sans opposition dans ce délai, les nouvelles CGV sont acceptées. En cas d'opposition, résiliation sans frais possible.</p>
 
-    <h2 id="cgv-a16">Article 16 — Cession du contrat</h2>
-    <p>Cession par le Souscripteur : accord écrit préalable de CaptainHelp! requis. Cession par CaptainHelp! (fusion, restructuration) : préavis de 30 jours avec droit de résiliation sans frais pour le Souscripteur.</p>
+    <h2 id="cgv-a16">Article 16 — Droit applicable</h2>
+    <p>Droit français. Tout litige non résolu à l'amiable sous 60 jours relève des tribunaux du ressort du domicile de Sofiane Benhaddou.</p>
 
-    <h2 id="cgv-a17">Article 17 — Droit applicable et juridiction</h2>
-    <p>Droit français. Tout litige non résolu à l'amiable sous 60 jours relève des tribunaux du ressort du domicile de Sofiane Benhaddou, sauf disposition d'ordre public contraire.</p>
-
-    <h2 id="cgv-a18">Article 18 — Dispositions finales</h2>
-    <p>Toute clause nulle laisse les autres en vigueur. La renonciation ponctuelle à un manquement ne vaut pas renonciation générale. Les présentes CGV constituent l'intégralité de l'accord entre les parties sur leur objet.</p>
+    <h2 id="cgv-a17">Article 17 — Dispositions finales</h2>
+    <p>Toute clause nulle laisse les autres en vigueur. Les présentes CGV constituent l'intégralité de l'accord entre les parties.</p>
 
     <div class="cgv-footer-box">
       Sofiane Benhaddou — CaptainHelp! — contact@captainhelp.eu — captainhelp.eu<br>
       Hébergement : OVH SAS (serveurs) · GitHub (code source)<br><br>
-      ⚠ Document de travail v1.0 — À valider par un avocat avant toute utilisation contractuelle.
+      Document de travail v1.0. À valider par un avocat avant toute utilisation contractuelle.
     </div>
   </div>
 </div>
+
+<script>
+function openCGV(){
+  document.getElementById('cgv').classList.add('open');
+  document.body.style.overflow='hidden';
+  document.getElementById('cgv').scrollTop=0;
+}
+function closeCGV(){
+  document.getElementById('cgv').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeCGV();});
+function submitWL(){
+  var e=document.getElementById('wl-email').value.trim();
+  if(!e||!e.includes('@')){document.getElementById('wl-email').focus();return;}
+  document.getElementById('wl-wrap').style.display='none';
+  var s=document.getElementById('wl-success');
+  s.style.display='flex';
+}
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(el){
+    if(el.isIntersecting){el.target.classList.add('in');obs.unobserve(el.target);}
+  });
+},{threshold:.08});
+document.querySelectorAll('.r').forEach(function(el){obs.observe(el);});
+</script>
 </body>
 </html>
