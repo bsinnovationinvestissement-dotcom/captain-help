@@ -277,6 +277,54 @@ footer nav a{font-size:11px;color:var(--ink3);text-decoration:none;margin-left:1
   .cgv-wrap{padding:40px 20px 60px}
   .cgv-cover h1{font-size:32px}
 }
+
+/* FORM QUALIFY */
+.wl-qualify { max-width: 460px; margin: 0 auto; text-align: left; }
+.wl-qualify .q-label {
+  font-size: 12.5px; font-weight: 600; color: var(--ink2);
+  margin: 18px 0 8px; display: block; letter-spacing: .2px;
+}
+.q-options { display: flex; gap: 8px; flex-wrap: wrap; }
+.q-options label {
+  display: flex; align-items: center; gap: 7px;
+  background: #fff; border: 1.5px solid var(--line);
+  border-radius: 8px; padding: 9px 14px;
+  font-size: 13px; color: var(--ink2); cursor: pointer;
+  transition: all .15s; flex: 1; min-width: 120px;
+}
+.q-options label:hover { border-color: var(--o); color: var(--ink); }
+.q-options input[type="radio"] { display: none; }
+.q-options input[type="radio"]:checked + span {
+  color: var(--o); font-weight: 600;
+}
+.q-options label:has(input:checked) {
+  border-color: var(--o); background: var(--o3); color: var(--o);
+}
+.wl-textarea {
+  width: 100%; padding: 12px 14px; border-radius: 9px;
+  border: 1.5px solid var(--line); background: #fff;
+  color: var(--ink); font-family: var(--fb); font-size: 13.5px;
+  outline: none; resize: none; line-height: 1.6;
+  transition: border-color .15s; margin-top: 4px;
+}
+.wl-textarea:focus { border-color: var(--o); }
+.wl-textarea::placeholder { color: var(--ink3); }
+.char-count {
+  font-size: 11px; color: var(--ink3); text-align: right;
+  margin-top: 4px; display: block;
+}
+.char-count.warn { color: var(--o); }
+.wl-form-full {
+  display: flex; flex-direction: column; gap: 0;
+  max-width: 460px; margin: 0 auto;
+}
+.wl-email-row { display: flex; gap: 8px; margin-top: 20px; }
+.wl-email-row input { flex: 1; min-width: 0; }
+@media(max-width: 600px) {
+  .q-options label { min-width: calc(50% - 4px); flex: none; }
+  .wl-email-row { flex-direction: column; }
+  .wl-email-row button { width: 100%; }
+}
 </style>
 </head>
 <body>
@@ -348,7 +396,7 @@ footer nav a{font-size:11px;color:var(--ink3);text-decoration:none;margin-left:1
   <div class="digital-inner">
     <div class="dcard">
       <span class="dico">📱</span>
-      <h4>100% depuis l'app</h4>
+      <h4>Expérience digitale</h4>
       <p>Déclenchez l'assistance, suivez l'arrivée du technicien en temps réel, gérez votre abonnement. Tout depuis votre téléphone.</p>
     </div>
     <div class="dcard">
@@ -383,7 +431,7 @@ footer nav a{font-size:11px;color:var(--ink3);text-decoration:none;margin-left:1
       <strong>12 mois d'engagement.</strong> Jusqu'à 3 mois de pause par an en cas de déplacement ou de besoin. L'abonnement vous attend. Pas de pénalité.
     </div>
     <ul class="ofeats">
-      <li><div class="ck">✓</div>Couvert sur <strong>tout véhicule conduit</strong>, le vôtre ou celui d'un autre</li>
+      <li><div class="ck">✓</div>Couvert sur <strong>tout véhicule conduit</strong> — le vôtre, ou un autre</li>
       <li><div class="ck">✓</div>Dépannage même devant chez vous — 0 km, 24h/24 7j/7</li>
       <li><div class="ck">✓</div>Remorquage sans limite de distance</li>
       <li><div class="ck">✓</div>Véhicule de remplacement, sans caution, dès 18 ans</li>
@@ -393,7 +441,7 @@ footer nav a{font-size:11px;color:var(--ink3);text-decoration:none;margin-left:1
       <li><div class="ck">✓</div>Erreur de carburant couverte</li>
       <li><div class="ck">✓</div>Parking souterrain couvert</li>
       <li><div class="ck">✓</div>Matériel professionnel dans le véhicule couvert</li>
-      <li><div class="ck">✓</div>3 interventions / an incluses, appels illimités. Au-delà des 3, forfait à la prestation.</li>
+      <li><div class="ck">✓</div>3 interventions / an incluses — appels illimités. Au-delà, forfait à la prestation.</li>
       <li><div class="ck">✓</div>App mobile avec suivi en temps réel</li>
     </ul>
     <div class="odiv"></div>
@@ -442,11 +490,34 @@ footer nav a{font-size:11px;color:var(--ink3);text-decoration:none;margin-left:1
   <h2>Soyez prévenu<br>en <em>avant-première.</em></h2>
   <p>CaptainHelp! arrive bientôt. Inscrivez-vous pour être parmi les premiers à en profiter.</p>
   <div id="wl-wrap">
-    <div class="wl-form">
+    <div class="wl-qualify">
+
+      <span class="q-label">Combien de kilomètres faites-vous par an ?</span>
+      <div class="q-options">
+        <label><input type="radio" name="km" value="<15k"><span>Moins de 15 000 km</span></label>
+        <label><input type="radio" name="km" value="15-30k"><span>15 000 à 30 000 km</span></label>
+        <label><input type="radio" name="km" value=">30k"><span>Plus de 30 000 km</span></label>
+      </div>
+
+      <span class="q-label">Quel est l'âge de votre véhicule ?</span>
+      <div class="q-options">
+        <label><input type="radio" name="age" value="<5ans"><span>Moins de 5 ans</span></label>
+        <label><input type="radio" name="age" value="5-10ans"><span>5 à 10 ans</span></label>
+        <label><input type="radio" name="age" value=">10ans"><span>Plus de 10 ans</span></label>
+      </div>
+
+      <span class="q-label">Un commentaire ? <em style="font-weight:300;color:var(--ink3)">(optionnel)</em></span>
+      <textarea id="wl-comment" class="wl-textarea" rows="3"
+        placeholder="Ce que vous attendez de CaptainHelp!, une situation vécue..."
+        maxlength="200" oninput="updateCount(this)"></textarea>
+      <span class="char-count" id="char-count">0 / 200</span>
+
+    </div>
+    <div class="wl-email-row">
       <input type="email" id="wl-email" placeholder="Votre adresse email">
       <button type="button" onclick="submitWL()">Je m'inscris</button>
     </div>
-    <p class="wl-note">Désinscription possible à tout moment.</p>
+    <p class="wl-note" style="text-align:center;margin-top:10px;">Désinscription possible à tout moment.</p>
   </div>
   <div class="wl-success" id="wl-success">
     <span>✓</span> Inscription confirmée. Vous serez notifié dès l'ouverture.
@@ -541,7 +612,7 @@ footer nav a{font-size:11px;color:var(--ink3);text-decoration:none;margin-left:1
     <p>CaptainHelp! peut résilier de plein droit en cas de défaut de paiement non régularisé sous 30 jours, fausse déclaration, fraude avérée ou usage pour un véhicule exclu.</p>
 
     <h2 id="cgv-a7">Article 7 — Interventions et forfait au-delà</h2>
-    <p>3 interventions physiques sont incluses par année civile glissante. Les appels téléphoniques ou via l'application sont illimités et ne comptent pas comme interventions. Au-delà de 3 interventions par an, chaque intervention supplémentaire est facturée au forfait selon le tarif communiqué lors de la souscription et mis à jour sur captainhelp.eu.</p>
+    <p>3 interventions physiques sont incluses par année civile glissante. Les appels téléphoniques ou via l'application sont illimités et ne comptent pas comme interventions. Au-delà, chaque intervention supplémentaire est facturée au forfait selon le tarif communiqué lors de la souscription et mis à jour sur captainhelp.eu.</p>
 
     <h2 id="cgv-a8">Article 8 — Déclenchement de l'assistance</h2>
     <p>Toute demande doit être initiée via l'application mobile ou par appel au numéro dédié. Le Souscripteur communique son identité, la nature du sinistre et sa localisation. Aucune dépense engagée sans contact préalable ne peut être remboursée, sauf urgence médicale justifiée.</p>
@@ -582,6 +653,12 @@ footer nav a{font-size:11px;color:var(--ink3);text-decoration:none;margin-left:1
 </div>
 
 <script>
+function updateCount(el){
+  var n = el.value.length;
+  var counter = document.getElementById('char-count');
+  counter.textContent = n + ' / 200';
+  counter.className = 'char-count' + (n > 170 ? ' warn' : '');
+}
 function openCGV(){
   document.getElementById('cgv').classList.add('open');
   document.body.style.overflow='hidden';
