@@ -222,9 +222,8 @@ footer nav a{font-size:11px;color:var(--ink3);text-decoration:none;margin-left:1
   h1{font-size:clamp(28px,8vw,44px);letter-spacing:-1.2px}
   .hstats{flex-wrap:wrap;border-radius:10px}
   .hstat{min-width:calc(50% - 1px);border-bottom:1.5px solid var(--line)}
-  .hstat:nth-child(3){border-bottom:none}
-  .hstat:nth-child(4){border-bottom:none}
-  .hstat:last-child{border-bottom:none;border-right:none;width:100%;min-width:100%}
+  .hstat:nth-child(3){border-bottom:none;border-right:none}
+  .hstat:nth-child(4){border-bottom:none;border-right:none}
   .who{grid-template-columns:1fr;gap:32px;padding:48px 20px}
   .digital{padding:32px 20px}
   .digital-inner{grid-template-columns:1fr;gap:12px}
@@ -314,10 +313,7 @@ footer nav a{font-size:11px;color:var(--ink3);text-decoration:none;margin-left:1
   margin-top: 4px; display: block;
 }
 .char-count.warn { color: var(--o); }
-.wl-form-full {
-  display: flex; flex-direction: column; gap: 0;
-  max-width: 460px; margin: 0 auto;
-}
+
 .wl-email-row { display: flex; gap: 8px; margin-top: 20px; }
 .wl-email-row input { flex: 1; min-width: 0; }
 @media(max-width: 600px) {
@@ -341,7 +337,7 @@ footer nav a{font-size:11px;color:var(--ink3);text-decoration:none;margin-left:1
     <div class="tcard"><p>« J'utilisais la voiture d'un ami pour aller à un entretien. Panne sur le périph. Mon assistance : ce n'est pas votre véhicule. J'ai raté l'entretien. »</p><div class="tn">Membre de la waitlist</div></div>
     <div class="tcard"><p>« Batterie à plat dans le parking de mon immeuble, sous-sol. On intervient pas en sous-sol. Ok. »</p><div class="tn">Membre de la waitlist</div></div>
     <div class="tcard"><p>« Parti 6 semaines au Maroc. J'ai continué à payer mon assistance en France pendant ce temps. Pour rien. »</p><div class="tn">Membre de la waitlist</div></div>
-    <div class="tcard"><p>« Excès de vitesse, retrait de permis 6 mois. J'ai continué à payer mon assurance assistance pendant tout ce temps. Aucun moyen de suspendre le contrat. »</p><div class="tn">Membre de la waitlist</div></div>
+    <div class="tcard"><p>« Excès de vitesse, retrait de permis 6 mois. J'ai continué à payer mon assistance pendant tout ce temps. Aucun moyen de suspendre le contrat. »</p><div class="tn">Membre de la waitlist</div></div>
     <div class="tcard"><p>« Ma voiture est restée 12 jours au garage. Véhicule de prêt couvert 7 jours. Les 5 autres j'ai pris des Uber. 180 euros de ma poche. »</p><div class="tn">Membre de la waitlist</div></div>
     <div class="tcard"><p>« J'utilise souvent la voiture de ma femme le week-end. Si je tombe en panne avec, couvert comment ? Jamais trouvé de réponse claire dans mon contrat. »</p><div class="tn">Membre de la waitlist</div></div>
     <!-- dup -->
@@ -349,7 +345,7 @@ footer nav a{font-size:11px;color:var(--ink3);text-decoration:none;margin-left:1
     <div class="tcard"><p>« J'utilisais la voiture d'un ami pour aller à un entretien. Panne sur le périph. Mon assistance : ce n'est pas votre véhicule. J'ai raté l'entretien. »</p><div class="tn">Membre de la waitlist</div></div>
     <div class="tcard"><p>« Batterie à plat dans le parking de mon immeuble, sous-sol. On intervient pas en sous-sol. Ok. »</p><div class="tn">Membre de la waitlist</div></div>
     <div class="tcard"><p>« Parti 6 semaines au Maroc. J'ai continué à payer mon assistance en France pendant ce temps. Pour rien. »</p><div class="tn">Membre de la waitlist</div></div>
-    <div class="tcard"><p>« Excès de vitesse, retrait de permis 6 mois. J'ai continué à payer mon assurance assistance pendant tout ce temps. Aucun moyen de suspendre le contrat. »</p><div class="tn">Membre de la waitlist</div></div>
+    <div class="tcard"><p>« Excès de vitesse, retrait de permis 6 mois. J'ai continué à payer mon assistance pendant tout ce temps. Aucun moyen de suspendre le contrat. »</p><div class="tn">Membre de la waitlist</div></div>
     <div class="tcard"><p>« Ma voiture est restée 12 jours au garage. Véhicule de prêt couvert 7 jours. Les 5 autres j'ai pris des Uber. 180 euros de ma poche. »</p><div class="tn">Membre de la waitlist</div></div>
     <div class="tcard"><p>« J'utilise souvent la voiture de ma femme le week-end. Si je tombe en panne avec, couvert comment ? Jamais trouvé de réponse claire dans mon contrat. »</p><div class="tn">Membre de la waitlist</div></div>
   </div>
@@ -361,7 +357,7 @@ footer nav a{font-size:11px;color:var(--ink3);text-decoration:none;margin-left:1
 </div>
 
 <div class="hero-bottom r">
-  <p class="hsub">Peu importe le volant, l'endroit, l'heure. <strong>On est là.</strong></p>
+  <p class="hsub">Peu importe le volant, l'endroit, l'heure. <strong>Nous sommes là.</strong></p>
   <div class="hctas">
     <a href="#waitlist" class="bto">Rejoindre la waitlist →</a>
     <a href="#comparatif" class="bline">Voir le comparatif</a>
@@ -384,7 +380,7 @@ footer nav a{font-size:11px;color:var(--ink3);text-decoration:none;margin-left:1
   </div>
   <div class="who-r">
     <div class="quote">Ce secteur n'avait pas besoin d'une amélioration. Il avait besoin d'être reconstruit de zéro.</div>
-    <p>Les autres couvrent <strong>votre voiture</strong>. On vous couvre <strong>vous</strong>.</p>
+    <p>Les autres couvrent <strong>votre voiture</strong>. Nous vous couvrons <strong>vous</strong>.</p>
     <p>Peu importe si vous êtes au volant de la vôtre, de celle d'un ami, d'une location en vacances. Vous partez en déplacement, vous perdez votre permis, vous n'en avez pas besoin un moment : vous mettez sur pause. Jusqu'à 3 mois par an. L'abonnement vous attend à votre retour.</p>
   </div>
 </div>
@@ -422,7 +418,7 @@ footer nav a{font-size:11px;color:var(--ink3);text-decoration:none;margin-left:1
     <div class="otag">Assistance conducteur</div>
     <h3>CaptainHelp!</h3>
     <p class="cline">Vous êtes couvert, pas juste votre voiture.</p>
-    <p class="odesc">Votre voiture, celle d'un ami, une location. Si vous êtes au volant, on est là.</p>
+    <p class="odesc">Votre voiture, celle d'un ami, une location. Si vous êtes au volant, nous sommes là.</p>
     <div class="oprice-wrap">
       <span class="price-n">9,90 €</span>
       <span class="price-p">TTC / mois</span>
@@ -612,7 +608,7 @@ footer nav a{font-size:11px;color:var(--ink3);text-decoration:none;margin-left:1
     <p>CaptainHelp! peut résilier de plein droit en cas de défaut de paiement non régularisé sous 30 jours, fausse déclaration, fraude avérée ou usage pour un véhicule exclu.</p>
 
     <h2 id="cgv-a7">Article 7 — Interventions et forfait au-delà</h2>
-    <p>3 interventions physiques sont incluses par année civile glissante. Les appels téléphoniques ou via l'application sont illimités et ne comptent pas comme interventions. Au-delà, chaque intervention supplémentaire est facturée au forfait selon le tarif communiqué lors de la souscription et mis à jour sur captainhelp.eu.</p>
+    <p>3 interventions physiques sont incluses par année civile glissante. Les appels téléphoniques ou via l'application sont illimités et ne comptent pas comme interventions. Au-delà, chaque intervention supplémentaire est facturée au forfait selon le tarif en vigueur sur captainhelp.eu au moment de l'intervention.</p>
 
     <h2 id="cgv-a8">Article 8 — Déclenchement de l'assistance</h2>
     <p>Toute demande doit être initiée via l'application mobile ou par appel au numéro dédié. Le Souscripteur communique son identité, la nature du sinistre et sa localisation. Aucune dépense engagée sans contact préalable ne peut être remboursée, sauf urgence médicale justifiée.</p>
