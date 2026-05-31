@@ -22,11 +22,13 @@ body{
   font-family:var(--fb);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;
   background-color:#FAFAFA;
   background-image:
-    radial-gradient(ellipse at 0% 0%,    rgba(247,88,26,.32) 0px,transparent 50%),
-    radial-gradient(ellipse at 100% 0%,  rgba(34,197,94,.24) 0px,transparent 46%),
-    radial-gradient(ellipse at 0% 100%,  rgba(34,197,94,.22) 0px,transparent 44%),
-    radial-gradient(ellipse at 100% 100%,rgba(247,88,26,.22) 0px,transparent 44%),
-    radial-gradient(ellipse at 50% 50%,  rgba(255,255,255,.55) 0px,transparent 50%);
+    radial-gradient(ellipse at 0% 0%,    rgba(247,88,26,.42) 0px,transparent 55%),
+    radial-gradient(ellipse at 100% 0%,  rgba(34,197,94,.32) 0px,transparent 50%),
+    radial-gradient(ellipse at 0% 100%,  rgba(34,197,94,.30) 0px,transparent 48%),
+    radial-gradient(ellipse at 100% 100%,rgba(247,88,26,.30) 0px,transparent 48%),
+    radial-gradient(ellipse at 30% 50%,  rgba(247,88,26,.08) 0px,transparent 40%),
+    radial-gradient(ellipse at 70% 50%,  rgba(34,197,94,.08) 0px,transparent 40%),
+    radial-gradient(ellipse at 50% 50%,  rgba(255,255,255,.45) 0px,transparent 45%);
 }
 
 /* NAV */
@@ -34,7 +36,7 @@ nav{
   position:sticky;top:0;z-index:100;
   display:flex;align-items:center;justify-content:space-between;
   padding:0 40px;height:56px;
-  background:rgba(250,250,250,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  background:rgba(250,250,250,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   border-bottom:1px solid var(--line);
 }
 .logo{font-family:var(--fh);font-size:17px;font-weight:800;color:var(--ink);text-decoration:none}
@@ -47,7 +49,7 @@ nav{
 .nav-cta:hover{background:var(--o2)}
 
 /* TESTI BAND */
-.tband{background:rgba(242,242,240,.65);border-bottom:1px solid var(--line);padding:16px 0;overflow:hidden;position:relative}
+.tband{background:rgba(242,242,240,.55);border-bottom:1px solid var(--line);padding:16px 0;overflow:hidden;position:relative}
 .tband::before,.tband::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
 .tband::before{left:0;background:linear-gradient(to right,rgba(242,242,240,.95),transparent)}
 .tband::after{right:0;background:linear-gradient(to left,rgba(242,242,240,.95),transparent)}
@@ -108,9 +110,9 @@ hr{border:none;border-top:1px solid var(--line);margin:0}
 .who-r p strong{color:var(--ink);font-weight:500}
 
 /* DIGITAL STRIP */
-.digital{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:40px}
+.digital{background:rgba(242,242,240,.6);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:40px}
 .digital-inner{max-width:880px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.dcard{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:24px 20px}
+.dcard{background:rgba(255,255,255,.82);border:1.5px solid var(--line);border-radius:12px;padding:24px 20px}
 .dcard .dico{font-size:22px;margin-bottom:12px;display:block}
 .dcard h4{font-family:var(--fh);font-size:14.5px;font-weight:700;letter-spacing:-.2px;margin-bottom:6px}
 .dcard p{font-size:12.5px;color:var(--ink3);line-height:1.65}
@@ -135,7 +137,7 @@ hr{border:none;border-top:1px solid var(--line);margin:0}
 .price-p{font-size:12.5px;color:var(--ink3)}
 .price-engage{
   font-size:12px;color:var(--ink3);margin-bottom:20px;
-  background:var(--bg2);border-radius:8px;padding:8px 12px;line-height:1.6;
+  background:rgba(242,242,240,.7);border-radius:8px;padding:8px 12px;line-height:1.6;
 }
 .price-engage strong{color:var(--ink);font-weight:600}
 .ofeats{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:22px}
@@ -177,7 +179,7 @@ tbody tr:hover td:nth-child(3){background:rgba(34,197,94,.05)}
 .warn{color:#B45309!important}
 
 /* WAITLIST */
-.cta{background:var(--bg2);color:var(--ink);padding:80px 40px;text-align:center;border-top:1px solid var(--line)}
+.cta{background:rgba(242,242,240,.6);color:var(--ink);padding:80px 40px;text-align:center;border-top:1px solid var(--line)}
 .cta h2{font-family:var(--fh);font-size:clamp(26px,4vw,50px);font-weight:800;letter-spacing:-1.5px;line-height:1.1;margin-bottom:14px}
 .cta h2 em{font-style:italic;color:var(--o)}
 .cta p{font-size:15px;color:var(--ink3);font-weight:300;max-width:360px;margin:0 auto 28px;line-height:1.75}
@@ -203,7 +205,7 @@ tbody tr:hover td:nth-child(3){background:rgba(34,197,94,.05)}
 footer{
   padding:22px 40px;border-top:1px solid var(--line);
   display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;
-  background:var(--bg2);
+  background:rgba(242,242,240,.6);
 }
 .flogo{font-family:var(--fh);font-size:14px;font-weight:800;color:var(--ink3)}
 .flogo span{color:var(--o);opacity:.6}
