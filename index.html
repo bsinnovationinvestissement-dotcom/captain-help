@@ -669,40 +669,39 @@ function closeCGV(){
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeCGV();});
 function submitWL(){
   var email = document.getElementById('wl-email').value.trim();
-  if(!email || !email.includes('@')){
-    document.getElementById('wl-email').focus();
-    return;
-  }
+  if(!email || !email.includes('@')){ document.getElementById('wl-email').focus(); return; }
   var km      = document.querySelector('input[name="km"]:checked');
   var age     = document.querySelector('input[name="age"]:checked');
-  var comment = document.getElementById('wl-comment') ? document.getElementById('wl-comment').value : '';
+  var comment = document.getElementById('wl-comment') ? document.getElementById('wl-comment').value.trim() : '';
   var btn     = document.querySelector('.wl-email-row button');
-  btn.textContent = 'Envoi...';
+  btn.textContent = "Envoi…";
   btn.disabled = true;
+  console.log('[CaptainHelp] Envoi Formspree', email);
+  var data = new FormData();
+  data.append('email',        email);
+  data.append('km_annuels',   km  ? km.value  : "Non renseigné");
+  data.append('age_vehicule', age ? age.value : "Non renseigné");
+  data.append('commentaire',  comment || "Aucun");
+  data.append('_subject',     "Nouvelle inscription waitlist CaptainHelp!");
   fetch('https://formspree.io/f/xdapwgql', {
     method: 'POST',
-    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      email:        email,
-      km_annuels:   km  ? km.value  : 'Non renseigné',
-      age_vehicule: age ? age.value : 'Non renseigné',
-      commentaire:  comment || 'Aucun'
-    })
+    headers: { 'Accept': 'application/json' },
+    body: data
   })
   .then(function(r){
-    if(r.ok){
-      document.getElementById('wl-wrap').style.display = 'none';
-      document.getElementById('wl-success').style.display = 'flex';
-    } else {
-      btn.textContent = "Je m'inscris";
-      btn.disabled = false;
-      alert('Une erreur est survenue. Merci de réessayer ou d'écrire à contact@captainhelp.eu');
-    }
+    console.log('[CaptainHelp] Status:', r.status);
+    return r.text();
   })
-  .catch(function(){
+  .then(function(txt){
+    console.log('[CaptainHelp] Body:', txt);
+    document.getElementById('wl-wrap').style.display = 'none';
+    document.getElementById('wl-success').style.display = 'flex';
+  })
+  .catch(function(err){
+    console.error('[CaptainHelp] Erreur:', err);
     btn.textContent = "Je m'inscris";
     btn.disabled = false;
-    alert('Connexion impossible. Merci de réessayer ou d'écrire à contact@captainhelp.eu');
+    alert("Une erreur est survenue. Merci d'écrire à contact@captainhelp.eu");
   });
 }
 var obs=new IntersectionObserver(function(entries){
