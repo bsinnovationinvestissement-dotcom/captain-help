@@ -174,7 +174,7 @@ nav.main{
 
 /* HERO */
 .hero{
-  max-width:1080px;margin:0 auto;padding:80px 40px 72px;
+  max-width:1080px;margin:0 auto;padding:36px 40px 64px;
   display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;
 }
 .hero-eyebrow{
@@ -186,7 +186,35 @@ nav.main{
 h1{font-family:var(--fh);font-size:clamp(34px,4.6vw,58px);font-weight:800;letter-spacing:-1.9px;line-height:1.05;margin-bottom:20px;color:#fff}
 h1 em{font-style:italic;color:var(--o)}
 .hsub{font-size:14px;font-weight:300;color:var(--txt2);line-height:1.55;max-width:470px;margin-bottom:9px}
-.hsub.last{margin-bottom:12px}
+.hsub.last{margin-bottom:0}
+.hero-hook{
+  position:relative;background:linear-gradient(135deg,rgba(247,88,26,.12),rgba(247,88,26,.02) 60%);
+  border:1px solid rgba(247,88,26,.28);border-left:3px solid var(--o);
+  border-radius:4px 16px 16px 4px;padding:20px 20px 18px 56px;margin-bottom:20px;
+  box-shadow:0 10px 28px rgba(247,88,26,.08);
+  animation:heroGlow 4s ease-in-out infinite;
+}
+@keyframes heroGlow{
+  0%,100%{box-shadow:0 10px 28px rgba(247,88,26,.08), 0 0 0 rgba(247,88,26,0)}
+  50%{box-shadow:0 10px 28px rgba(247,88,26,.08), 0 0 22px rgba(247,88,26,.20)}
+}
+.hero-hook-badge{
+  position:absolute;top:18px;left:-3px;
+  width:36px;height:36px;border-radius:0 11px 11px 0;
+  background:linear-gradient(135deg,var(--o),#FF8A50);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;box-shadow:3px 4px 14px rgba(247,88,26,.4);
+}
+.hero-q{
+  font-family:var(--fh);font-size:18px;font-weight:800;letter-spacing:-.3px;
+  color:#fff;line-height:1.4;margin-bottom:0;
+}
+.hero-q b{color:var(--o)}
+.hero-hook-divider{height:1px;background:linear-gradient(to right,rgba(247,88,26,.3),transparent);margin:12px 0}
+.hero-hook .hsub{margin-bottom:0}
+@media (prefers-reduced-motion: reduce){
+  .hero-hook{animation:none}
+}
 .h1-ast{font-family:var(--fb);font-size:15px;font-weight:600;color:var(--txt3);text-decoration:none;vertical-align:super;margin-left:6px;line-height:1;transition:color .15s}
 .h1-ast:hover{color:var(--o)}
 .excl-link{display:inline-block;font-size:11.5px;font-weight:500;color:var(--txt3);text-decoration:none;border:1px solid var(--linew);border-radius:99px;padding:5px 13px;margin-bottom:22px;transition:all .15s}
@@ -266,11 +294,11 @@ h1 em{font-style:italic;color:var(--o)}
 }
 
 /* TESTI BAND */
-.tband{background:rgba(255,255,255,.02);border-top:1px solid var(--linew);border-bottom:1px solid var(--linew);padding:22px 0;overflow:hidden;position:relative}
+.tband{background:rgba(255,255,255,.02);border-top:1px solid var(--linew);border-bottom:1px solid var(--linew);padding:18px 0;overflow:hidden;position:relative}
 .tband::before,.tband::after{content:'';position:absolute;top:0;bottom:0;width:90px;z-index:2;pointer-events:none}
 .tband::before{left:0;background:linear-gradient(to right,var(--bg0),transparent)}
 .tband::after{right:0;background:linear-gradient(to left,var(--bg0),transparent)}
-.ttrack{display:flex;gap:12px;width:max-content;animation:mar 85s linear infinite}
+.ttrack{display:flex;gap:12px;width:max-content;animation:mar 122s linear infinite}
 .ttrack:hover{animation-play-state:paused}
 @keyframes mar{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .tcard{
@@ -280,6 +308,8 @@ h1 em{font-style:italic;color:var(--o)}
 }
 .tcard p{font-size:13.5px;color:var(--txt2);line-height:1.7;font-style:italic}
 .tcard .tn{font-size:11px;color:var(--txt3);margin-top:10px;font-weight:600;letter-spacing:.3px}
+.tcard-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.3px;color:var(--o);background:var(--o-soft);border:1px solid rgba(247,88,26,.3);border-radius:99px;padding:3px 10px;margin-bottom:10px}
+.tband-note{font-size:10.5px;color:var(--txt3);text-align:center;font-style:italic;padding:10px 20px 0}
 
 /* SECTIONS */
 .lbl{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--o);margin-bottom:12px}
@@ -288,7 +318,7 @@ h1 em{font-style:italic;color:var(--o)}
 hr{border:none;height:2px;margin:0;background:repeating-linear-gradient(90deg, rgba(255,255,255,.09) 0 24px, transparent 24px 56px)}
 
 /* LIVE */
-.live{max-width:1020px;margin:0 auto;padding:80px 40px;display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
+.live{max-width:1020px;margin:0 auto;padding:64px 40px;display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
 .live-l p{font-size:14.5px;color:var(--txt2);line-height:1.85;font-weight:300;margin-top:18px;max-width:380px}
 .live-l p strong{color:#fff;font-weight:500}
 .timeline{position:relative;padding-left:26px}
@@ -326,9 +356,9 @@ hr{border:none;height:2px;margin:0;background:repeating-linear-gradient(90deg, r
   content:'';position:absolute;left:8%;right:8%;top:50%;height:2.5px;border-radius:3px;
   background:linear-gradient(to right,var(--o) 0%,var(--o) 38%,rgba(255,255,255,.18) 38%);
 }
-.track-route::after{
-  content:'🚛';position:absolute;left:38%;top:50%;transform:translate(-50%,-58%);font-size:17px;
-  filter:drop-shadow(0 2px 6px rgba(0,0,0,.5));
+.tow-icon{
+  position:absolute;top:50%;left:34%;width:30px;height:17px;transform:translate(-50%,-50%);
+  color:var(--o);filter:drop-shadow(0 2px 6px rgba(0,0,0,.5));
   animation:truck 5s ease-in-out infinite;
 }
 @keyframes truck{0%,100%{left:34%}50%{left:42%}}
@@ -354,7 +384,7 @@ hr{border:none;height:2px;margin:0;background:repeating-linear-gradient(90deg, r
 .tl-note{font-size:10px;color:var(--txt3);font-style:italic;margin-top:14px;padding-left:26px}
 
 /* WHO + PAUSE WIDGET */
-.who{max-width:980px;margin:0 auto;padding:80px 40px;display:grid;grid-template-columns:1.25fr .9fr;gap:64px;align-items:center}
+.who{max-width:980px;margin:0 auto;padding:64px 40px;display:grid;grid-template-columns:1.25fr .9fr;gap:64px;align-items:center}
 .who-l .quote{
   font-size:17px;font-weight:700;letter-spacing:-.2px;line-height:1.5;
   border-left:3px solid var(--o);padding-left:18px;margin:22px 0 20px;color:#fff;
@@ -403,7 +433,7 @@ hr{border:none;height:2px;margin:0;background:repeating-linear-gradient(90deg, r
 .pw-caption b{color:var(--txt2)}
 
 /* HOW */
-.how{max-width:920px;margin:0 auto;padding:80px 40px}
+.how{max-width:920px;margin:0 auto;padding:64px 40px}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
 .step{
   background:var(--surf);border:1px solid var(--linew);border-radius:16px;padding:26px;position:relative;
@@ -424,7 +454,7 @@ hr{border:none;height:2px;margin:0;background:repeating-linear-gradient(90deg, r
 .how-note strong{color:#fff;font-weight:600}
 
 /* OFFER (carte unique épurée) */
-.offer-section{max-width:920px;margin:0 auto;padding:80px 40px;text-align:center}
+.offer-section{max-width:920px;margin:0 auto;padding:64px 40px;text-align:center}
 .offer-section .lbl{margin-bottom:12px}
 .offer-sub{font-size:14.5px;color:var(--txt2);font-weight:300;max-width:440px;margin:14px auto 36px;line-height:1.75}
 .ocard{
@@ -490,7 +520,7 @@ hr{border:none;height:2px;margin:0;background:repeating-linear-gradient(90deg, r
 .pro-link:hover{background:var(--o-soft)}
 
 /* COMPARE */
-.compare{max-width:720px;margin:0 auto;padding:80px 40px}
+.compare{max-width:720px;margin:0 auto;padding:64px 40px}
 .compare .sec-h{margin-bottom:32px}
 .table-card{
   background:linear-gradient(165deg,#1B202B 0%,#141821 100%);
@@ -514,7 +544,7 @@ tbody tr:last-child td{border-bottom:none}
 .compare-src{font-size:11px;color:var(--txt3);margin-top:14px;line-height:1.65}
 
 /* FAQ */
-.faq{max-width:680px;margin:0 auto;padding:80px 40px}
+.faq{max-width:680px;margin:0 auto;padding:64px 40px}
 .faq .sec-h{margin-bottom:28px}
 .faq details{
   background:var(--surf);border:1px solid var(--linew);border-radius:14px;
@@ -533,7 +563,7 @@ tbody tr:last-child td{border-bottom:none}
 .faq details p strong{color:#fff;font-weight:500}
 
 /* CONTACT */
-.contact{max-width:680px;margin:0 auto;padding:80px 40px}
+.contact{max-width:680px;margin:0 auto;padding:64px 40px}
 .contact .sec-h{margin-bottom:28px}
 .founder{
   background:var(--bg2);border:1px solid var(--linew2);border-radius:22px;padding:32px;
@@ -563,7 +593,7 @@ tbody tr:last-child td{border-bottom:none}
 .f-link.li:hover{border-color:#4C9EEB;color:#7FBCF5}
 
 /* WAITLIST */
-.cta{padding:96px 40px;text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--linew)}
+.cta{padding:76px 40px;text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--linew)}
 .cta::before{
   content:'';position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(ellipse 700px 420px at 50% 0%, rgba(247,88,26,.14), transparent 65%);
@@ -644,19 +674,20 @@ footer nav a:hover{color:var(--txt)}
   .ttrack{animation:none}
   .dcardx{animation:none}
   .dcardx::after{animation:none}
-  .track-route::after{animation:none}
+  .tow-icon{animation:none}
   html{scroll-behavior:auto}
 }
 
 /* RESPONSIVE */
 @media(max-width:920px){
-  .hero{grid-template-columns:1fr;gap:52px;text-align:center;padding:56px 24px 64px}
+  .hero{grid-template-columns:1fr;gap:52px;text-align:center;padding:28px 24px 56px}
   .hero-eyebrow{justify-content:center}
   .hsub{margin-left:auto;margin-right:auto}
+  .hero-hook{text-align:left;max-width:480px;margin-left:auto;margin-right:auto}
   .hctas{justify-content:center}
   .hero-proof{justify-content:center}
-  .live{grid-template-columns:1fr;gap:40px;padding:60px 24px}
-  .who{grid-template-columns:1fr;gap:44px;padding:60px 24px}
+  .live{grid-template-columns:1fr;gap:40px;padding:48px 24px}
+  .who{grid-template-columns:1fr;gap:44px;padding:48px 24px}
   .pause-widget{transform:none}
   .steps{grid-template-columns:1fr}
 }
@@ -665,17 +696,17 @@ footer nav a:hover{color:var(--txt)}
   nav.main{padding:0 20px}
   .nav-links a.nl{display:none}
   h1{letter-spacing:-1.3px}
-  .how{padding:56px 20px}
-  .offer-section{padding:56px 20px}
+  .how{padding:44px 20px}
+  .offer-section{padding:44px 20px}
   .ocard{padding:28px 22px 26px}
-  .compare{padding:56px 20px}
+  .compare{padding:44px 20px}
   table{font-size:12.5px}
   tbody td{padding:9px 8px}
   thead th{padding:9px 8px}
-  .faq{padding:56px 20px}
-  .contact{padding:56px 20px}
+  .faq{padding:44px 20px}
+  .contact{padding:44px 20px}
   .founder{padding:24px}
-  .cta{padding:68px 20px}
+  .cta{padding:56px 20px}
   .wl-email-row{flex-direction:column}
   .wl-email-row button{width:100%}
   .q-options label{min-width:calc(50% - 4px);flex:none}
@@ -764,8 +795,12 @@ footer nav a:hover{color:var(--txt)}
   <div>
     <div class="hero-eyebrow">La néo-assistance des conducteurs</div>
     <h1>Vous êtes couvert.<br><em>Peu importe la voiture.</em><a class="h1-ast" href="#faq-exclusions" onclick="document.getElementById('faq-exclusions').open=true" title="Voir les exclusions de couverture">✱</a></h1>
-    <p class="hsub">Panne avec la voiture de votre voisin. Vous appelez une assistance concurrente. Réponse&nbsp;: <span class="hq">«&nbsp;Ce véhicule n'est pas au contrat, nous n'intervenons pas.&nbsp;»</span></p>
-    <p class="hsub last">Imaginez que le véhicule que vous conduisez soit bien assuré, mais sans couverture d'assistance… <strong>CaptainHelp! est une assistance routière qui vous suit, quel que soit le volant que vous utilisez.</strong></p>
+    <div class="hero-hook">
+      <div class="hero-hook-badge" aria-hidden="true">❗</div>
+      <p class="hero-q">Panne ou accident avec la voiture <b>du voisin</b>, qui contacter&nbsp;?</p>
+      <div class="hero-hook-divider"></div>
+      <p class="hsub last">Imaginez que le véhicule que vous conduisez soit bien assuré, mais sans couverture d'assistance… <strong>CaptainHelp! est l'assistance qui vous suit, quel que soit le volant<a class="h1-ast" href="#faq-exclusions" onclick="document.getElementById('faq-exclusions').open=true" title="Voir les exclusions de couverture">✱</a>&nbsp;!</strong></p>
+    </div>
     <a class="excl-link" href="#faq-exclusions" onclick="document.getElementById('faq-exclusions').open=true">✱ Voir les exclusions de couverture</a>
     <div class="hctas">
       <a href="#waitlist" class="bto">Rejoindre la waitlist →</a>
@@ -799,23 +834,30 @@ footer nav a:hover{color:var(--txt)}
 <!-- TESTI BAND -->
 <div class="tband">
   <div class="ttrack">
-    <div class="tcard"><p>« Voiture de fonction la semaine, celle de ma femme le week-end. J'ai relu mon contrat d'assistance trois fois : impossible de savoir si je suis couvert quand ce n'est pas ma plaque. »</p><div class="tn">Mehdi · commercial itinérant, 78</div></div>
-    <div class="tcard"><p>« Batterie à plat au niveau -2 du parking de la gare, retour de déplacement. L'assistance n'intervient pas en parking souterrain. 95 € de dépanneur privé, payés de ma poche. »</p><div class="tn">Claire · consultante, Lyon</div></div>
-    <div class="tcard"><p>« Le dépanneur est venu en 2h un samedi soir, rien à dire. Mais l'agence exigeait une carte de crédit à relief pour la caution du véhicule de prêt. Ma carte de débit ne passait pas. Je suis rentré en train. »</p><div class="tn">Thomas · 29 ans, Bordeaux</div></div>
-    <div class="tcard"><p>« Deuxième panne de l'année en novembre. On m'a prévenu que la prochaine serait entièrement facturée. Avec une voiture de 14 ans, ça arrive plus de deux fois. »</p><div class="tn">Laurent · artisan, Loire-Atlantique</div></div>
-    <div class="tcard"><p>« Je passe l'hiver au Portugal en télétravail. Suspendre mon assistance ? Possible en théorie. En pratique : appeler, tomber sur le bon service, retrouver mon numéro de dossier. J'ai laissé tomber et j'ai payé pour rien. »</p><div class="tn">Sonia · freelance, Paris</div></div>
-    <div class="tcard"><p>« J'ai prêté ma voiture à mon frère. Panne à 200 km de chez moi. Refus d'intervention : conducteur non déclaré au contrat. Il a payé le remorquage de sa poche. »</p><div class="tn">Karim · 33 ans, Essonne</div></div>
-    <div class="tcard"><p>« Permis suspendu 6 mois. Pour mettre mon contrat en pause : trois appels, deux services différents, un numéro de dossier introuvable. J'ai abandonné. 6 mois payés pour un service inutilisable. »</p><div class="tn">David · Haute-Savoie</div></div>
-    <!-- dup pour la boucle -->
-    <div class="tcard"><p>« Voiture de fonction la semaine, celle de ma femme le week-end. J'ai relu mon contrat d'assistance trois fois : impossible de savoir si je suis couvert quand ce n'est pas ma plaque. »</p><div class="tn">Mehdi · commercial itinérant, 78</div></div>
-    <div class="tcard"><p>« Batterie à plat au niveau -2 du parking de la gare, retour de déplacement. L'assistance n'intervient pas en parking souterrain. 95 € de dépanneur privé, payés de ma poche. »</p><div class="tn">Claire · consultante, Lyon</div></div>
-    <div class="tcard"><p>« Le dépanneur est venu en 2h un samedi soir, rien à dire. Mais l'agence exigeait une carte de crédit à relief pour la caution du véhicule de prêt. Ma carte de débit ne passait pas. Je suis rentré en train. »</p><div class="tn">Thomas · 29 ans, Bordeaux</div></div>
-    <div class="tcard"><p>« Deuxième panne de l'année en novembre. On m'a prévenu que la prochaine serait entièrement facturée. Avec une voiture de 14 ans, ça arrive plus de deux fois. »</p><div class="tn">Laurent · artisan, Loire-Atlantique</div></div>
-    <div class="tcard"><p>« Je passe l'hiver au Portugal en télétravail. Suspendre mon assistance ? Possible en théorie. En pratique : appeler, tomber sur le bon service, retrouver mon numéro de dossier. J'ai laissé tomber et j'ai payé pour rien. »</p><div class="tn">Sonia · freelance, Paris</div></div>
-    <div class="tcard"><p>« J'ai prêté ma voiture à mon frère. Panne à 200 km de chez moi. Refus d'intervention : conducteur non déclaré au contrat. Il a payé le remorquage de sa poche. »</p><div class="tn">Karim · 33 ans, Essonne</div></div>
-    <div class="tcard"><p>« Permis suspendu 6 mois. Pour mettre mon contrat en pause : trois appels, deux services différents, un numéro de dossier introuvable. J'ai abandonné. 6 mois payés pour un service inutilisable. »</p><div class="tn">David · Haute-Savoie</div></div>
-  </div>
+    <div class="tcard"><span class="tcard-tag">→ Tout véhicule, sans limite de nombre</span><p>« Voiture de fonction la semaine, celle de ma femme le week-end. J'ai relu mon contrat d'assistance trois fois : impossible de savoir si je suis couvert quand ce n'est pas ma plaque. »</p><div class="tn">Mehdi · commercial itinérant, 78</div></div>
+    <div class="tcard"><span class="tcard-tag">→ Parking souterrain couvert</span><p>« Batterie à plat au niveau -2 du parking de la gare, retour de déplacement. L'assistance n'intervient pas en parking souterrain. 95 € de dépanneur privé, payés de ma poche. »</p><div class="tn">Claire · consultante, Lyon</div></div>
+    <div class="tcard"><span class="tcard-tag">→ 0 € de caution</span><p>« Le dépanneur est venu en 2h un samedi soir, rien à dire. Mais l'agence exigeait une carte de crédit à relief pour la caution du véhicule de prêt. Ma carte de débit ne passait pas. Je suis rentré en train. »</p><div class="tn">Thomas · 29 ans, Bordeaux</div></div>
+    <div class="tcard"><span class="tcard-tag">→ Sans limite d'âge du véhicule</span><p>« Deuxième panne de l'année en novembre. On m'a prévenu que la prochaine serait entièrement facturée. Avec une voiture de 14 ans, ça arrive plus de deux fois. »</p><div class="tn">Laurent · artisan, Loire-Atlantique</div></div>
+    <div class="tcard"><span class="tcard-tag">→ Pause en un clic</span><p>« Je passe l'hiver au Portugal en télétravail. Suspendre mon assistance ? Possible en théorie. En pratique : appeler, tomber sur le bon service, retrouver mon numéro de dossier. J'ai laissé tomber et j'ai payé pour rien. »</p><div class="tn">Sonia · freelance, Paris</div></div>
+    <div class="tcard"><span class="tcard-tag">→ Véhicule enregistré en un clic</span><p>« J'ai prêté ma voiture à mon frère. Panne à 200 km de chez moi. Refus d'intervention : conducteur non déclaré au contrat. Il a payé le remorquage de sa poche. »</p><div class="tn">Karim · 33 ans, Essonne</div></div>
+    <div class="tcard"><span class="tcard-tag">→ Jeune permis dès 18 ans</span><p>« 18 ans, permis depuis deux mois. Panne pendant un trajet&nbsp;: l'agence de location la plus proche refusait les jeunes conducteurs pour le véhicule de remplacement, et personne pour m'orienter ailleurs. »</p><div class="tn">Inès · 18 ans, étudiante, Toulouse</div></div>
+    <div class="tcard"><span class="tcard-tag">→ Accidents couverts</span><p>« Accrochage sur le parking d'un centre commercial, voiture immobilisée. Mon assurance gère les dégâts, mais personne pour m'aider à rentrer ni organiser la suite de ma journée. »</p><div class="tn">Nadia · 41 ans, Marseille</div></div>
+    <div class="tcard"><span class="tcard-tag">→ Erreur de carburant couverte</span><p>« Erreur à la pompe&nbsp;: diesel dans une essence. Mon assistance a refusé d'intervenir, l'erreur de carburant était exclue du contrat. Vidange et remorquage à mes frais. »</p><div class="tn">Yannick · 52 ans, Strasbourg</div></div>
+    <div class="tcard"><span class="tcard-tag">→ Perte de permis : hôtel + retour inclus</span><p>« Contrôle routier, permis retiré sur-le-champ, à 300 km de chez moi avec la voiture. Mon assistance n'avait aucune solution prévue pour me ramener. »</p><div class="tn">Julien · 35 ans, Tours</div></div>
+        <!-- dup pour la boucle -->
+    <div class="tcard"><span class="tcard-tag">→ Tout véhicule, sans limite de nombre</span><p>« Voiture de fonction la semaine, celle de ma femme le week-end. J'ai relu mon contrat d'assistance trois fois : impossible de savoir si je suis couvert quand ce n'est pas ma plaque. »</p><div class="tn">Mehdi · commercial itinérant, 78</div></div>
+    <div class="tcard"><span class="tcard-tag">→ Parking souterrain couvert</span><p>« Batterie à plat au niveau -2 du parking de la gare, retour de déplacement. L'assistance n'intervient pas en parking souterrain. 95 € de dépanneur privé, payés de ma poche. »</p><div class="tn">Claire · consultante, Lyon</div></div>
+    <div class="tcard"><span class="tcard-tag">→ 0 € de caution</span><p>« Le dépanneur est venu en 2h un samedi soir, rien à dire. Mais l'agence exigeait une carte de crédit à relief pour la caution du véhicule de prêt. Ma carte de débit ne passait pas. Je suis rentré en train. »</p><div class="tn">Thomas · 29 ans, Bordeaux</div></div>
+    <div class="tcard"><span class="tcard-tag">→ Sans limite d'âge du véhicule</span><p>« Deuxième panne de l'année en novembre. On m'a prévenu que la prochaine serait entièrement facturée. Avec une voiture de 14 ans, ça arrive plus de deux fois. »</p><div class="tn">Laurent · artisan, Loire-Atlantique</div></div>
+    <div class="tcard"><span class="tcard-tag">→ Pause en un clic</span><p>« Je passe l'hiver au Portugal en télétravail. Suspendre mon assistance ? Possible en théorie. En pratique : appeler, tomber sur le bon service, retrouver mon numéro de dossier. J'ai laissé tomber et j'ai payé pour rien. »</p><div class="tn">Sonia · freelance, Paris</div></div>
+    <div class="tcard"><span class="tcard-tag">→ Véhicule enregistré en un clic</span><p>« J'ai prêté ma voiture à mon frère. Panne à 200 km de chez moi. Refus d'intervention : conducteur non déclaré au contrat. Il a payé le remorquage de sa poche. »</p><div class="tn">Karim · 33 ans, Essonne</div></div>
+    <div class="tcard"><span class="tcard-tag">→ Jeune permis dès 18 ans</span><p>« 18 ans, permis depuis deux mois. Panne pendant un trajet&nbsp;: l'agence de location la plus proche refusait les jeunes conducteurs pour le véhicule de remplacement, et personne pour m'orienter ailleurs. »</p><div class="tn">Inès · 18 ans, étudiante, Toulouse</div></div>
+    <div class="tcard"><span class="tcard-tag">→ Accidents couverts</span><p>« Accrochage sur le parking d'un centre commercial, voiture immobilisée. Mon assurance gère les dégâts, mais personne pour m'aider à rentrer ni organiser la suite de ma journée. »</p><div class="tn">Nadia · 41 ans, Marseille</div></div>
+    <div class="tcard"><span class="tcard-tag">→ Erreur de carburant couverte</span><p>« Erreur à la pompe&nbsp;: diesel dans une essence. Mon assistance a refusé d'intervenir, l'erreur de carburant était exclue du contrat. Vidange et remorquage à mes frais. »</p><div class="tn">Yannick · 52 ans, Strasbourg</div></div>
+    <div class="tcard"><span class="tcard-tag">→ Perte de permis : hôtel + retour inclus</span><p>« Contrôle routier, permis retiré sur-le-champ, à 300 km de chez moi avec la voiture. Mon assistance n'avait aucune solution prévue pour me ramener. »</p><div class="tn">Julien · 35 ans, Tours</div></div>
+      </div>
 </div>
+<p class="tband-note">Situations courantes, présentées à titre illustratif.</p>
 
 <!-- LIVE -->
 <div class="live r">
@@ -828,12 +870,22 @@ footer nav a:hover{color:var(--txt)}
     <div class="tl-item">
       <div class="tl-time">23H</div>
       <div class="bubble">« Je suis en panne sur la nationale 6 direction Lyon, c'est pas ma voiture, c'est celle de ma sœur… »</div>
-      <div class="bubble-reply">Aucun souci, votre couverture s'applique. Dépanneur trouvé à 6 km, arrivée estimée 19 min. Mettez-vous en sécurité, à l'écart de la chaussée.<small>RÉPONSE EN 8 SECONDES</small></div>
+      <div class="bubble-reply">Votre couverture s'applique. Dépanneur trouvé à 9 km, arrivée estimée 21 min. Mettez-vous en sécurité, à l'écart de la chaussée.<small>RÉPONSE EN 2 MINUTES</small></div>
     </div>
     <div class="tl-item">
       <div class="tl-time">23H05 · SUIVI EN TEMPS RÉEL</div>
       <div class="track-card">
-        <div class="track-route"><span class="track-pin"></span></div>
+        <div class="track-route">
+          <svg class="tow-icon" viewBox="0 0 40 22" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M2 16 L2 9 L9 9 L13 16 Z" fill="currentColor"/>
+            <rect x="13" y="12" width="15" height="4" rx="1" fill="currentColor"/>
+            <path d="M26 12 L32 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <circle cx="33" cy="3" r="1.8" fill="currentColor"/>
+            <circle cx="7" cy="18" r="3" fill="currentColor"/>
+            <circle cx="22" cy="18" r="3" fill="currentColor"/>
+          </svg>
+          <span class="track-pin"></span>
+        </div>
         <div class="track-row">
           <div class="track-who">
             <div class="track-av">MD</div>
@@ -852,7 +904,7 @@ footer nav a:hover{color:var(--txt)}
         <div class="n-ic">🚕</div>
         <div>
           <div class="n-t">Véhicule non réparable sur place</div>
-          <div class="n-d">Remorquage en cours. Un taxi vous ramène chez vous, il arrive dans 9 min. Véhicule de remplacement réservé pour demain 9h, <b style="color:var(--gn)">0 € de caution</b>.</div>
+          <div class="n-d">Remorquage en cours. Un taxi vous emmène au dépôt du remorqueur, arrivée dans 16 min. De là, votre véhicule de remplacement vous attend en libre-service à 14 km, tout est pris en charge&nbsp;: <b style="color:var(--gn)">0 € de caution</b>. Bonne reprise de la route&nbsp;!</div>
         </div>
       </div>
     </div>
@@ -960,7 +1012,7 @@ footer nav a:hover{color:var(--txt)}
         <div class="e-ic">💳</div>
         <div>
           <div class="e-t">Véhicule de remplacement, 0 € de caution</div>
-          <div class="e-d">Aucune empreinte bancaire, rien à bloquer.</div>
+          <div class="e-d">Aucune empreinte bancaire, rien à bloquer. Pratique lorsqu'on n'a que des CB à débit immédiat.</div>
         </div>
       </li>
       <li>
@@ -973,15 +1025,8 @@ footer nav a:hover{color:var(--txt)}
       <li>
         <div class="e-ic">⚡</div>
         <div>
-          <div class="e-t">Réponse en moins de 10 secondes, 24h/24</div>
-          <div class="e-d">L'assistant vocal décroche, identifie votre dossier et déclenche l'intervention. Un humain prend le relais dès que nécessaire, systématiquement en cas d'accident.</div>
-        </div>
-      </li>
-      <li>
-        <div class="e-ic">🛟</div>
-        <div>
-          <div class="e-t">3 interventions par an + appels illimités</div>
-          <div class="e-d">Panne ou accident&nbsp;: dépannage à 0 km, même devant chez vous, même en parking souterrain.</div>
+          <div class="e-t">Réponse en 10 secondes, 24h/24</div>
+          <div class="e-d">Déclenchez notre assistant (via l'espace chat depuis l'app, par appel depuis l'app, ou via notre numéro non surtaxé)&nbsp;: il vous identifie et déclenche l'intervention. Un humain prend le relais si nécessaire, et systématiquement en cas d'accident.</div>
         </div>
       </li>
     </ul>
@@ -1094,7 +1139,7 @@ footer nav a:hover{color:var(--txt)}
 
   <details>
     <summary>Et si je tombe en panne sur l'autoroute ?</summary>
-    <p>Sur autoroute et voie express, la loi est la même pour tout le monde&nbsp;: il faut signaler la panne via une borne d'appel d'urgence ou le 112, et seul un dépanneur agréé peut intervenir sur place. CaptainHelp! prend le relais immédiatement après&nbsp;: taxi ou VTC, véhicule de remplacement sans caution, hôtel si besoin, suivi du dossier. Et pendant l'attente, nos appels conseils vous guident pas à pas.</p>
+    <p>Sur autoroute et voie express, la loi impose de signaler toute panne ou tout accident via une borne d'appel d'urgence ou le 112&nbsp;: seul un dépanneur agréé peut intervenir sur la chaussée. <strong>En parallèle, activez votre demande CaptainHelp!</strong> depuis l'app ou via notre numéro non surtaxé, accessible depuis la France comme depuis l'étranger. Nous prenons le relais dès la fin de cette première intervention&nbsp;: taxi ou VTC, véhicule de remplacement sans caution, hôtel si besoin, et suivi de votre dossier de bout en bout.</p>
   </details>
 
   <details>
@@ -1292,7 +1337,8 @@ footer nav a:hover{color:var(--txt)}
     <p>3 interventions physiques sont incluses par année civile, indépendamment des périodes de pause. Une intervention est réputée déclenchée dès l'envoi d'un prestataire sur le lieu du sinistre à la suite d'une demande validée du Souscripteur (identité vérifiée et véhicule préalablement enregistré) ; une demande annulée avant le départ du prestataire n'est pas décomptée. Les appels téléphoniques ou via l'application sont illimités et ne comptent pas comme interventions. Au-delà, chaque intervention supplémentaire est facturée au forfait selon le tarif en vigueur sur captainhelp.eu au moment de l'intervention.</p>
 
     <h2 id="cgv-a8">Article 8 · Déclenchement de l'assistance</h2>
-    <p>Toute demande doit être initiée via l'application mobile ou par appel au numéro dédié. Le Souscripteur communique, s'il y est invité par voie téléphonique, son identité, la nature du sinistre et sa localisation ; des vérifications supplémentaires peuvent lui être demandées afin de prévenir toute fraude. Il procède à une vérification d'identité (technologie de reconnaissance faciale et photographies du véhicule horodatées et géolocalisées, durée indicative inférieure à 30 secondes). Avant de prendre le volant, l'abonné doit avoir enregistré le véhicule conduit via l'application ; à défaut, aucune assistance ne peut être délivrée. L'enregistrement d'un véhicule n'appartenant pas à l'abonné requiert la confirmation du propriétaire par communication d'un code unique transmis par SMS ou par email. En cas d'accident, la demande est systématiquement prise en charge par un opérateur humain. Aucune dépense engagée sans contact préalable ne peut être remboursée, sauf urgence médicale justifiée.</p>
+    <p>Toute demande doit être initiée via l'application mobile, via son espace chat, ou par appel au numéro dédié non surtaxé, accessible depuis la France comme depuis l'étranger. Le Souscripteur communique, s'il y est invité par voie téléphonique, son identité, la nature du sinistre et sa localisation ; des vérifications supplémentaires peuvent lui être demandées afin de prévenir toute fraude. Il procède à une vérification d'identité (technologie de reconnaissance faciale et photographies du véhicule horodatées et géolocalisées, durée indicative inférieure à 30 secondes). Avant de prendre le volant, l'abonné doit avoir enregistré le véhicule conduit via l'application ; à défaut, aucune assistance ne peut être délivrée. L'enregistrement d'un véhicule n'appartenant pas à l'abonné requiert la confirmation du propriétaire par communication d'un code unique transmis par SMS ou par email. En cas d'accident, la demande est systématiquement prise en charge par un opérateur humain. Aucune dépense engagée sans contact préalable ne peut être remboursée, sauf urgence médicale justifiée.</p>
+    <p>Sur autoroute et voie express, la réglementation impose de signaler toute panne ou tout accident via une borne d'appel d'urgence ou le 112, seul un dépanneur agréé étant habilité à intervenir sur la chaussée. Le Souscripteur active en parallèle sa demande auprès de CaptainHelp! via l'application ou le numéro dédié non surtaxé, pour la prise en charge de la suite de son trajet.</p>
 
     <h2 id="cgv-a9">Article 9 · Obligations du Souscripteur</h2>
     <p>Le Souscripteur s'engage à : fournir des informations exactes et à jour, entretenir régulièrement son véhicule, ne pas faire un usage frauduleux ou abusif du service, ne pas céder ou prêter les droits du contrat (l'abonnement est strictement personnel) sans accord préalable écrit de CaptainHelp!.</p>
